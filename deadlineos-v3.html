@@ -497,9 +497,95 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .login-hackathon-text strong{color:var(--t3,#5d6490);font-style:normal}
 .login-hackathon-text em{color:var(--red);font-style:normal}
 
+
+/* ═══ API KEY OVERLAY ═══ */
+#apikey-overlay{position:fixed;inset:0;background:rgba(7,8,15,.97);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px}
+#apikey-overlay.hidden{display:none}
+.apikey-box{background:var(--surface);border:1px solid var(--border2);border-radius:16px;padding:36px;width:400px;max-width:95vw;position:relative}
+.apikey-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cyan),var(--purple));border-radius:16px 16px 0 0}
+.apikey-logo{font-family:var(--fd);font-size:20px;font-weight:900;text-align:center;margin-bottom:4px}
+.apikey-logo em{color:var(--red);font-style:normal}
+.apikey-title{font-size:13px;font-weight:700;color:var(--t1);margin-bottom:6px;letter-spacing:.5px}
+.apikey-sub{font-size:10px;color:var(--muted);margin-bottom:20px;line-height:1.7}
+.apikey-sub a{color:var(--cyan);text-decoration:none}
+.apikey-inp{width:100%;background:var(--panel);border:1px solid var(--border2);border-radius:6px;padding:10px 14px;color:var(--t1);font-family:var(--mono);font-size:11px;outline:none;box-sizing:border-box;letter-spacing:.5px;transition:border .2s}
+.apikey-inp:focus{border-color:var(--cyan)}
+.apikey-inp::placeholder{color:var(--muted);letter-spacing:0}
+.apikey-actions{display:flex;gap:10px;margin-top:14px}
+.apikey-btn{flex:1;padding:10px;border:none;border-radius:6px;font-family:var(--mono);font-size:11px;font-weight:700;cursor:pointer;letter-spacing:1px;transition:all .2s}
+.apikey-btn.prim{background:var(--cyan);color:#000}
+.apikey-btn.prim:hover{background:#33d6ff}
+.apikey-btn.sec{background:var(--panel);border:1px solid var(--border2);color:var(--t2)}
+.apikey-btn.sec:hover{border-color:var(--cyan);color:var(--cyan)}
+.apikey-err{font-size:10px;color:var(--red);margin-top:8px;min-height:14px}
+.apikey-hint{font-size:9px;color:var(--muted);margin-top:16px;padding-top:14px;border-top:1px solid var(--c5);line-height:1.6;text-align:center}
+.apikey-hint strong{color:var(--t3)}
+.apikey-change{position:fixed;bottom:12px;right:12px;background:var(--panel);border:1px solid var(--border2);border-radius:4px;padding:4px 10px;font-size:9px;color:var(--muted);font-family:var(--mono);cursor:pointer;letter-spacing:1px;z-index:100;transition:all .2s}
+.apikey-change:hover{border-color:var(--cyan);color:var(--cyan)}
+
+
+/* ═══ DEMO MODE ═══ */
+.demo-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;background:rgba(168,255,62,.1);border:1px solid rgba(168,255,62,.3);border-radius:3px;font-size:9px;color:var(--lime);letter-spacing:1px;font-family:var(--mono)}
+.demo-counter{font-size:9px;color:var(--muted);font-family:var(--mono);text-align:center;margin-top:8px}
+.demo-counter strong{color:var(--lime)}
+.demo-exhausted{color:var(--orange)!important}
+.demo-exhausted strong{color:var(--orange)!important}
+#demo-bar{height:2px;background:var(--border);border-radius:1px;margin-top:6px;overflow:hidden}
+#demo-bar-fill{height:100%;background:linear-gradient(90deg,var(--lime),var(--cyan));border-radius:1px;transition:width .4s}
+
 </style>
 </head>
 <body>
+
+<!-- ═══════ API KEY OVERLAY ═══════ -->
+<div id="apikey-overlay" class="hidden">
+  <div class="apikey-box">
+    <div class="apikey-logo">Deadline<em>OS</em></div>
+    <div style="text-align:center;font-size:10px;color:var(--muted);margin-bottom:20px;letter-spacing:.5px">KI-KONFIGURATION</div>
+
+    <!-- Mode tabs -->
+    <div style="display:flex;gap:6px;margin-bottom:20px">
+      <button id="tab-demo" onclick="switchApiTab('demo')" style="flex:1;padding:8px;border-radius:5px;border:1px solid var(--lime);background:rgba(168,255,62,.1);color:var(--lime);font-family:var(--mono);font-size:10px;cursor:pointer;font-weight:700;letter-spacing:1px">🧪 DEMO</button>
+      <button id="tab-own" onclick="switchApiTab('own')" style="flex:1;padding:8px;border-radius:5px;border:1px solid var(--border2);background:transparent;color:var(--t2);font-family:var(--mono);font-size:10px;cursor:pointer;letter-spacing:1px">🔑 EIGENER KEY</button>
+    </div>
+
+    <!-- Demo tab -->
+    <div id="api-tab-demo">
+      <div class="apikey-title">🧪 Demo-Modus</div>
+      <div class="apikey-sub">
+        Teste die KI-Features kostenlos —<br>
+        <strong id="demo-calls-left" style="color:var(--lime)">5 Anfragen</strong> gratis pro Tag. Kein Account, kein Key.
+      </div>
+      <div id="demo-bar"><div id="demo-bar-fill" style="width:100%"></div></div>
+      <div class="demo-counter" id="demo-counter-lbl">5 von 5 Demo-Anfragen verfügbar</div>
+      <div style="margin-top:16px">
+        <button class="apikey-btn prim" id="demo-start-btn" style="width:100%" onclick="startDemo()">🚀 Demo starten</button>
+      </div>
+      <div class="apikey-hint">
+        ⚡ Danach eigenen Key hinterlegen für unlimitierten Zugriff.<br>
+        Key holen: <a href="https://console.anthropic.com" target="_blank" style="color:var(--cyan)">console.anthropic.com</a>
+      </div>
+    </div>
+
+    <!-- Own key tab -->
+    <div id="api-tab-own" style="display:none">
+      <div class="apikey-title" id="akey-title">🔑 Eigenen API Key eingeben</div>
+      <div class="apikey-sub" id="akey-sub">
+        Unlimitierter Zugriff mit deinem Anthropic Key.<br>
+        Key holen: <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>
+      </div>
+      <input class="apikey-inp" id="apikey-inp" type="password" placeholder="sk-ant-api03-..." oninput="apikeyValidate()" />
+      <div class="apikey-err" id="apikey-err"></div>
+      <div class="apikey-actions" style="margin-top:12px">
+        <button class="apikey-btn prim" id="akey-save-btn" onclick="apikeyS()">✓ Speichern &amp; starten</button>
+        <button class="apikey-btn sec" onclick="switchApiTab('demo')">← Demo</button>
+      </div>
+      <div class="apikey-hint" id="akey-hint">
+        🔒 <strong>Sicherheit:</strong> Key bleibt lokal in deinem Browser.
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ═══════ LOGIN OVERLAY ═══════ -->
 <div id="login-overlay">
@@ -539,6 +625,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
     </div>
   </div>
 </div>
+<button class="apikey-change" onclick="showApiKeyOverlay()" id="apikey-change-btn" title="API Key ändern">🔑 API KEY</button>
 
 <!-- ═══════ TOP BAR ═══════ -->
 <div id="topbar">
@@ -1005,6 +1092,133 @@ const DB = {
   get:(k,d)=>{ try{const v=localStorage.getItem(k); return v?JSON.parse(v):d}catch{return d}},
   set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))
 };
+function _getKey(){return DB.get('dos3-apikey','');}
+function _setKey(k){DB.set('dos3-apikey',k);}
+function _hasKey(){return !!_getKey();}
+
+/* ═══ DEMO MODE ═══ */
+const DEMO_MAX = 5;
+function _getDemoUsed(){
+  const d=DB.get('dos3-demo-date','');
+  const today=new Date().toDateString();
+  if(d!==today){DB.set('dos3-demo-date',today);DB.set('dos3-demo-used',0);return 0;}
+  return DB.get('dos3-demo-used',0);
+}
+function _incDemo(){DB.set('dos3-demo-used',_getDemoUsed()+1);}
+function _demoLeft(){return Math.max(0,DEMO_MAX-_getDemoUsed());}
+function _isDemo(){return DB.get('dos3-mode','demo')==='demo';}
+
+function switchApiTab(tab){
+  document.getElementById('api-tab-demo').style.display=tab==='demo'?'block':'none';
+  document.getElementById('api-tab-own').style.display=tab==='own'?'block':'none';
+  const td=document.getElementById('tab-demo'), to=document.getElementById('tab-own');
+  if(tab==='demo'){
+    td.style.borderColor='var(--lime)';td.style.background='rgba(168,255,62,.1)';td.style.color='var(--lime)';
+    to.style.borderColor='var(--border2)';to.style.background='transparent';to.style.color='var(--t2)';
+  } else {
+    to.style.borderColor='var(--cyan)';to.style.background='rgba(0,212,255,.1)';to.style.color='var(--cyan)';
+    td.style.borderColor='var(--border2)';td.style.background='transparent';td.style.color='var(--t2)';
+  }
+  updateDemoUI();
+}
+
+function updateDemoUI(){
+  const left=_demoLeft();
+  const lbl=document.getElementById('demo-calls-left');
+  const counter=document.getElementById('demo-counter-lbl');
+  const fill=document.getElementById('demo-bar-fill');
+  const startBtn=document.querySelector('#api-tab-demo .apikey-btn.prim');
+  if(lbl) lbl.textContent=left+' Anfragen';
+  if(counter){
+    if(left>0){
+      counter.textContent=left+' von '+DEMO_MAX+' Demo-Anfragen verfügbar';
+      counter.className='demo-counter';
+    } else {
+      counter.innerHTML='Demo-Limit erreicht. <a href="#" onclick="switchApiTab(\'own\');return false" style="color:var(--cyan)">Eigenen Key eingeben →</a>';
+      counter.className='demo-counter demo-exhausted';
+    }
+  }
+  if(fill) fill.style.width=(left/DEMO_MAX*100)+'%';
+  if(startBtn){
+    if(left>0){startBtn.textContent='🚀 Demo starten';startBtn.disabled=false;startBtn.style.opacity='1';}
+    else{startBtn.textContent='Limit erreicht';startBtn.disabled=true;startBtn.style.opacity='.4';}
+  }
+}
+
+function startDemo(){
+  if(_demoLeft()<=0){
+    switchApiTab('own');
+    return;
+  }
+  DB.set('dos3-mode','demo');
+  hideApiKeyOverlay();
+  toast('🧪 Demo-Modus aktiv — '+_demoLeft()+' Anfragen verbleibend','ok');
+  updateKeyChangeBtnLabel();
+}
+
+function updateKeyChangeBtnLabel(){
+  const btn=document.getElementById('apikey-change-btn');
+  if(!btn) return;
+  if(_isDemo() && !_getKey()){
+    btn.innerHTML='🧪 DEMO ('+_demoLeft()+' left)';
+  } else if(_getKey()){
+    btn.innerHTML='🔑 API KEY ✓';
+    btn.style.color='var(--lime)';
+    btn.style.borderColor='var(--lime)';
+  } else {
+    btn.innerHTML='🔑 API KEY';
+    btn.style.color='var(--muted)';
+    btn.style.borderColor='var(--border2)';
+  }
+}
+
+/* Override showApiKeyOverlay to also update demo UI */
+const _origShowApiKey = showApiKeyOverlay;
+showApiKeyOverlay = function(){
+  _origShowApiKey();
+  updateDemoUI();
+  // Auto-select demo tab if no key
+  if(!_getKey()) switchApiTab('demo');
+  else switchApiTab('own');
+};
+
+/* ═══ API CALL PROXY ═══ */
+async function _aiCall(payload){
+  const key=_getKey();
+  if(key){
+    // Own key — direct call
+    const r=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'x-api-key':key,
+        'anthropic-version':'2023-06-01',
+        'anthropic-dangerous-direct-browser-access':'true'
+      },
+      body:JSON.stringify(payload)
+    });
+    return r.json();
+  } else if(_isDemo()){
+    // Demo mode — use built-in proxy via artifact API
+    if(_demoLeft()<=0) throw new Error('DEMO_EXHAUSTED');
+    const r=await fetch('https://api.anthropic.com/v1/messages',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'anthropic-version':'2023-06-01',
+        'anthropic-dangerous-direct-browser-access':'true'
+      },
+      body:JSON.stringify(payload)
+    });
+    _incDemo();
+    updateKeyChangeBtnLabel();
+    return r.json();
+  } else {
+    throw new Error('NO_KEY');
+  }
+}
+
+
 
 
 /* i18n block — must be before STATE vars that use lang */
@@ -1189,6 +1403,11 @@ const I18N = {
     plan_click2:   'Klicke \"Plan generieren\"',
     plan_empty2:   'Noch kein Plan',
     notes_new:     '+ Neue Notiz',
+    pin_protected:   'PIN-geschützt',
+    pin_free:        'Freies Profil',
+    profile_me:      'Ich selbst',
+    pin_hint_title:  'Test-Modus:',
+    pin_hint_text:   'Einfach 4 beliebige Zahlen als PIN eingeben (z.B. 1234)',
     xp_for2:       (lvl)=>`XP für Level ${lvl}`,
   },
 
@@ -1349,6 +1568,11 @@ const I18N = {
     plan_click2:   'Click \"Generate Plan\"',
     plan_empty2:   'No plan yet',
     notes_new:     '+ New Note',
+    pin_protected:   'PIN-protected',
+    pin_free:        'Free profile',
+    profile_me:      'Myself',
+    pin_hint_title:  'Test Mode:',
+    pin_hint_text:   'Just enter any 4 digits as PIN (e.g. 1234)',
     xp_for2:       (lvl)=>`XP for Level ${lvl}`,
   }
 };
@@ -1447,6 +1671,9 @@ function applyLang(){
 
 
 
+  /* API key overlay */
+  apikeyLang(L);
+
   /* PIN hint */
   const pinHintTitle = document.getElementById('pin-hint-title');
   if(pinHintTitle) pinHintTitle.textContent = L.pin_hint_title;
@@ -1510,6 +1737,9 @@ function applyLang(){
 
   /* Re-call updateNotifStatus to refresh language */
   if(typeof updateNotifStatus === 'function') updateNotifStatus();
+
+  /* Re-render profiles on lang change */
+  if(typeof renderLogin==='function') renderLogin();
 
   /* Re-render dynamic content */
   updateXPDisplay();
@@ -1657,12 +1887,15 @@ const DEFAULT_PROFILES=[
 function renderLogin(){
   if(!profiles.length){ profiles=[...DEFAULT_PROFILES]; DB.set('dos3-profiles',profiles); }
   const wrap=document.getElementById('login-profiles');
-  wrap.innerHTML=profiles.map(p=>`
-    <div class="profile-btn" onclick="selectProfile('${p.id}')">
+  wrap.innerHTML=profiles.map(p=>{
+    const dispName = p.id==='1' ? (I18N[lang].profile_me||p.name) : p.name;
+    const roleText = p.pin && p.pin!=='0000' ? (I18N[lang].pin_protected||'PIN-geschützt') : (I18N[lang].pin_free||'Freies Profil');
+    return `<div class="profile-btn" onclick="selectProfile('${p.id}')">
       <div class="pav" style="background:linear-gradient(135deg,${p.color})">${p.initials}</div>
-      <div><div class="pname">${p.name}</div><div class="prole">${I18N[lang].pin_protected}</div></div>
+      <div><div class="pname">${dispName}</div><div class="prole">${roleText}</div></div>
       <span style="margin-left:auto;font-size:14px">→</span>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 }
 
 let pendingProfileId=null;
@@ -2057,10 +2290,7 @@ function buildCtx(instr){
 
 async function callAI(prompt,outEl,streamTyping=true){
   try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})
-    });
+    const r=await _aiCall({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]});
     const d=await r.json();
     const text=d.content?.map(c=>c.text||'').join('')||'Fehler.';
     if(outEl){
@@ -2085,7 +2315,7 @@ async function autoPrioritize(){
   toast(I18N[lang].toast_prio,'');
   const prompt=buildCtx(`Bewerte jede Aufgabe mit einem Score 1-10 (10=höchste Priorität). Antworte NUR als JSON: {"scores":{"AUFGABENNAME":SCORE}}. Basiere auf Deadline, Urgency und Kontext.`);
   try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:500,messages:[{role:'user',content:prompt}]})});
+    const r=await _aiCall({model:'claude-sonnet-4-20250514',max_tokens:500,messages:[{role:'user',content:prompt}]});
     const d=await r.json();
     let text=d.content?.map(c=>c.text||'').join('');
     text=text.replace(/```json|```/g,'').trim();
@@ -2149,20 +2379,19 @@ async function sendChat(){
   const sysCtx=buildCtx(I18N[lang].chat_sys);
 
   try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:600,
+    const r=await _aiCall({model:'claude-sonnet-4-20250514',max_tokens:600,
         system:sysCtx,
         messages:[...history,{role:'user',content:text}]
-      })
-    });
+      });
     const d=await r.json();
     const reply=d.content?.map(c=>c.text||'').join('')||'Fehler.';
     document.getElementById('typing-ind')?.remove();
     addChatMsg('ai',reply);
   }catch{
     document.getElementById('typing-ind')?.remove();
-    addChatMsg('ai',I18N[lang].chat_err);
+    if(e&&e.message==='DEMO_EXHAUSTED'){addChatMsg('ai','⚡ Demo-Limit erreicht. Gib deinen eigenen API Key ein: klicke auf 🔑 DEMO unten rechts.');}
+    else if(e&&e.message==='NO_KEY'){addChatMsg('ai',I18N[lang].chat_err_nokey);}
+    else{if(e&&e.message==='DEMO_EXHAUSTED'){toast('⚡ Demo-Limit erreicht — eigenen Key hinterlegen','err');}else{console.error(e);}}
   }
 }
 
@@ -2247,7 +2476,7 @@ async function genPlan(){
 {"slots":[{"time":"09:00","type":"focus","icon":"💡","name":"Task Name","duration":"25min"}],"suggestions":[{"text":"Tipp"}]}
 Typen: focus, break, meeting, admin. Plane 8-18 Uhr. Berücksichtige Energie ${mood.energy}/8. Max 12 Slots.`);
   try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1200,messages:[{role:'user',content:prompt}]})});
+    const r=await _aiCall({model:'claude-sonnet-4-20250514',max_tokens:1200,messages:[{role:'user',content:prompt}]});
     const d=await r.json();
     let txt=d.content?.map(c=>c.text||'').join('');
     txt=txt.replace(/```json|```/g,'').trim();
@@ -2559,6 +2788,39 @@ function updateNotifStatus(){
   if(st){ st.textContent = l.status; st.className = 'ic-status ' + l.cls; }
   const tog = document.getElementById('tog-notif');
   if(tog) tog.checked = perm==='granted';
+}
+
+
+/* ═══ API KEY OVERLAY LOGIC ═══ */
+function showApiKeyOverlay(){
+  const ov=document.getElementById('apikey-overlay');
+  if(ov){ov.classList.remove('hidden');document.getElementById('apikey-inp').value=_getKey();}
+}
+function hideApiKeyOverlay(){
+  const ov=document.getElementById('apikey-overlay');
+  if(ov)ov.classList.add('hidden');
+}
+function apikeyValidate(){
+  const v=document.getElementById('apikey-inp').value.trim();
+  const err=document.getElementById('apikey-err');
+  if(v&&!v.startsWith('sk-ant-')){err.textContent='⚠ Key sollte mit sk-ant- beginnen';}
+  else{err.textContent='';}
+}
+function apikeyS(){
+  const v=document.getElementById('apikey-inp').value.trim();
+  if(!v){document.getElementById('apikey-err').textContent='Bitte einen API Key eingeben.';return;}
+  _setKey(v);
+  hideApiKeyOverlay();
+  toast(I18N[lang].key_saved||'✓ API Key gespeichert','ok');
+}
+function apikeySkip(){hideApiKeyOverlay();}
+function apikeyLang(L){
+  const t=document.getElementById('akey-title');
+  const btn=document.getElementById('akey-save-btn');
+  const skip=document.getElementById('akey-skip-btn');
+  if(t)t.textContent=L.akey_title||'🔑 Anthropic API Key eingeben';
+  if(btn)btn.innerHTML=L.akey_save||'✓ Speichern & starten';
+  if(skip)skip.textContent=L.akey_skip||'Überspringen';
 }
 
 </script>
