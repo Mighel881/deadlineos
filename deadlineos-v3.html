@@ -575,11 +575,11 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
         <strong id="demo-calls-left" style="color:var(--lime)">5 Anfragen</strong> gratis pro Tag. Kein Account, kein Key.
       </div>
       <div id="demo-bar"><div id="demo-bar-fill" style="width:100%"></div></div>
-      <div class="demo-counter" id="demo-counter-lbl" id="demo_avail_txt">5 von 5 Demo-Anfragen verfügbar</div>
+      <div class="demo-counter" id="demo_avail_txt">5 von 5 Demo-Anfragen verfügbar</div>
       <div style="margin-top:16px">
         <button class="apikey-btn prim" id="demo-start-btn" style="width:100%" onclick="startDemo()">🚀 Demo starten</button>
       </div>
-      <div class="apikey-hint">
+      <div class="apikey-hint" id="demo_hint_txt">
         ⚡ Danach eigenen Key hinterlegen für unlimitierten Zugriff.<br>
         Key holen: <a href="https://console.anthropic.com" target="_blank" style="color:var(--cyan)">console.anthropic.com</a>
       </div>
@@ -856,7 +856,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
     <button class="plan-gen" onclick="genPlan()" id="plan-gen-btn">🧠 Plan generieren</button>
   </div>
   <div class="plan-layout">
-    <div id="timeline-slots"><div class="empty" style="min-height:180px;align-items:center;display:flex;flex-direction:column;justify-content:center"><div class="ico">🧠</div><div id="plan_click_lbl">Klicke "Plan generieren"</div></div>
+    <div id="timeline-slots"><div class="empty" style="min-height:180px;align-items:center;display:flex;flex-direction:column;justify-content:center"><div class="ico">🧠</div><div id="plan_click_lbl">Klicke "Plan generieren"</div></div></div>
     <div class="plan-sugg"><div class="pstitle" id="plan_tips_lbl">🤖 KI-Tipps</div><div id="plan-tips"><div class="empty" style="padding:16px" id="plan-empty-lbl">Noch kein Plan</div></div></div>
   </div>
 </div>
@@ -1045,7 +1045,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
           <button class="ic-link-btn" onclick="requestNotifPerm()" data-int-de="🔔 Erlaubnis erteilen" data-int-en="🔔 Grant permission">🔔 Erlaubnis erteilen</button>
           <button class="ic-save-btn" onclick="testNotification()">🧪 Test</button>
         </div>
-        <div class="int-hint" id="notif-perm-status" id="notif-perm-status">Status: unknown</div>
+        <div class="int-hint" id="notif-perm-status">Status: unknown</div>
       </div>
       <div class="ic-foot">
         <span class="ic-status" id="st-notif">○ Not active</span>
@@ -1092,13 +1092,13 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
   <div class="mobtab"     data-t="chat"        onclick="go('chat')">        <div class="mobtab-ico">💬</div><span class="mobnav-lbl">Chat</span></div>
   <div class="mobtab"     data-t="plan"        onclick="go('plan')">        <div class="mobtab-ico">🧠</div><span class="mobnav-lbl">Plan</span></div>
   <div class="mobtab"     data-t="analytics"   onclick="go('analytics')">   <div class="mobtab-ico">📊</div><span class="mobnav-lbl">Stats</span></div>
-  <div class="mobtab"     data-t="integrations"onclick="go('integrations')"><div class="mobtab-ico">🔌</div>Tools</div>
+  <div class="mobtab"     data-t="integrations"onclick="go('integrations')"><div class="mobtab-ico">🔌</div><span class="mobnav-lbl">Tools</span></div>
 </nav>
 
 <!-- ═══ OVERLAYS ═══ -->
 <div id="ach-toast">
   <div id="ach-toast-ico">🏆</div>
-  <div><div id="ach-toast-title">Achievement freigeschaltet!</div><div id="ach-toast-name"></div></div>
+  <div><div id="ach-toast-title" id="ach-toast-msg">Achievement freigeschaltet!</div><div id="ach-toast-name"></div></div>
 </div>
 <div id="toast-area"></div>
 
@@ -1715,7 +1715,7 @@ function applyLang(){
 
   /* Login overlay */
   const loginSubLbl = document.getElementById('login-sub-lbl');
-  if(loginSubLbl) loginSubLbl.innerHTML = L.login_sub + '<br><span id="login-data-lbl">' + L.login_local + '</span>';
+  if(loginSubLbl) loginSubLbl.innerHTML = L.login_sub + '<br><span id="login-data-lbl2">' + L.login_local + '</span>';
   const loginNewBtn = document.getElementById('login-new-btn');
   if(loginNewBtn) loginNewBtn.textContent = L.login_new;
   const loginPinBtn = document.getElementById('pin-btn');
@@ -1787,6 +1787,7 @@ function applyLang(){
   _s('ana_14d_lbl',     L.ana_14d2       || (lang==='de'?'14-Tage Produktivität':'14-Day Productivity'));
   _s('ana_rep_lbl',     (lang==='de'?'🤖 KI-Bericht':'🤖 AI Report'));
   _s('notif-perm-status', lang==='de'?'Status: unbekannt':'Status: unknown');
+  _s('ach-toast-msg', lang==='de'?'Achievement freigeschaltet!':'Achievement unlocked!');
   _s('mood_title_lbl', lang==='de'?'🌙 Stimmung & Energie':'🌙 Mood & Energy');
   /* Demo overlay */
   _s('demo_avail_txt', lang==='de'?`${_demoLeft()} von 5 Demo-Anfragen verfügbar`:`${_demoLeft()} of 5 demo requests available`);
