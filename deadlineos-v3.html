@@ -114,8 +114,8 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 #stress-fill{height:100%;border-radius:2px;transition:width 1s,background 1s;background:var(--green)}
 #stress-pct{font-size:10px;font-weight:700;min-width:34px;text-align:right}
 .mood-display{display:flex;align-items:center;gap:5px;font-size:11px}
-#overdue-pill{background:var(--red);color:#fff;font-size:9px;font-weight:700;padding:2px 8px;border-radius:99px;animation:pulse 1.5s infinite;display:none;letter-spacing:1px}
-#overdue-pill.on{display:inline-block}
+#overdue-pill-txt{background:var(--red);color:#fff;font-size:9px;font-weight:700;padding:2px 8px;border-radius:99px;animation:pulse 1.5s infinite;display:none;letter-spacing:1px}
+#overdue-pill-txt.on{display:inline-block}
 
 /* ═══ CONTENT ═══ */
 #content{flex:1;overflow:hidden;position:relative}
@@ -278,7 +278,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .xp-float{position:fixed;pointer-events:none;font-family:var(--fd);font-weight:900;font-size:18px;color:var(--yellow);z-index:9999;text-shadow:0 0 10px rgba(255,214,10,.6)}
 
 /* ═══ CHAT ═══ */
-#view-chat.active{display:flex;flex-direction:column;background:var(--bg)}
+#view-chat.active{display:flex;flex-direction:column;background:var(--bg);height:100%;overflow:hidden}
 #chat-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
 .msg{max-width:75%;animation:fadeIn .25s var(--ease)}
 .msg.user{align-self:flex-end}
@@ -445,6 +445,8 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 .mobtab-ico{font-size:17px}
 @media(max-width:700px){
   #tabs{display:none}
+  #stress-track{width:40px}
+  #statusbar{gap:8px;padding:0 8px}
   #mobnav{display:flex}
   #content{padding-bottom:58px}
   #view-dash.active{grid-template-columns:1fr}
@@ -455,6 +457,14 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 }
 @media(max-width:480px){
   .kpi-grid{grid-template-columns:1fr 1fr}
+  .kpi-lbl{font-size:7px;letter-spacing:.5px}
+  .cc-title{font-size:9px;letter-spacing:.5px}
+  #stress-track{display:none}
+  .spill:first-child{display:none}
+  #stress-wrap{gap:3px}
+  #statusbar{gap:6px;padding:0 8px}
+  #overdue-pill-txt{font-size:8px;padding:2px 6px;letter-spacing:0;max-width:72px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .mood-display{display:none}
   #header{padding:0 10px}
   #content{padding:10px 10px 58px}
   .task-row{font-size:12px}
@@ -533,6 +543,14 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 #demo-bar{height:2px;background:var(--border);border-radius:1px;margin-top:6px;overflow:hidden}
 #demo-bar-fill{height:100%;background:linear-gradient(90deg,var(--lime),var(--cyan));border-radius:1px;transition:width .4s}
 
+
+/* ── Mobile viewport height fix ── */
+@supports(height:100dvh){
+  html,body{height:100dvh}
+  #content{height:calc(100dvh - 56px - 32px)}
+}
+#view-chat.active{height:100%;display:flex;flex-direction:column}
+#chat-messages{flex:1;min-height:0;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px}
 </style>
 </head>
 <body>
@@ -557,7 +575,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
         <strong id="demo-calls-left" style="color:var(--lime)">5 Anfragen</strong> gratis pro Tag. Kein Account, kein Key.
       </div>
       <div id="demo-bar"><div id="demo-bar-fill" style="width:100%"></div></div>
-      <div class="demo-counter" id="demo-counter-lbl">5 von 5 Demo-Anfragen verfügbar</div>
+      <div class="demo-counter" id="demo-counter-lbl" id="demo_avail_txt">5 von 5 Demo-Anfragen verfügbar</div>
       <div style="margin-top:16px">
         <button class="apikey-btn prim" id="demo-start-btn" style="width:100%" onclick="startDemo()">🚀 Demo starten</button>
       </div>
@@ -629,7 +647,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 
 <!-- ═══════ TOP BAR ═══════ -->
 <div id="topbar">
-  <div class="logo">Deadline<em>OS</em> <sup>V3</sup></div>
+  <a href="index.html" class="logo" style="text-decoration:none;color:inherit">Deadline<em>OS</em> <sup>V3</sup></a>
   <div id="tabs">
     <div class="tab active" data-t="dash"        onclick="go('dash')">        <div class="tab-dot"></div><span class="tab-lbl">Dashboard</span></div>
     <div class="tab"        data-t="chat"        onclick="go('chat')">        <div class="tab-dot"></div><span class="tab-lbl">KI-Chat</span></div>
@@ -670,7 +688,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
   </div>
   <div style="flex:1"></div>
   <span id="tasks-lbl" style="font-size:10px;color:var(--muted)">0 offen</span>
-  <div id="overdue-pill">⚠ ÜBERFÄLLIG</div>
+  <div id="overdue-pill-txt">⚠ ÜBERFÄLLIG</div>
 </div>
 
 <!-- ═══════ CONTENT ═══════ -->
@@ -680,9 +698,9 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 <div class="view" id="view-dash">
   <!-- LEFT -->
   <div class="col">
-    <div class="stitle">⚡ Aufgaben</div>
+    <div class="stitle" id="dash_tasks_lbl">⚡ Aufgaben</div>
     <div class="input-box">
-      <textarea id="task-input" placeholder="Neue Aufgabe... (Strg+Enter)"></textarea>
+      <textarea id="task-input" placeholder="New task... (Ctrl+Enter)"></textarea>
       <div class="row">
         <input type="datetime-local" id="dl-in" class="inp" title="Deadline">
         <input type="text" id="ass-in" class="inp sm" placeholder="@person">
@@ -699,8 +717,8 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 
   <!-- CENTER -->
   <div class="col">
-    <div class="stitle">🤖 Kommandozentrale</div>
-    <div id="crisis-box"><div class="chead">⚠ Krisenmodus</div><div id="ctxt"></div></div>
+    <div class="stitle" id="cmd_title_lbl">🤖 Kommandozentrale</div>
+    <div id="crisis-box"><div class="chead" id="crisis_lbl_el">⚠ Krisenmodus</div><div id="ctxt"></div></div>
 
     <div class="ai-block">
       <div class="ai-head">
@@ -710,14 +728,14 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
       <div id="ai-out" data-i18n="ai_ready">Bereit. Analysiere deine Lage für optimale Empfehlungen.</div>
       <div id="pred-warnings"></div>
       <div class="ai-acts">
-        <button class="abtn prim" onclick="aiAnalyze()">⚡ Analysieren</button>
-        <button class="abtn" onclick="go('chat')">💬 Chat öffnen</button>
-        <button class="abtn" onclick="autoPrioritize()">🎯 Auto-Priorisieren</button>
+        <button class="abtn prim" onclick="aiAnalyze()" id="analyze_btn">⚡ Analysieren</button>
+        <button class="abtn" onclick="go('chat')" id="chat_open_btn">💬 Chat öffnen</button>
+        <button class="abtn" onclick="autoPrioritize()" id="autoprio_btn">🎯 Auto-Priorisieren</button>
       </div>
     </div>
 
     <div class="timer-block">
-      <div class="stitle" style="margin-bottom:9px">⏱ Fokus-Timer</div>
+      <div class="stitle" style="margin-bottom:9px" id="timer_title_lbl">⏱ Fokus-Timer</div>
       <div class="tmodes">
         <button class="tmbtn on" onclick="setTimer(25,'Pomodoro')" id="tm25">25 min</button>
         <button class="tmbtn"    onclick="setTimer(50,'Deep Work')" id="tm50">50 min</button>
@@ -742,22 +760,22 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
     </div>
 
     <div class="matrix-block">
-      <div class="stitle">📊 Aktivitäts-Matrix</div>
+      <div class="stitle" id="act_matrix_btn">📊 Aktivitäts-Matrix</div>
       <div id="mgrid"></div>
     </div>
   </div>
 
   <!-- RIGHT -->
   <div class="col">
-    <div class="stitle">📈 Stats</div>
-    <div class="stat-c"><div class="slbl">Aufgaben</div><div class="sval" id="s-total" style="color:var(--cyan)">0</div><div class="ssub" id="s-done-sub">0 erledigt</div></div>
-    <div class="stat-c"><div class="slbl">Fokus heute</div><div class="sval" id="s-focus" style="color:var(--green)">0m</div><div class="ssub">Sessions: <span id="s-sess">0</span></div></div>
-    <div class="stat-c"><div class="slbl">Nächste Deadline</div><div class="sval" id="s-next" style="font-size:15px;color:var(--orange)">—</div><div class="ssub" id="s-next-t">Keine</div></div>
+    <div class="stitle" id="stat_title_lbl">📈 Stats</div>
+    <div class="stat-c"><div class="slbl" id="stat_tasks_lbl">Aufgaben</div><div class="sval" id="s-total" style="color:var(--cyan)">0</div><div class="ssub" id="s-done-sub">0 done</div></div>
+    <div class="stat-c"><div class="slbl" id="stat_focus_lbl">Fokus heute</div><div class="sval" id="s-focus" style="color:var(--green)">0m</div><div class="ssub"><span id="stat_sess_lbl">Sessions:</span> <span id="s-sess">0</span></div></div>
+    <div class="stat-c"><div class="slbl" id="stat_next_lbl">Nächste Deadline</div><div class="sval" id="s-next" style="font-size:15px;color:var(--orange)">—</div><div class="ssub" id="s-next-t">Keine</div></div>
 
     <!-- MOOD -->
-    <div class="stitle" style="margin-top:12px">🌙 Stimmung & Energie</div>
+    <div class="stitle" style="margin-top:12px" id="mood_title_lbl">🌙 Stimmung & Energie</div>
     <div class="mood-block">
-      <div style="font-size:10px;color:var(--muted);margin-bottom:2px" data-i18n="mood_q">Wie fühlst du dich gerade?</div>
+      <div style="font-size:10px;color:var(--muted);margin-bottom:2px" data-i18n="mood_q" id="mood_q_lbl">Wie fühlst du dich gerade?</div>
       <div class="mood-row">
         <button class="mood-btn" data-m="😩" onclick="setMood(this)">😩</button>
         <button class="mood-btn" data-m="😟" onclick="setMood(this)">😟</button>
@@ -766,7 +784,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
         <button class="mood-btn on" data-m="😄" onclick="setMood(this)">😄</button>
       </div>
       <div class="energy-row">
-        <div class="elbl">⚡ Energie</div>
+        <div class="elbl" id="energy_lbl">⚡ Energie</div>
         <div class="energy-dots" id="energy-dots">
           <div class="edot on" onclick="setEnergy(1)"></div>
           <div class="edot on" onclick="setEnergy(2)"></div>
@@ -782,7 +800,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
     </div>
 
     <!-- GAMIFICATION -->
-    <div class="stitle">🏆 Achievements</div>
+    <div class="stitle" id="ach_title_lbl">🏆 Achievements</div>
     <div class="game-block">
       <div class="achieve-grid" id="ach-grid"><!-- rendered by JS --></div>
       <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border)">
@@ -801,12 +819,12 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
     </div>
 
     <!-- HABITS -->
-    <div class="stitle" style="margin-top:4px">✅ Habits</div>
+    <div class="stitle" style="margin-top:4px" id="hab_title_lbl">✅ Habits</div>
     <div id="habits-list">
-      <div class="habit" onclick="toggleHabit(this)"><div class="hck on">✓</div><div class="hlbl">💧 2L Wasser</div><div class="hstr">🔥3</div></div>
-      <div class="habit" onclick="toggleHabit(this)"><div class="hck"></div><div class="hlbl">🏃 30 min Sport</div><div class="hstr">🔥1</div></div>
-      <div class="habit" onclick="toggleHabit(this)"><div class="hck"></div><div class="hlbl">📵 Handy-Detox</div><div class="hstr">🔥7</div></div>
-      <div class="habit" onclick="toggleHabit(this)"><div class="hck on">✓</div><div class="hlbl">🧘 Meditation</div><div class="hstr">🔥12</div></div>
+      <div class="habit" onclick="toggleHabit(this)"><div class="hck on">✓</div><div class="hlbl" data-int-de="💧 2L Wasser" data-int-en="💧 2L Water">💧 2L Wasser</div><div class="hstr">🔥3</div></div>
+      <div class="habit" onclick="toggleHabit(this)"><div class="hck"></div><div class="hlbl" data-int-de="🏃 30 min Sport" data-int-en="🏃 30 min Exercise">🏃 30 min Sport</div><div class="hstr">🔥1</div></div>
+      <div class="habit" onclick="toggleHabit(this)"><div class="hck"></div><div class="hlbl" data-int-de="📵 Handy-Detox" data-int-en="📵 Phone Detox">📵 Handy-Detox</div><div class="hstr">🔥7</div></div>
+      <div class="habit" onclick="toggleHabit(this)"><div class="hck on">✓</div><div class="hlbl" data-int-de="🧘 Meditation" data-int-en="🧘 Meditation">🧘 Meditation</div><div class="hstr">🔥12</div></div>
       <div class="habit" onclick="toggleHabit(this)"><div class="hck"></div><div class="hlbl">📖 Lesen</div><div class="hstr">🔥0</div></div>
     </div>
   </div>
@@ -835,11 +853,11 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
       <div class="plan-date-lbl" id="plan-date">Heute — <span>...</span></div>
       <div style="font-size:11px;color:var(--muted);margin-top:3px" id="plan-sub-lbl">KI-generierter Zeitplan basierend auf Aufgaben &amp; Energie</div>
     </div>
-    <button class="plan-gen" onclick="genPlan()">🧠 Plan generieren</button>
+    <button class="plan-gen" onclick="genPlan()" id="plan-gen-btn">🧠 Plan generieren</button>
   </div>
   <div class="plan-layout">
-    <div id="timeline-slots"><div class="empty" style="min-height:180px;align-items:center;display:flex;flex-direction:column;justify-content:center"><div class="ico">🧠</div>Klicke "Plan generieren"</div></div>
-    <div class="plan-sugg"><div class="pstitle">🤖 KI-Tipps</div><div id="plan-tips"><div class="empty" style="padding:16px" id="plan-empty-lbl">Noch kein Plan</div></div></div>
+    <div id="timeline-slots"><div class="empty" style="min-height:180px;align-items:center;display:flex;flex-direction:column;justify-content:center"><div class="ico">🧠</div><div id="plan_click_lbl">Klicke "Plan generieren"</div></div>
+    <div class="plan-sugg"><div class="pstitle" id="plan_tips_lbl">🤖 KI-Tipps</div><div id="plan-tips"><div class="empty" style="padding:16px" id="plan-empty-lbl">Noch kein Plan</div></div></div>
   </div>
 </div>
 
@@ -859,7 +877,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
       <button class="ntbtn prim" onclick="noteAI('summary')">🤖 Zusammenfassen</button>
       <button class="ntbtn" onclick="noteAI('tasks')">⚡ Tasks extrahieren</button>
       <button class="ntbtn" onclick="noteAI('improve')">✨ Verbessern</button>
-      <button class="ntbtn" onclick="saveNote()" style="margin-left:auto">💾 Speichern</button>
+      <button class="ntbtn" onclick="saveNote()" style="margin-left:auto" data-i18n-int="save">💾 Speichern</button>
     </div>
   </div>
 </div>
@@ -874,19 +892,19 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 <div class="view" id="view-analytics">
   <div class="stitle">📊 Analytics</div>
   <div class="kpi-grid">
-    <div class="kpi"><div class="kpi-lbl">Abschlussrate</div><div class="kpi-val" id="kpi-rate" style="color:var(--cyan)">0%</div><div class="kpi-chg up">Diese Woche</div></div>
-    <div class="kpi"><div class="kpi-lbl">Fokus-Zeit</div><div class="kpi-val" id="kpi-focus" style="color:var(--green)">0h</div><div class="kpi-chg up">Heute</div></div>
-    <div class="kpi"><div class="kpi-lbl">Überfällig</div><div class="kpi-val" id="kpi-over" style="color:var(--red)">0</div><div class="kpi-chg dn" id="kpi-over-c">Sofort handeln</div></div>
-    <div class="kpi"><div class="kpi-lbl">Level / XP</div><div class="kpi-val" id="kpi-lvl" style="color:var(--yellow)">1</div><div class="kpi-chg up" id="kpi-xp-c">0 XP</div></div>
+    <div class="kpi"><div class="kpi-lbl" id="ana_rate_lbl">Abschlussrate</div><div class="kpi-val" id="kpi-rate" style="color:var(--cyan)">0%</div><div class="kpi-chg up" id="ana_week_lbl">Diese Woche</div></div>
+    <div class="kpi"><div class="kpi-lbl" id="ana_focus_lbl">Fokus-Zeit</div><div class="kpi-val" id="kpi-focus" style="color:var(--green)">0h</div><div class="kpi-chg up" id="ana_today_lbl">Heute</div></div>
+    <div class="kpi"><div class="kpi-lbl" id="ana_over_lbl">Überfällig</div><div class="kpi-val" id="kpi-over" style="color:var(--red)">0</div><div class="kpi-chg dn" id="kpi-over-c">Sofort handeln</div></div>
+    <div class="kpi"><div class="kpi-lbl" id="ana_lvl_lbl">Level / XP</div><div class="kpi-val" id="kpi-lvl" style="color:var(--yellow)">1</div><div class="kpi-chg up" id="kpi-xp-c">0 XP</div></div>
   </div>
   <div class="chart-row">
-    <div class="cc"><div class="cc-title">Aufgaben diese Woche</div><div class="bar-chart" id="week-bars"></div></div>
-    <div class="cc"><div class="cc-title">Prioritätsverteilung</div><div class="donut-wrap"><svg width="88" height="88" id="donut-svg" viewBox="0 0 88 88"></svg><div class="dlegend" id="donut-leg"></div></div></div>
+    <div class="cc"><div class="cc-title" id="ana_tasks_w_lbl">Aufgaben diese Woche</div><div class="bar-chart" id="week-bars"></div></div>
+    <div class="cc"><div class="cc-title" id="ana_prio_lbl">Prioritätsverteilung</div><div class="donut-wrap"><svg width="88" height="88" id="donut-svg" viewBox="0 0 88 88"></svg><div class="dlegend" id="donut-leg"></div></div></div>
   </div>
-  <div class="cc" style="margin-bottom:12px"><div class="cc-title">14-Tage Produktivität</div><div class="spark" id="spark"></div></div>
-  <div class="cc"><div class="cc-title">🤖 KI-Bericht</div>
-    <button class="abtn prim" style="width:auto;margin-bottom:10px" onclick="genReport()">Bericht generieren</button>
-    <div id="report-out" style="font-size:12px;line-height:1.8;color:var(--text)">Klicke um KI-Bericht zu laden.</div>
+  <div class="cc" style="margin-bottom:12px"><div class="cc-title" id="ana_14d_lbl">14-Tage Produktivität</div><div class="spark" id="spark"></div></div>
+  <div class="cc"><div class="cc-title" id="ana_rep_lbl">🤖 KI-Bericht</div>
+    <button class="abtn prim" style="width:auto;margin-bottom:10px" onclick="genReport()" id="ana_rep_btn_el">Bericht generieren</button>
+    <div id="report-out" style="font-size:12px;line-height:1.8;color:var(--text)" id="report-empty-lbl">Klicke um KI-Bericht zu laden.</div>
   </div>
 </div>
 
@@ -901,21 +919,21 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
         <div class="ic-ico" style="background:rgba(66,133,244,.12)">📅</div>
         <div>
           <div class="ic-name">Google Calendar</div>
-          <div class="ic-desc">Deadlines als Events, Meeting-Konflikte erkennen</div>
+          <div class="ic-desc" data-int-de="Deadlines als Events, Meeting-Konflikte erkennen" data-int-en="Deadlines as events, detect meeting conflicts">Deadlines als Events, Meeting-Konflikte erkennen</div>
         </div>
       </div>
       <div class="ic-feats">
-        <div class="ic-feat">Deadlines als Events</div>
-        <div class="ic-feat">Meeting-Konflikte</div>
-        <div class="ic-feat">Focus-Blöcke</div>
+        <div class="ic-feat" data-int-de="Deadlines als Events" data-int-en="Deadlines as events">Deadlines als Events</div>
+        <div class="ic-feat" data-int-de="Meeting-Konflikte" data-int-en="Meeting conflicts">Meeting-Konflikte</div>
+        <div class="ic-feat" data-int-de="Focus-Blöcke" data-int-en="Focus blocks">Focus-Blöcke</div>
       </div>
       <div class="ic-connect" id="con-calendar">
         <input class="int-input" id="inp-calendar" type="url" placeholder="https://calendar.google.com/..." oninput="intInputChanged('calendar')">
         <div class="ic-btns">
-          <a class="ic-link-btn" id="link-calendar" href="https://calendar.google.com" target="_blank">🌐 Öffnen</a>
-          <button class="ic-save-btn" onclick="saveIntLink('calendar','Google Calendar')">💾 Speichern</button>
+          <a class="ic-link-btn" id="link-calendar" href="https://calendar.google.com" target="_blank" data-i18n-int="open">🌐 Öffnen</a>
+          <button class="ic-save-btn" onclick="saveIntLink('calendar','Google Calendar')" data-i18n-int="save">💾 Speichern</button>
         </div>
-        <div class="int-hint">Kalender-URL oder Google-Konto-Link einfügen</div>
+        <div class="int-hint" data-int-de="Kalender-URL oder Google-Konto-Link einfügen" data-int-en="Insert calendar URL or Google account link">Kalender-URL oder Google-Konto-Link einfügen</div>
       </div>
       <div class="ic-foot">
         <span class="ic-status" id="st-calendar">○ Nicht verbunden</span>
@@ -929,21 +947,21 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
         <div class="ic-ico" style="background:rgba(74,21,75,.2)">💬</div>
         <div>
           <div class="ic-name">Slack</div>
-          <div class="ic-desc">Team-Alerts & Task-Commands</div>
+          <div class="ic-desc" data-int-de="Team-Alerts & Task-Commands" data-int-en="Team alerts & task commands">Team-Alerts & Task-Commands</div>
         </div>
       </div>
       <div class="ic-feats">
-        <div class="ic-feat">Deadline-Alerts</div>
-        <div class="ic-feat">/deadline Befehle</div>
-        <div class="ic-feat">Daily Digest</div>
+        <div class="ic-feat" data-int-de="Deadline-Alerts" data-int-en="Deadline alerts">Deadline-Alerts</div>
+        <div class="ic-feat" data-int-de="/deadline Befehle" data-int-en="/deadline commands">/deadline Befehle</div>
+        <div class="ic-feat" data-int-de="Daily Digest" data-int-en="Daily Digest">Daily Digest</div>
       </div>
       <div class="ic-connect" id="con-slack">
         <input class="int-input" id="inp-slack" type="url" placeholder="https://app.slack.com/..." oninput="intInputChanged('slack')">
         <div class="ic-btns">
-          <a class="ic-link-btn" id="link-slack" href="https://slack.com/signin" target="_blank">🌐 Öffnen</a>
-          <button class="ic-save-btn" onclick="saveIntLink('slack','Slack')">💾 Speichern</button>
+          <a class="ic-link-btn" id="link-slack" href="https://slack.com/signin" target="_blank" data-i18n-int="open">🌐 Öffnen</a>
+          <button class="ic-save-btn" onclick="saveIntLink('slack','Slack')" data-i18n-int="save">💾 Speichern</button>
         </div>
-        <div class="int-hint">Workspace-URL oder direkten Channel-Link einfügen</div>
+        <div class="int-hint" data-int-de="Workspace-URL oder direkten Channel-Link einfügen" data-int-en="Insert workspace URL or direct channel link">Workspace-URL oder direkten Channel-Link einfügen</div>
       </div>
       <div class="ic-foot">
         <span class="ic-status" id="st-slack">○ Nicht verbunden</span>
@@ -957,19 +975,19 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
         <div class="ic-ico" style="background:rgba(30,215,96,.12)">🎵</div>
         <div>
           <div class="ic-name">Spotify Focus</div>
-          <div class="ic-desc">Auto-Playlists für Sessions</div>
+          <div class="ic-desc" data-int-de="Auto-Playlists für Sessions" data-int-en="Auto-playlists for sessions">Auto-Playlists für Sessions</div>
         </div>
       </div>
       <div class="ic-feats">
-        <div class="ic-feat">Auto-Play bei Timer</div>
-        <div class="ic-feat">Pause bei Krise</div>
-        <div class="ic-feat">Deep Work Mix</div>
+        <div class="ic-feat" data-int-de="Auto-Play bei Timer" data-int-en="Auto-play with Timer">Auto-Play bei Timer</div>
+        <div class="ic-feat" data-int-de="Pause bei Krise" data-int-en="Pause in Crisis">Pause bei Krise</div>
+        <div class="ic-feat" data-int-de="Deep Work Mix" data-int-en="Deep Work Mix">Deep Work Mix</div>
       </div>
       <div class="ic-connect" id="con-spotify">
         <input class="int-input" id="inp-spotify" type="url" placeholder="https://open.spotify.com/playlist/..." oninput="intInputChanged('spotify')">
         <div class="ic-btns">
-          <a class="ic-link-btn" id="link-spotify" href="https://open.spotify.com" target="_blank">🌐 Öffnen</a>
-          <button class="ic-save-btn" onclick="saveIntLink('spotify','Spotify')">💾 Speichern</button>
+          <a class="ic-link-btn" id="link-spotify" href="https://open.spotify.com" target="_blank" data-i18n-int="open">🌐 Öffnen</a>
+          <button class="ic-save-btn" onclick="saveIntLink('spotify','Spotify')" data-i18n-int="save">💾 Speichern</button>
         </div>
         <div class="int-hint">Spotify-Playlist-URL für Focus-Sessions einfügen</div>
       </div>
@@ -985,21 +1003,21 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
         <div class="ic-ico" style="background:rgba(234,67,53,.12)">📧</div>
         <div>
           <div class="ic-name">E-Mail Digest</div>
-          <div class="ic-desc">Tägliche Reports ans Mail-Programm</div>
+          <div class="ic-desc" data-int-de="Tägliche Reports ans Mail-Programm" data-int-en="Daily reports to your mail app">Tägliche Reports ans Mail-Programm</div>
         </div>
       </div>
       <div class="ic-feats">
-        <div class="ic-feat">Morgen-Briefing</div>
-        <div class="ic-feat">Abend-Report</div>
-        <div class="ic-feat">Wochenbericht</div>
+        <div class="ic-feat" data-int-de="Morgen-Briefing" data-int-en="Morning Briefing">Morgen-Briefing</div>
+        <div class="ic-feat" data-int-de="Abend-Report" data-int-en="Evening Report">Abend-Report</div>
+        <div class="ic-feat" data-int-de="Wochenbericht" data-int-en="Weekly Report">Wochenbericht</div>
       </div>
       <div class="ic-connect" id="con-email">
         <input class="int-input" id="inp-email" type="email" placeholder="deine@email.de" oninput="intInputChanged('email')">
         <div class="ic-btns">
-          <a class="ic-link-btn" id="link-email-open" href="#" onclick="openMailApp()" >✉ Mail öffnen</a>
-          <button class="ic-save-btn" onclick="saveIntLink('email','E-Mail')">💾 Speichern</button>
+          <a class="ic-link-btn" id="link-email-open" href="#" onclick="openMailApp()"  data-int-de="✉ Mail öffnen" data-int-en="✉ Open Mail">✉ Mail öffnen</a>
+          <button class="ic-save-btn" onclick="saveIntLink('email','E-Mail')" data-i18n-int="save">💾 Speichern</button>
         </div>
-        <div class="int-hint">E-Mail-Adresse → öffnet dein lokales Mail-Programm</div>
+        <div class="int-hint" data-int-de="E-Mail-Adresse → öffnet dein lokales Mail-Programm" data-int-en="Email address → opens your local mail app">E-Mail-Adresse → öffnet dein lokales Mail-Programm</div>
       </div>
       <div class="ic-foot">
         <span class="ic-status" id="st-email">○ Nicht verbunden</span>
@@ -1013,24 +1031,24 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
         <div class="ic-ico" style="background:rgba(255,107,26,.12)">🔔</div>
         <div>
           <div class="ic-name">Smart Notifications</div>
-          <div class="ic-desc">Browser-Alerts für Deadlines</div>
+          <div class="ic-desc" data-int-de="Browser-Alerts für Deadlines" data-int-en="Browser alerts for deadlines">Browser-Alerts für Deadlines</div>
         </div>
       </div>
       <div class="ic-feats">
-        <div class="ic-feat">24h / 2h / 30min</div>
-        <div class="ic-feat">Krisenalert + Sound</div>
-        <div class="ic-feat">Focus-Ende Reminder</div>
+        <div class="ic-feat" data-int-de="24h / 2h / 30min" data-int-en="24h / 2h / 30min">24h / 2h / 30min</div>
+        <div class="ic-feat" data-int-de="Krisenalert + Sound" data-int-en="Crisis alert + sound">Krisenalert + Sound</div>
+        <div class="ic-feat" data-int-de="Focus-Ende Reminder" data-int-en="Focus end reminder">Focus-Ende Reminder</div>
       </div>
       <div class="ic-connect" id="con-notif">
-        <div class="int-hint" style="margin-bottom:10px">Browser-Benachrichtigungen direkt — kein Login nötig.</div>
+        <div class="int-hint" style="margin-bottom:10px" data-int-de="Browser-Benachrichtigungen direkt — kein Login nötig." data-int-en="Browser notifications directly — no login needed." data-int-de="Browser-Benachrichtigungen direkt — kein Login nötig." data-int-en="Browser notifications directly — no login needed.">Browser-Benachrichtigungen direkt — kein Login nötig.</div>
         <div class="ic-btns">
-          <button class="ic-link-btn" onclick="requestNotifPerm()">🔔 Erlaubnis erteilen</button>
+          <button class="ic-link-btn" onclick="requestNotifPerm()" data-int-de="🔔 Erlaubnis erteilen" data-int-en="🔔 Grant permission">🔔 Erlaubnis erteilen</button>
           <button class="ic-save-btn" onclick="testNotification()">🧪 Test</button>
         </div>
-        <div class="int-hint" id="notif-perm-status">Status: unbekannt</div>
+        <div class="int-hint" id="notif-perm-status" id="notif-perm-status">Status: unknown</div>
       </div>
       <div class="ic-foot">
-        <span class="ic-status" id="st-notif">○ Nicht aktiv</span>
+        <span class="ic-status" id="st-notif">○ Not active</span>
         <label class="toggle"><input type="checkbox" id="tog-notif" onchange="togInt(this,'notif')"><div class="ttrack"></div></label>
       </div>
     </div>
@@ -1041,21 +1059,21 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
         <div class="ic-ico" style="background:rgba(176,79,255,.12)">🤖</div>
         <div>
           <div class="ic-name">Discord</div>
-          <div class="ic-desc">DeadlineOS Bot für Team-Server</div>
+          <div class="ic-desc" data-int-de="DeadlineOS Bot für Team-Server" data-int-en="DeadlineOS bot for team servers">DeadlineOS Bot für Team-Server</div>
         </div>
       </div>
       <div class="ic-feats">
-        <div class="ic-feat">!tasks, !urgent</div>
-        <div class="ic-feat">Countdown-Posts</div>
-        <div class="ic-feat">Team-Leaderboard</div>
+        <div class="ic-feat" data-int-de="!tasks, !urgent" data-int-en="!tasks, !urgent">!tasks, !urgent</div>
+        <div class="ic-feat" data-int-de="Countdown-Posts" data-int-en="Countdown posts">Countdown-Posts</div>
+        <div class="ic-feat" data-int-de="Team-Leaderboard" data-int-en="Team leaderboard">Team-Leaderboard</div>
       </div>
       <div class="ic-connect" id="con-discord">
         <input class="int-input" id="inp-discord" type="url" placeholder="https://discord.com/channels/..." oninput="intInputChanged('discord')">
         <div class="ic-btns">
-          <a class="ic-link-btn" id="link-discord" href="https://discord.com/login" target="_blank">🌐 Öffnen</a>
-          <button class="ic-save-btn" onclick="saveIntLink('discord','Discord')">💾 Speichern</button>
+          <a class="ic-link-btn" id="link-discord" href="https://discord.com/login" target="_blank" data-i18n-int="open">🌐 Öffnen</a>
+          <button class="ic-save-btn" onclick="saveIntLink('discord','Discord')" data-i18n-int="save">💾 Speichern</button>
         </div>
-        <div class="int-hint">Discord-Server oder Channel-Link einfügen</div>
+        <div class="int-hint" data-int-de="Discord-Server oder Channel-Link einfügen" data-int-en="Insert Discord server or channel link">Discord-Server oder Channel-Link einfügen</div>
       </div>
       <div class="ic-foot">
         <span class="ic-status" id="st-discord">○ Nicht verbunden</span>
@@ -1574,6 +1592,21 @@ const I18N = {
     pin_hint_title:  'Test Mode:',
     pin_hint_text:   'Just enter any 4 digits as PIN (e.g. 1234)',
     xp_for2:       (lvl)=>`XP for Level ${lvl}`,
+    ana_rate_lbl:   'Completion Rate',
+    ana_focus_lbl2: 'Focus Time',
+    ana_over_lbl2:  'Overdue',
+    ana_lvl_lbl2:   'Level / XP',
+    ana_week_lbl2:  'This Week',
+    ana_today_lbl2: 'Today',
+    ana_tasks_w2:   'Tasks This Week',
+    ana_prio2:      'Priority Distribution',
+    ana_14d2:       '14-Day Productivity',
+    cmd_title2:     'Command Center',
+    crisis_lbl2:    'Crisis Mode',
+    timer_title2:   '⏱ Focus Timer',
+    dash_tasks2:    '⚡ Tasks',
+    plan_tips2:     '🤖 AI Tips',
+    plan_click3:    'Click \"Generate Plan\"',
   }
 };
 
@@ -1741,6 +1774,86 @@ function applyLang(){
   /* Re-render profiles on lang change */
   if(typeof renderLogin==='function') renderLogin();
 
+  /* ── Hardcoded HTML strings ── */
+  const _s = (id, v) => { const e = document.getElementById(id); if(e && v) e.textContent = v; };
+  _s('ana_rate_lbl',    L.ana_rate_lbl   || (lang==='de'?'Abschlussrate':'Completion Rate'));
+  _s('ana_focus_lbl',   L.ana_focus_lbl2 || (lang==='de'?'Fokus-Zeit':'Focus Time'));
+  _s('ana_over_lbl',    L.ana_over_lbl2  || (lang==='de'?'Überfällig':'Overdue'));
+  _s('ana_lvl_lbl',     L.ana_lvl_lbl2   || 'Level / XP');
+  _s('ana_week_lbl',    L.ana_week_lbl2  || (lang==='de'?'Diese Woche':'This Week'));
+  _s('ana_today_lbl',   L.ana_today_lbl2 || (lang==='de'?'Heute':'Today'));
+  _s('ana_tasks_w_lbl', L.ana_tasks_w2   || (lang==='de'?'Aufgaben diese Woche':'Tasks This Week'));
+  _s('ana_prio_lbl',    L.ana_prio2      || (lang==='de'?'Prioritätsverteilung':'Priority Distribution'));
+  _s('ana_14d_lbl',     L.ana_14d2       || (lang==='de'?'14-Tage Produktivität':'14-Day Productivity'));
+  _s('ana_rep_lbl',     (lang==='de'?'🤖 KI-Bericht':'🤖 AI Report'));
+  _s('notif-perm-status', lang==='de'?'Status: unbekannt':'Status: unknown');
+  _s('mood_title_lbl', lang==='de'?'🌙 Stimmung & Energie':'🌙 Mood & Energy');
+  /* Demo overlay */
+  _s('demo_avail_txt', lang==='de'?`${_demoLeft()} von 5 Demo-Anfragen verfügbar`:`${_demoLeft()} of 5 demo requests available`);
+  _s('demo_hint_txt',  lang==='de'?'⚡ Danach eigenen Key hinterlegen für unlimitierten Zugriff.':'⚡ Then enter your own key for unlimited access.');
+  _s('act_matrix_btn', lang==='de'?'📊 Aktivitäts-Matrix':'📊 Activity Matrix');
+  _s('energy_lbl',     lang==='de'?'⚡ Energie':'⚡ Energy');
+  _s('mood_q_lbl',     lang==='de'?'Wie fühlst du dich gerade?':'How are you feeling right now?');
+  _s('analyze_btn', lang==='de'?'⚡ Analysieren':'⚡ Analyze');
+  _s('autoprio_btn', lang==='de'?'🎯 Auto-Priorisieren':'🎯 Auto-Prioritize');
+  _s('chat_open_btn', lang==='de'?'💬 Chat öffnen':'💬 Open Chat');
+  _s('report-empty-lbl', lang==='de'?'Klicke um KI-Bericht zu laden.':'Click to load AI report.');
+  _s('ana_rep_btn_el',  L.ana_rep_btn    || (lang==='de'?'Bericht generieren':'Generate Report'));
+  _s('dash_tasks_lbl',  L.dash_tasks_h   || (lang==='de'?'⚡ Aufgaben':'⚡ Tasks'));
+  _s('cmd_title_lbl',   (lang==='de'?'🤖 Kommandozentrale':'🤖 Command Center'));
+  _s('crisis_lbl_el',   (lang==='de'?'⚠ Krisenmodus':'⚠ Crisis Mode'));
+  _s('timer_title_lbl', L.timer_title    || (lang==='de'?'⏱ Fokus-Timer':'⏱ Focus Timer'));
+  _s('plan_tips_lbl',   L.plan_tips2     || (lang==='de'?'🤖 KI-Tipps':'🤖 AI Tips'));
+  _s('plan_click_lbl',  L.plan_click3    || (lang==='de'?'Klicke "Plan generieren"':'Click "Generate Plan"'));
+
+  const addBtn = document.getElementById('add-btn');
+  if(addBtn) addBtn.textContent = '+ '+(lang==='de'?'Aufgabe hinzufügen':'Add Task');
+  /* Prio buttons */
+  const ubtn0 = document.querySelector('.ubtn[data-u="1"]');
+  const ubtn1 = document.querySelector('.ubtn[data-u="2"]');
+  const ubtn2 = document.querySelector('.ubtn[data-u="3"]');
+  if(ubtn0) ubtn0.textContent = I18N[lang].prio_low||'🟢 Low';
+  if(ubtn1) ubtn1.textContent = I18N[lang].prio_mid||(lang==='de'?'🟠 Mittel':'🟠 Medium');
+  if(ubtn2) ubtn2.textContent = I18N[lang].prio_crit||(lang==='de'?'🔴 Kritisch':'🔴 Critical');
+  _s('ach_title_lbl', lang==='de'?'🏆 Achievements':'🏆 Achievements');
+  _s('hab_title_lbl', lang==='de'?'✅ Habits':'✅ Habits');
+  _s('stat_tasks_lbl',  lang==='de'?'Aufgaben':'Tasks');
+  _s('stat_focus_lbl',  lang==='de'?'Fokus heute':'Focus today');
+  _s('stat_sess_lbl',   lang==='de'?'Sessions:':'Sessions:');
+  _s('stat_next_lbl',   lang==='de'?'Nächste Deadline':'Next Deadline');
+  _s('stat_title_lbl',  lang==='de'?'📈 Stats':'📈 Stats');
+  _s('overdue-pill-txt', (lang==='de'?'⚠ ÜBERFÄLLIG':'⚠ OVERDUE'));
+  _s('kpi-over-c',      L.ana_act        || (lang==='de'?'Sofort handeln':'Act Now'));
+  // Plan sub label & button
+  const planEmptyEl = document.getElementById('plan-empty-lbl');
+  if(planEmptyEl) planEmptyEl.textContent = L.plan_empty || (lang==='de'?'Noch kein Plan':'No plan yet');
+  const planClickEl = document.getElementById('plan_click_lbl');
+  if(planClickEl) planClickEl.textContent = lang==='de'?'Klicke "Plan generieren"':'Click "Generate Plan"';
+  const planTipsEl = document.getElementById('plan_tips_lbl');
+  if(planTipsEl) planTipsEl.textContent = lang==='de'?'🤖 KI-Tipps':'🤖 AI Tips';
+
+  /* Integration text content */
+  document.querySelectorAll('[data-int-de]').forEach(el => {
+    el.textContent = lang==='de' ? el.getAttribute('data-int-de') : el.getAttribute('data-int-en');
+  });
+  /* Integration buttons */
+  document.querySelectorAll('[data-i18n-int="open"]').forEach(el => el.textContent = lang==='de'?'🌐 Öffnen':'🌐 Open');
+  document.querySelectorAll('[data-i18n-int="save"]').forEach(el => el.textContent = lang==='de'?'💾 Speichern':'💾 Save');
+  /* Integration status labels */
+  document.querySelectorAll('.ic-status').forEach(el => {
+    const isOn = el.classList.contains('on');
+    el.textContent = isOn ? ('● '+(lang==='de'?'Verbunden':'Connected')) : ('○ '+(lang==='de'?'Nicht verbunden':'Not connected'));
+  });
+  /* Integrations title */
+  const intTitle = document.getElementById('int-title-lbl');
+  if(intTitle) intTitle.textContent = lang==='de' ? '🔌 Integrationen' : '🔌 Integrations';
+  const planSubEl = document.getElementById('plan-sub-lbl');
+  if(planSubEl) planSubEl.textContent = lang==='de' ? 'KI-generierter Zeitplan basierend auf Aufgaben & Energie' : 'AI-generated schedule based on tasks & energy';
+  const planGenBtn = document.querySelector('.plan-gen');
+  if(planGenBtn && !planGenBtn.disabled) planGenBtn.textContent = L.plan_gen || (lang==='de'?'🧠 Plan generieren':'🧠 Generate Plan');
+  // Chat system prompt language fix
+  // (handled at chat call time, see sendChat)
+
   /* Re-render dynamic content */
   updateXPDisplay();
   renderTasks();
@@ -1814,18 +1927,18 @@ function showXPFloat(amount){
 ═════════════════════════════════════════ */
 /* ACHIEVEMENTS with i18n — names/descs overridden in renderAchievements via I18N[lang].ach_data */
 const ACHIEVEMENTS=[
-  {id:'first',    ico:'⚡',name:'Erste Aufgabe',    desc:'Erste Task erstellt',   check:()=>tasks.length>=1},
-  {id:'focus1',   ico:'🎯',name:'Fokus-Starter',   desc:'Erste Session',         check:()=>sessions>=1},
-  {id:'done5',    ico:'✅',name:'5 erledigt',       desc:'5 Tasks done',          check:()=>tasks.filter(t=>t.done).length>=5},
-  {id:'streak3',  ico:'🔥',name:'3-Tage Streak',   desc:'3 Tage aktiv',          check:()=>getStreak()>=3},
-  {id:'focus10h', ico:'⏰',name:'10h Fokus',        desc:'10h total',             check:()=>focusMin>=600},
-  {id:'lvl5',     ico:'🏆',name:'Level 5',          desc:'Level 5 erreicht',      check:()=>getLevel(xp)>=5},
-  {id:'done20',   ico:'🚀',name:'20 erledigt',      desc:'20 Tasks done',         check:()=>tasks.filter(t=>t.done).length>=20},
-  {id:'nocrit',   ico:'😎',name:'Kein Stress',      desc:'0 kritische Tasks',     check:()=>tasks.filter(t=>!t.done&&t.urgency===3).length===0&&tasks.length>0},
-  {id:'chat10',   ico:'💬',name:'Chat-Profi',       desc:'10 Chat-Nachrichten',   check:()=>chatHist.length>=10},
-  {id:'notes5',   ico:'📝',name:'Notiz-Meister',    desc:'5 Notizen erstellt',    check:()=>notes.length>=5},
-  {id:'plan3',    ico:'📅',name:'Planer',           desc:'3 Tagespläne generiert',check:()=>DB.get('dos3-plans',0)>=3},
-  {id:'allhab',   ico:'💪',name:'Habit-Held',       desc:'Alle Habits heute',     check:()=>document.querySelectorAll('.hck.on').length>=5},
+  {id:'first',    ico:'⚡',check:()=>tasks.length>=1},
+  {id:'focus1',   ico:'🎯',check:()=>sessions>=1},
+  {id:'done5',    ico:'✅',check:()=>tasks.filter(t=>t.done).length>=5},
+  {id:'streak3',  ico:'🔥',check:()=>getStreak()>=3},
+  {id:'focus10h', ico:'⏰',check:()=>focusMin>=600},
+  {id:'lvl5',     ico:'🏆',check:()=>getLevel(xp)>=5},
+  {id:'done20',   ico:'🚀',check:()=>tasks.filter(t=>t.done).length>=20},
+  {id:'nocrit',   ico:'😎',check:()=>tasks.filter(t=>!t.done&&t.urgency===3).length===0&&tasks.length>0},
+  {id:'chat10',   ico:'💬',check:()=>chatHist.length>=10},
+  {id:'notes5',   ico:'📝',check:()=>notes.length>=5},
+  {id:'plan3',    ico:'📅',check:()=>DB.get('dos3-plans',0)>=3},
+  {id:'allhab',   ico:'💪',check:()=>document.querySelectorAll('.hck.on').length>=5},
 ];
 
 let unlockedAch = DB.get('dos3-ach',[]);
@@ -1857,7 +1970,7 @@ function renderAchievements(){
   const names=I18N[lang].ach_data;
   g.innerHTML=ACHIEVEMENTS.map((a,i)=>{
     const on=unlockedAch.includes(a.id);
-    const nd=names[i]||{name:a.name,desc:a.desc};
+    const nd=names[i]||{name:'Achievement '+(i+1),desc:''};
     return `<div class="ach ${on?'unlocked':''}" title="${nd.name}: ${nd.desc}">
       <div class="ach-ico">${a.ico}</div>
       <div class="ach-lbl">${nd.name}</div>
@@ -1902,7 +2015,7 @@ let pendingProfileId=null;
 function selectProfile(id){
   pendingProfileId=id;
   const p=profiles.find(x=>x.id===id);
-  document.getElementById('pin-label').innerHTML=`PIN für <strong>${p.name}</strong>:`;
+  document.getElementById('pin-label').innerHTML=`${lang==='de'?'PIN für':'PIN for'} <strong>${p.name}</strong>:`;
   document.getElementById('pin-section').style.display='block';
   document.getElementById('pin-in').value='';
   document.getElementById('pin-err').textContent='';
@@ -1922,9 +2035,10 @@ function confirmPin(){
     document.getElementById('login-overlay').style.display='none';
     document.getElementById('xp-avatar').textContent=p.initials;
     updateXPDisplay(); renderTasks(); updateStatus(); renderAchievements();
-    toast(`Willkommen, ${p.name}! 👋`,'ok');
+    applyLang(); // ensure correct language after login
+    toast(`${lang==='de'?'Willkommen':'Welcome'}, ${p.name}! 👋`,'ok');
   } else {
-    document.getElementById('pin-err').textContent='❌ Falscher PIN. Versuche es erneut.';
+    document.getElementById('pin-err').textContent=lang==='de'?'❌ Falscher PIN. Versuche es erneut.':'❌ Wrong PIN. Please try again.';
     document.getElementById('pin-in').value='';
   }
 }
@@ -1940,7 +2054,7 @@ function createProfile(){
   const p={id:Date.now().toString(),name,initials,color,pin};
   profiles.push(p); DB.set('dos3-profiles',profiles);
   renderLogin();
-  toast(`Profil "${name}" erstellt!`,'ok');
+  toast(lang==='de'?`Profil "${name}" erstellt!`:`Profile "${name}" created!`,'ok');
 }
 
 /* ═════════════════════════════════════════
@@ -1993,7 +2107,7 @@ function addTask(){
   const name=document.getElementById('task-input').value.trim();
   const dl=document.getElementById('dl-in').value;
   const ass=document.getElementById('ass-in').value.trim();
-  if(!name){ toast('Bitte Aufgabe eingeben','err'); return; }
+  if(!name){ toast(lang==='de'?'Bitte Aufgabe eingeben':'Please enter a task','err'); return; }
   const t={id:Date.now(),name,urgency:selUrgency,deadline:dl||null,assignee:ass||null,done:false,created:Date.now(),aiScore:null};
   tasks.push(t); saveTasks(); renderTasks(); updateStatus();
   document.getElementById('task-input').value='';
@@ -2078,12 +2192,12 @@ function renderTasks(){
 function renderPredPill(t){
   const diff=new Date(t.deadline)-Date.now();
   const h=diff/3600000;
-  if(h<0) return `<div class="pred-pill">⚠ ${Math.abs(Math.round(h))}h überfällig</div>`;
-  if(h<4&&t.urgency>=2) return `<div class="pred-pill">🔮 Engpass: noch ${Math.round(h)}h</div>`;
+  if(h<0) return `<div class="pred-pill">⚠ ${Math.abs(Math.round(h))}h ${lang==='de'?'überfällig':'overdue'}</div>`;
+  if(h<4&&t.urgency>=2) return `<div class="pred-pill">🔮 ${lang==='de'?'Engpass: noch':'Bottleneck: only'} ${Math.round(h)}h</div>`;
   return '';
 }
 
-function urgLbl(u){ return ['','<span style="color:var(--green)">▸Low</span>','<span style="color:var(--orange)">▸Mittel</span>','<span style="color:var(--red)">▸Kritisch</span>'][u]; }
+function urgLbl(u){ return ['','<span style="color:var(--green)">▸Low</span>','<span style="color:var(--orange)">▸'+(lang==='de'?'Mittel':'Medium')+'</span>','<span style="color:var(--red)">▸'+(lang==='de'?'Kritisch':'Critical')+'</span>'][u]; }
 
 function countdn(dl){
   const d=new Date(dl)-Date.now();
@@ -2102,10 +2216,10 @@ function updateStatus(){
   const done=tasks.filter(t=>t.done).length;
   const crit=tasks.filter(t=>!t.done&&t.urgency===3).length;
   const over=tasks.filter(t=>!t.done&&t.deadline&&new Date(t.deadline)<new Date()).length;
-  document.getElementById('tasks-lbl').textContent=`${open} offen`;
+  document.getElementById('tasks-lbl').textContent=`${open} ${lang==='de'?'offen':'open'}`;
   document.getElementById('s-total').textContent=tasks.length;
-  document.getElementById('s-done-sub').textContent=`${done} erledigt`;
-  document.getElementById('overdue-pill').classList.toggle('on',over>0);
+  document.getElementById('s-done-sub').textContent=`${done} ${lang==='de'?'erledigt':'done'}`;
+  document.getElementById('overdue-pill-txt').classList.toggle('on',over>0);
 
   const stress=Math.min(100,crit*22+over*18+open*3);
   const sf=document.getElementById('stress-fill');
@@ -2128,7 +2242,7 @@ function updateStatus(){
     sysDot.style.background='var(--orange)'; sysLbl.textContent=I18N[lang].crisis_crit;
   } else {
     crisisBox.classList.remove('on');
-    sysDot.style.background='var(--green)'; sysLbl.textContent=I18N[lang].crisis_ok;; sysLbl.textContent='OK';
+    sysDot.style.background='var(--green)'; sysLbl.textContent=I18N[lang].crisis_ok;; sysLbl.textContent=I18N[lang].crisis_ok||'OK';
   }
 
   const upcoming=tasks.filter(t=>!t.done&&t.deadline).sort((a,b)=>new Date(a.deadline)-new Date(b.deadline));
@@ -2264,7 +2378,7 @@ function setEnergy(lvl){
 
 function updateMoodSummary(){
   const s=document.getElementById('mood-summary');
-  s.textContent=`Energie: ${mood.energy}/8 • Stimmung: ${mood.emoji}`;
+  s.textContent=`${lang==='de'?'Energie':'Energy'}: ${mood.energy}/8 • ${lang==='de'?'Stimmung':'Mood'}: ${mood.emoji}`;
 }
 
 /* ═════════════════════════════════════════
@@ -2282,17 +2396,28 @@ function toggleHabit(el){
    AI CORE
 ═════════════════════════════════════════ */
 function buildCtx(instr){
-  const list=tasks.slice(0,12).map(t=>`- ${t.name} [${I18N[lang].prio_labels[t.urgency]}]${t.deadline?' DL:'+new Date(t.deadline).toLocaleString('de-DE'):''}${t.done?' ✓':''}`).join('\n')||'Keine Tasks';
+  const list=tasks.slice(0,12).map(t=>`- ${t.name} [${I18N[lang].prio_labels[t.urgency]}]${t.deadline?' DL:'+new Date(t.deadline).toLocaleString(lang==='de'?'de-DE':'en-US'):''}${t.done?' ✓':''}`).join('\n')||(lang==='de'?'Keine Tasks':'No tasks');
   const crit=tasks.filter(t=>!t.done&&t.urgency===3).length;
   const over=tasks.filter(t=>!t.done&&t.deadline&&new Date(t.deadline)<new Date()).length;
-  return `Nutzer: ${curProfile?.name||'Unbekannt'} | Level ${getLevel(xp)} | Stimmung: ${mood.emoji} | Energie: ${mood.energy}/8\nTasks:\n${list}\nKritisch: ${crit} | Überfällig: ${over} | Fokus heute: ${focusMin}min\n\n${instr}`;
+  const critLbl=lang==='de'?'Kritisch':'Critical';
+  const overLbl=lang==='de'?'Überfällig':'Overdue';
+  const focusLbl=lang==='de'?'Fokus heute':'Focus today';
+  const userLbl=lang==='de'?'Nutzer':'User';
+  const moodLbl=lang==='de'?'Stimmung':'Mood';
+  const energyLbl=lang==='de'?'Energie':'Energy';
+  return `${userLbl}: ${curProfile?.name||'?'} | Level ${getLevel(xp)} | ${moodLbl}: ${mood.emoji} | ${energyLbl}: ${mood.energy}/8\nTasks:\n${list}\n${critLbl}: ${crit} | ${overLbl}: ${over} | ${focusLbl}: ${focusMin}min\n\n${instr}`;
 }
 
 async function callAI(prompt,outEl,streamTyping=true){
   try{
     const r=await _aiCall({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]});
-    const d=await r.json();
-    const text=d.content?.map(c=>c.text||'').join('')||'Fehler.';
+    const d=r.content ? r : await r.json();
+    if(d.error){
+      const errMsg = d.error.message||'API error';
+      if(outEl){outEl.className='';outEl.textContent='⚠️ '+errMsg;}
+      return '';
+    }
+    const text=d.content?.map(c=>c.text||'').join('')||'Error.';
     if(outEl){
       outEl.className='';
       if(streamTyping){ let i=0; const ti=setInterval(()=>{ outEl.textContent+=text[i];i++;if(i>=text.length){clearInterval(ti);} },14); }
@@ -2300,7 +2425,13 @@ async function callAI(prompt,outEl,streamTyping=true){
     }
     return text;
   }catch(e){
-    if(outEl){outEl.className='';outEl.textContent=I18N[lang].chat_unreach;}
+    const isNoKey = e.message==='NO_KEY';
+    const isDemoEx = e.message==='DEMO_EXHAUSTED';
+    const L = I18N[lang];
+    let msg = L.chat_unreach;
+    if(isNoKey) msg = lang==='de' ? '🔑 Kein API Key. Tippe auf "API KEY" unten rechts.' : '🔑 No API Key set. Tap "API KEY" bottom right.';
+    if(isDemoEx) msg = lang==='de' ? '⚡ Demo-Limit erreicht. Eigenen API Key eingeben →' : '⚡ Demo limit reached. Enter your own API Key →';
+    if(outEl){outEl.className='';outEl.textContent=msg;}
     return '';
   }
 }
@@ -2313,10 +2444,12 @@ async function aiAnalyze(){
 
 async function autoPrioritize(){
   toast(I18N[lang].toast_prio,'');
-  const prompt=buildCtx(`Bewerte jede Aufgabe mit einem Score 1-10 (10=höchste Priorität). Antworte NUR als JSON: {"scores":{"AUFGABENNAME":SCORE}}. Basiere auf Deadline, Urgency und Kontext.`);
+  const prompt=buildCtx(lang==='de'
+    ? `Bewerte jede Aufgabe mit einem Score 1-10 (10=höchste Priorität). Antworte NUR als JSON: {"scores":{"AUFGABENNAME":SCORE}}. Basiere auf Deadline, Urgency und Kontext.`
+    : `Score each task 1-10 (10=highest priority). Reply ONLY as JSON: {"scores":{"TASKNAME":SCORE}}. Base it on deadline, urgency, and context.`);
   try{
     const r=await _aiCall({model:'claude-sonnet-4-20250514',max_tokens:500,messages:[{role:'user',content:prompt}]});
-    const d=await r.json();
+    const d=r&&r.content?r:await r.json();
     let text=d.content?.map(c=>c.text||'').join('');
     text=text.replace(/```json|```/g,'').trim();
     const scores=JSON.parse(text).scores;
@@ -2354,7 +2487,8 @@ function renderChatMsg(role,text,animate){
   const time=new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});
   const div=document.createElement('div');
   div.className=`msg ${role}${animate?' fade-in':''}`;
-  div.innerHTML=`<div class="msg-bubble">${esc(text).replace(/\n/g,'<br>')}</div><div class="msg-meta">${role==='ai'?'🤖 KI-Kommandant':'Du'} • ${time}</div>`;
+  const sender=role==='ai'?(lang==='de'?'🤖 KI-Kommandant':'🤖 AI Commander'):(lang==='de'?'Du':'You');
+  div.innerHTML=`<div class="msg-bubble">${esc(text).replace(/\n/g,'<br>')}</div><div class="msg-meta">${sender} • ${time}</div>`;
   wrap.appendChild(div);
   wrap.scrollTop=wrap.scrollHeight;
 }
@@ -2383,15 +2517,15 @@ async function sendChat(){
         system:sysCtx,
         messages:[...history,{role:'user',content:text}]
       });
-    const d=await r.json();
-    const reply=d.content?.map(c=>c.text||'').join('')||'Fehler.';
+    const d=r&&r.content?r:await r.json();
+    const reply=d.content?.map(c=>c.text||'').join('')||(lang==='de'?'Fehler.':'Error.');
     document.getElementById('typing-ind')?.remove();
     addChatMsg('ai',reply);
-  }catch{
+  }catch(e){
     document.getElementById('typing-ind')?.remove();
-    if(e&&e.message==='DEMO_EXHAUSTED'){addChatMsg('ai','⚡ Demo-Limit erreicht. Gib deinen eigenen API Key ein: klicke auf 🔑 DEMO unten rechts.');}
-    else if(e&&e.message==='NO_KEY'){addChatMsg('ai',I18N[lang].chat_err_nokey);}
-    else{if(e&&e.message==='DEMO_EXHAUSTED'){toast('⚡ Demo-Limit erreicht — eigenen Key hinterlegen','err');}else{console.error(e);}}
+    if(e&&e.message==='DEMO_EXHAUSTED'){addChatMsg('ai', lang==='de'?'⚡ Demo-Limit erreicht. Klicke auf 🔑 unten rechts um deinen API Key einzugeben.':'⚡ Demo limit reached. Tap 🔑 bottom right to enter your API Key.');}
+    else if(e&&e.message==='NO_KEY'){addChatMsg('ai', lang==='de'?'🔑 Kein API Key gesetzt. Klicke auf "API KEY" unten rechts.':'🔑 No API Key set. Tap "API KEY" bottom right.');}
+    else{addChatMsg('ai', I18N[lang].chat_unreach||'⚠️ AI unreachable.');}
   }
 }
 
@@ -2408,7 +2542,7 @@ function renderNotesList(){
     <div class="note-item${n.id===curNote?.id?' on':''}" onclick="openNote(${n.id})">
       <div class="note-title">${esc(n.title||I18N[lang].notes_untitled)}</div>
       <div class="note-preview">${esc(n.content.slice(0,60))}</div>
-      <div class="note-meta">${new Date(n.updated).toLocaleDateString('de-DE')}</div>
+      <div class="note-meta">${new Date(n.updated).toLocaleDateString(lang==='de'?'de-DE':'en-US')}</div>
     </div>`).join('');
 }
 
@@ -2471,13 +2605,11 @@ function updatePlanDate(){
 async function genPlan(){
   const btn=document.querySelector('.plan-gen');
   btn.disabled=true; btn.textContent=I18N[lang].plan_loading;
-  document.getElementById('timeline-slots').innerHTML=`<div style="color:var(--muted);font-size:11px;padding:20px;text-align:center;animation:blink 1s infinite">🧠 KI plant deinen Tag...</div>`;
-  const prompt=buildCtx(`Erstelle einen Tagesplan. Antworte NUR als JSON ohne Markdown:
-{"slots":[{"time":"09:00","type":"focus","icon":"💡","name":"Task Name","duration":"25min"}],"suggestions":[{"text":"Tipp"}]}
-Typen: focus, break, meeting, admin. Plane 8-18 Uhr. Berücksichtige Energie ${mood.energy}/8. Max 12 Slots.`);
+  document.getElementById('timeline-slots').innerHTML=`<div style="color:var(--muted);font-size:11px;padding:20px;text-align:center;animation:blink 1s infinite">🧠 ${lang==='de'?'KI plant deinen Tag...':'AI is planning your day...'}</div>`;
+  const prompt=buildCtx(I18N[lang].ai_prompt_plan);
   try{
     const r=await _aiCall({model:'claude-sonnet-4-20250514',max_tokens:1200,messages:[{role:'user',content:prompt}]});
-    const d=await r.json();
+    const d=r&&r.content?r:await r.json();
     let txt=d.content?.map(c=>c.text||'').join('');
     txt=txt.replace(/```json|```/g,'').trim();
     const plan=JSON.parse(txt);
@@ -2536,7 +2668,7 @@ function renderAnalytics(){
   document.getElementById('kpi-over').textContent=over;
 
   // week bars
-  const days=['Mo','Di','Mi','Do','Fr','Sa','So'];
+  const days=lang==='de'?['Mo','Di','Mi','Do','Fr','Sa','So']:['Mo','Tu','We','Th','Fr','Sa','Su'];
   const today=new Date().getDay();
   const mx=8;
   document.getElementById('week-bars').innerHTML=days.map((d,i)=>{
@@ -2576,7 +2708,10 @@ function drawDonut(segs,total){
 async function genReport(){
   const out=document.getElementById('report-out');
   out.textContent=''; out.style.opacity='.5';
-  await callAI(buildCtx('Erstelle einen Produktivitätsbericht in 5 Sätzen: Was läuft gut, was kann verbessert werden, eine konkrete Empfehlung. Professionell, auf Deutsch.'),out);
+  const prompt = lang==='de'
+    ? 'Erstelle einen Produktivitätsbericht in 5 Sätzen: Was läuft gut, was kann verbessert werden, eine konkrete Empfehlung. Professionell, auf Deutsch.'
+    : 'Create a productivity report in 5 sentences: what is going well, what can be improved, one concrete recommendation. Professional, in English.';
+  await callAI(buildCtx(prompt),out);
   out.style.opacity='1';
 }
 
@@ -2585,8 +2720,8 @@ async function genReport(){
 ═════════════════════════════════════════ */
 function togInt(inp,svc){
   const lbl=inp.closest('.ic').querySelector('.ic-status');
-  if(inp.checked){ lbl.textContent='● Verbunden'; lbl.className='ic-status on'; toast(`✅ ${svc} verbunden`,'ok'); }
-  else { lbl.textContent='○ Nicht verbunden'; lbl.className='ic-status'; toast(`${svc} getrennt`,'err'); }
+  if(inp.checked){ lbl.textContent='● '+(lang==='de'?'Verbunden':'Connected'); lbl.className='ic-status on'; toast(`✅ ${svc} ${lang==='de'?'verbunden':'connected'}`,'ok'); }
+  else { lbl.textContent='○ '+(lang==='de'?'Nicht verbunden':'Not connected'); lbl.className='ic-status'; toast(`${svc} ${lang==='de'?'getrennt':'disconnected'}`,'err'); }
 }
 
 /* ═════════════════════════════════════════
@@ -2627,6 +2762,7 @@ updateMoodSummary();
 updatePlanDate();
 initChat();
 checkPredictive();
+applyLang(); // ← apply saved language on startup
 
 setInterval(()=>{ renderTasks(); updateStatus(); checkPredictive(); },30000);
 
@@ -2760,13 +2896,22 @@ function requestNotifPerm(){
 }
 
 function testNotification(){
+  if(!('Notification' in window)){
+    toast(lang==='en'?'Notifications not supported in this browser':'Benachrichtigungen nicht unterstützt','err');
+    return;
+  }
   if(Notification.permission==='granted'){
-    new Notification('DeadlineOS', {
-      body: lang==='en'?'Test notification — everything works! ✅':'Test-Benachrichtigung — alles funktioniert! ✅',
-      icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="18" fill="%2307080f"/><text x="50" y="68" font-size="58" text-anchor="middle" font-family="monospace" fill="%23ff1f3d">D</text></svg>'
-    });
+    try {
+      new Notification('DeadlineOS ✅', {
+        body: lang==='en'?'Test notification — everything works!':'Test-Benachrichtigung — alles funktioniert!',
+        icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="18" fill="%2307080f"/><text x="50" y="68" font-size="58" text-anchor="middle" font-family="monospace" fill="%23ff1f3d">D</text></svg>'
+      });
+      toast(lang==='en'?'✅ Test sent!':'✅ Test gesendet!','ok');
+    } catch(e) {
+      toast(lang==='en'?'Could not send notification':'Benachrichtigung fehlgeschlagen','err');
+    }
   } else {
-    toast(lang==='en'?'Please grant permission first':'Bitte zuerst Erlaubnis erteilen','err');
+    toast(lang==='en'?'Please grant permission first — tap Grant Permission':'Bitte zuerst Erlaubnis erteilen','err');
   }
 }
 
@@ -2803,12 +2948,12 @@ function hideApiKeyOverlay(){
 function apikeyValidate(){
   const v=document.getElementById('apikey-inp').value.trim();
   const err=document.getElementById('apikey-err');
-  if(v&&!v.startsWith('sk-ant-')){err.textContent='⚠ Key sollte mit sk-ant- beginnen';}
+  if(v&&!v.startsWith('sk-ant-')){err.textContent=lang==='de'?'⚠ Key sollte mit sk-ant- beginnen':'⚠ Key should start with sk-ant-';}
   else{err.textContent='';}
 }
 function apikeyS(){
   const v=document.getElementById('apikey-inp').value.trim();
-  if(!v){document.getElementById('apikey-err').textContent='Bitte einen API Key eingeben.';return;}
+  if(!v){document.getElementById('apikey-err').textContent=lang==='de'?'Bitte einen API Key eingeben.':'Please enter an API Key.';return;}
   _setKey(v);
   hideApiKeyOverlay();
   toast(I18N[lang].key_saved||'✓ API Key gespeichert','ok');
