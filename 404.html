@@ -1,6 +1,6 @@
 <!-- © 2026 Mighel Wagner · DeadlineOS · Alle Rechte vorbehalten · Weitergabe ohne Genehmigung untersagt -->
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="copyright" content="© 2026 Mighel Wagner. Alle Rechte vorbehalten.">
@@ -31,6 +31,33 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;background:re
 .nl{font-family:var(--fd);font-size:18px;letter-spacing:2px;color:var(--t1);text-decoration:none}.nl em{color:var(--red);font-style:normal}
 .countdown{margin-top:28px;font-size:11px;color:var(--t4);letter-spacing:1px;position:relative;z-index:1}
 .countdown span{color:var(--t2)}
+
+/* ── Mobile Nav ── */
+.ham{display:none;flex-direction:column;gap:4px;cursor:pointer;padding:8px;margin-left:4px}
+.ham span{display:block;width:22px;height:2px;background:var(--t2);border-radius:2px;transition:all .3s}
+.ham.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0}
+.ham.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.mob-menu{display:none;position:fixed;top:58px;left:0;right:0;background:var(--c2,#0c0e1a);
+  border-bottom:1px solid var(--c5,#1e2235);z-index:599;padding:12px 0;flex-direction:column}
+.mob-menu.open{display:flex}
+.mob-menu a{padding:12px 24px;color:var(--t2,#a0a8c0);text-decoration:none;
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid var(--c4,#171b30)}
+.mob-menu a:last-child{border-bottom:none}
+.mob-menu .mob-lang{padding:12px 24px;cursor:pointer;color:var(--cyan,#00e5ff);
+  font-size:11px;letter-spacing:2px;text-transform:uppercase;background:none;border:none;
+  border-bottom:1px solid var(--c4,#171b30);text-align:left;width:100%}
+.lang-btn{display:flex;align-items:center;gap:6px;cursor:pointer;padding:5px 10px;
+  background:transparent;border:1px solid var(--c6,#252840);border-radius:4px;
+  color:var(--t2);font-size:10px;letter-spacing:1px;transition:all .2s}
+.lang-btn:hover{border-color:var(--cyan,#00e5ff);color:var(--cyan,#00e5ff)}
+@media(max-width:900px){
+  .nav-links{display:none!important}
+  .nav-btn-g{display:none}
+  .ham{display:flex}
+  .lang-btn{display:none}
+}
+
 </style>
 </head>
 <body>
@@ -48,7 +75,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;background:re
 <div class="err-btns">
   <a href="deadlineos-landing-v2.html" class="btn-r" data-i18n="btn_home">← Zurück zur Startseite</a>
   <a href="deadlineos-v3.html" target="_blank" class="btn-g" data-i18n="btn_app">▶ App öffnen</a>
-  <a href="dos-demo.html" class="btn-g">Demo</a>
+  <a href="dos-demo.html" class="btn-g" data-i18n="nav_demo">Demo</a>
 </div>
 <div class="countdown">Weiterleitung in <span id="ct">10</span>s</div>
 <script>
@@ -58,12 +85,27 @@ document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
 (function t(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;cur.style.left=mx+'px';cur.style.top=my+'px';ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(t)})();
 let s=10;const el=document.getElementById('ct');
 const iv=setInterval(()=>{s--;document.getElementById('ct').textContent=s;if(s<=0){clearInterval(iv);window.location.href='deadlineos-landing-v2.html';}},1000);
+
+/* ── Hamburger Menu ── */
+function _hamToggle(){
+  const h=document.getElementById('ham-btn');
+  const m=document.getElementById('mob-menu');
+  if(h&&m){h.classList.toggle('open');m.classList.toggle('open');}
+}
+document.addEventListener('click',function(e){
+  const h=document.getElementById('ham-btn');
+  const m=document.getElementById('mob-menu');
+  if(h&&m&&m.classList.contains('open')){
+    if(!h.contains(e.target)&&!m.contains(e.target)){h.classList.remove('open');m.classList.remove('open');}
+  }
+});
+
 </script>
 <script>
 /* DeadlineOS i18n © 2026 Mighel Wagner */
 const _DB={get:(k,d)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch{return d}},set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))};
 let _lang=_DB.get('dos3-lang',null);
-if(!_lang){_lang=(navigator.language||'de').toLowerCase().startsWith('de')?'de':'en';_DB.set('dos3-lang',_lang);}
+if(!_lang){_lang='en';_DB.set('dos3-lang',_lang);}
 const _T={de:{"err_label": "Fehler aufgetreten", "err_title": "Seite nicht gefunden.", "err_sub": "Diese Seite existiert nicht — oder wurde verschoben. Kein Chaos, einfach zurück.", "btn_home": "← Zurück zur Startseite", "btn_app": "▶ App öffnen", "btn_demo": "Demo", "countdown_txt": "Weiterleitung in", "countdown_suf": "s", "nav_home": "← Startseite", "nav_app": "App →", "nav_features": "Features", "nav_pricing": "Preise", "nav_roadmap": "Roadmap", "nav_compare": "Vergleich", "nav_demo": "Demo", "footer_copy": "© 2026 Mighel Wagner · DeadlineOS · Alle Rechte vorbehalten", "footer_col1": "Produkt", "footer_col2": "Info", "footer_col3": "Kontakt", "footer_privacy": "Datenschutz", "footer_faq": "FAQ", "footer_how": "Wie es funktioniert"},en:{"err_label": "Error occurred", "err_title": "Page not found.", "err_sub": "This page does not exist — or was moved. No chaos, just go back.", "btn_home": "← Back to Homepage", "btn_app": "▶ Open App", "btn_demo": "Demo", "countdown_txt": "Redirecting in", "countdown_suf": "s", "nav_home": "← Home", "nav_app": "App →", "nav_features": "Features", "nav_pricing": "Pricing", "nav_roadmap": "Roadmap", "nav_compare": "Compare", "nav_demo": "Demo", "footer_copy": "© 2026 Mighel Wagner · DeadlineOS · All rights reserved", "footer_col1": "Product", "footer_col2": "Info", "footer_col3": "Contact", "footer_privacy": "Privacy", "footer_faq": "FAQ", "footer_how": "How it works"}};
 function _t(k){return(_T[_lang]||_T.de)[k]||k;}
 function subToggleLang(){_lang=_lang==='de'?'en':'de';_DB.set('dos3-lang',_lang);_applySubLang();}
