@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>DeadlineOS — Live Demo</title>
-<meta name="description" content="Teste DeadlineOS live — kein Account, kein Setup. 10-Sekunden Walkthrough durch alle Features.">
+<meta name="description" content="Test DeadlineOS live — no account, no setup. 10-second walkthrough through all features.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=Lora:ital@1&display=swap">
 <style>
@@ -235,9 +235,9 @@ footer{padding:56px 0 28px;border-top:1px solid var(--c5)}
   <a href="index.html" class="nl">Deadline<em>OS</em></a>
   <ul class="nls">
     <li><a href="dos-features.html" data-i18n="nav_features" data-i18n="nav_features">Features</a></li>
-    <li><a href="dos-pricing.html" data-i18n="nav_pricing" data-i18n="nav_pricing" data-i18n="nav_pricing">Preise</a></li>
+    <li><a href="dos-pricing.html" data-i18n="nav_pricing" data-i18n="nav_pricing" data-i18n="nav_pricing">Pricing</a></li>
     <li><a href="dos-roadmap.html" data-i18n="nav_roadmap" data-i18n="nav_roadmap">Roadmap</a></li>
-    <li><a href="dos-compare.html" data-i18n="nav_compare" data-i18n="nav_compare" data-i18n="nav_compare">Vergleich</a></li>
+    <li><a href="dos-compare.html" data-i18n="nav_compare" data-i18n="nav_compare" data-i18n="nav_compare">Compare</a></li>
     <li><a href="dos-demo.html" class="on" data-i18n="nav_demo" data-i18n="nav_demo">Demo</a></li>
   </ul>
   <div class="nr">
@@ -246,7 +246,7 @@ footer{padding:56px 0 28px;border-top:1px solid var(--c5)}
     <a href="deadlineos-v3.html" target="_blank" class="nbr" data-i18n="nav_app">App &#246;ffnen &#8594;</a>
   </div>
 <div class="nav-r"><button class="lang-btn" onclick="subToggleLang()" title="Toggle language"><span class="sub-lang-flag">🇬🇧</span><span class="sub-lang-lbl">EN</span></button><div class="ham" id="ham-btn" onclick="_hamToggle()"><span></span><span></span><span></span></div></div></nav>
-<nav class="mob-menu" id="mob-menu"><a href="dos-features.html" data-i18n="nav_features">Features</a><a href="dos-pricing.html" data-i18n="nav_pricing" data-i18n="nav_pricing">Preise</a><a href="dos-roadmap.html" data-i18n="nav_roadmap">Roadmap</a><a href="dos-compare.html" data-i18n="nav_compare" data-i18n="nav_compare">Vergleich</a><a href="dos-demo.html" data-i18n="nav_demo">Demo</a><button class="mob-lang" onclick="subToggleLang()"><span class="sub-lang-flag">🇬🇧</span> <span class="sub-lang-lbl">EN</span></button></nav>
+<nav class="mob-menu" id="mob-menu"><a href="dos-features.html" data-i18n="nav_features">Features</a><a href="dos-pricing.html" data-i18n="nav_pricing" data-i18n="nav_pricing">Pricing</a><a href="dos-roadmap.html" data-i18n="nav_roadmap">Roadmap</a><a href="dos-compare.html" data-i18n="nav_compare" data-i18n="nav_compare">Compare</a><a href="dos-demo.html" data-i18n="nav_demo">Demo</a><button class="mob-lang" onclick="subToggleLang()"><span class="sub-lang-flag">🇬🇧</span> <span class="sub-lang-lbl">EN</span></button></nav>
 <section id="hero">
   <div class="hgrid"></div><div class="blob b1"></div><div class="blob b2"></div>
   <div class="w">
@@ -257,11 +257,11 @@ footer{padding:56px 0 28px;border-top:1px solid var(--c5)}
       <span style="color:#3ec96a">TestSprite</span>
     </div>
     <h1 class="hh" data-r="up" style="transition-delay:.08s" id="hero_title">10 SEKUNDEN.<br><em>ALLES KLAR.</em></h1>
-    <p class="hs" data-r="up" style="transition-delay:.18s" data-i18n="page_sub">Automatischer Walkthrough &#8212; kein Account, kein Setup.</p>
+    <p class="hs" data-r="up" style="transition-delay:.18s" data-i18n="page_sub">Automatischer Walkthrough &#8212; no account, no setup.</p>
     <div class="hero-btns" data-r="up" style="transition-delay:.28s">
       <button class="btn-r" onclick="setTimeout(startDemo,300)" id="hero_play_btn">&#9654; Auto-Demo starten</button>
       <a href="#interactive" class="btn-g" id="hero_try_btn">Selbst tippen &#8595;</a>
-      <a href="deadlineos-v3.html" target="_blank" class="btn-g" data-i18n="cta_app">Vollst&#228;ndige App &#8594;</a>
+      <a href="deadlineos-v3.html" target="_blank" class="btn-g" data-i18n="cta_app">Full App →</a>
     </div>
   </div>
 </section>
@@ -269,16 +269,16 @@ footer{padding:56px 0 28px;border-top:1px solid var(--c5)}
   <div class="w">
     <div class="player-head" data-r="up">
       <div class="player-title" id="player_title">10-Sekunden <span style="color:var(--red)">Walkthrough</span></div>
-      <div class="player-sub" data-i18n="player_sub">Klick auf einen Schritt &#8212; oder dr&#252;ck Play</div>
+      <div class="player-sub" data-i18n="player_sub">Click a step &#8212; oder dr&#252;ck Play</div>
     </div>
     <div class="step-pills" id="stepPills">
       <div class="sp on" onclick="goStep(0)" id="pill0">1. Dashboard</div>
       <div class="sp" onclick="goStep(1)" id="pill1">2. Task hinzuf&#252;gen</div>
-      <div class="sp" onclick="goStep(2)" id="pill2">3. KI analysiert</div>
-      <div class="sp" onclick="goStep(3)" id="pill3">4. KI-Chat</div>
-      <div class="sp" onclick="goStep(4)" id="pill4">5. Task erledigt</div>
+      <div class="sp" onclick="goStep(2)" id="pill2">3. AI analysiert</div>
+      <div class="sp" onclick="goStep(3)" id="pill3">4. AI Chat</div>
+      <div class="sp" onclick="goStep(4)" id="pill4">5. Task done</div>
       <div class="sp" onclick="goStep(5)" id="pill5">6. XP steigt</div>
-      <div class="sp" onclick="goStep(6)" id="pill6">7. Fokus-Timer</div>
+      <div class="sp" onclick="goStep(6)" id="pill6">7. Focus Timer</div>
       <div class="sp" onclick="goStep(7)" id="pill7">8. Achievement!</div>
     </div>
     <div class="tl-bar-wrap">
@@ -294,7 +294,7 @@ footer{padding:56px 0 28px;border-top:1px solid var(--c5)}
         </div>
         <div class="ds-tabs" id="dsTabs">
           <div class="dst on" onclick="switchTab('dashboard')">&#128202; <span id="tab_dash_lbl">Dashboard</span></div>
-          <div class="dst" onclick="switchTab('chat')">&#128172; <span id="tab_chat_lbl">KI-Chat</span></div>
+          <div class="dst" onclick="switchTab('chat')">&#128172; <span id="tab_chat_lbl">AI Chat</span></div>
           <div class="dst" onclick="switchTab('timer')">&#9203; Timer</div>
           <div class="dst" onclick="switchTab('level')">&#127942; Level</div>
         </div>
@@ -302,47 +302,47 @@ footer{padding:56px 0 28px;border-top:1px solid var(--c5)}
           <div class="toast" id="demoToast"></div>
           <div class="panel on" id="panel-dashboard">
             <div class="morning-row">
-              <div><div class="morning-name" id="greeting_txt">Guten Morgen, Alex &#128075;</div><div class="morning-date" id="date_txt">Dienstag, 10. M&#228;rz 2026 &#183; Level 5</div></div>
+              <div><div class="morning-name" id="greeting_txt">Good morning, Alex &#128075;</div><div class="morning-date" id="date_txt">Tuesday, 10. M&#228;rz 2026 &#183; Level 5</div></div>
               <div class="stress-group"><div class="stress-lbl-txt" id="stress_lbl_txt">Stress</div><div><div class="stress-bar"><div class="stress-fill" id="stressFill" style="width:0%"></div></div><div class="stress-pct" id="stressLbl">0%</div></div></div>
             </div>
             <div class="task-list">
-              <div class="tr" id="dt0"><div class="tdot" style="background:var(--red)"></div><div class="ttxt" id="dt0_txt">Pr&#228;sentation Q4 vorbereiten</div><span class="tbadge" style="background:rgba(255,31,61,.1);color:var(--red);border:1px solid rgba(255,31,61,.2)" id="dt0_badge">Kritisch</span></div>
-              <div class="tr" id="dt1"><div class="tdot" style="background:var(--amber)"></div><div class="ttxt" id="dt1_txt">Backend Deploy vorbereiten</div><span class="tbadge" style="background:rgba(255,140,0,.1);color:var(--amber);border:1px solid rgba(255,140,0,.2)" id="dt1_badge">Mittel</span></div>
-              <div class="tr" id="dt2"><div class="tdot" style="background:var(--lime)"></div><div class="ttxt" id="dt2_txt">Emails beantworten</div><span class="tbadge" style="background:rgba(168,255,62,.1);color:var(--lime);border:1px solid rgba(168,255,62,.2)" id="dt2_badge">Low</span></div>
+              <div class="tr" id="dt0"><div class="tdot" style="background:var(--red)"></div><div class="ttxt" id="dt0_txt">Pr&#228;sentation Q4 vorbereiten</div><span class="tbadge" style="background:rgba(255,31,61,.1);color:var(--red);border:1px solid rgba(255,31,61,.2)" id="dt0_badge">Critical</span></div>
+              <div class="tr" id="dt1"><div class="tdot" style="background:var(--amber)"></div><div class="ttxt" id="dt1_txt">Prepare backend deploy</div><span class="tbadge" style="background:rgba(255,140,0,.1);color:var(--amber);border:1px solid rgba(255,140,0,.2)" id="dt1_badge">Medium</span></div>
+              <div class="tr" id="dt2"><div class="tdot" style="background:var(--lime)"></div><div class="ttxt" id="dt2_txt">Answer emails</div><span class="tbadge" style="background:rgba(168,255,62,.1);color:var(--lime);border:1px solid rgba(168,255,62,.2)" id="dt2_badge">Low</span></div>
               <div id="newTaskRow" style="display:none"><div class="tr highlight" id="dt3"><div class="tdot" style="background:var(--ice)"></div><div class="ttxt" id="newTaskText"></div><span class="tscore" id="newTaskScore" style="opacity:0">Score ?</span></div></div>
             </div>
             <div id="kiAnalysis" style="display:none;margin-top:9px">
-              <div class="ai-box"><div class="ai-box-h" id="ki_analysis_title">&#129302; KI-KRISENANALYSE</div><div id="aiText" class="ai-typing"><span></span><span></span><span></span></div></div>
+              <div class="ai-box"><div class="ai-box-h" id="ki_analysis_title">&#129302; AI CRISIS ANALYSIS</div><div id="aiText" class="ai-typing"><span></span><span></span><span></span></div></div>
             </div>
           </div>
           <div class="panel" id="panel-chat">
-            <div style="font-size:9px;color:var(--t3);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:9px" id="chat_context_lbl">KI-CHAT &#183; Kontext: 3 Tasks &#183; Stress 78%</div>
+            <div style="font-size:9px;color:var(--t3);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:9px" id="chat_context_lbl">AI-CHAT &#183; context: 3 Tasks &#183; Stress 78%</div>
             <div class="chat-wrap">
               <div class="chat-row"><div class="cav" style="background:var(--c5);color:var(--t3)" id="chat_you1">Du</div><div class="cbub user" id="chat_q1">Was soll ich jetzt als erstes machen?</div></div>
-              <div class="chat-row"><div class="cav" style="background:rgba(0,212,255,.15);color:var(--ice)">KI</div><div class="cbub ai" id="chat_a1">Pr&#228;sentation Q4 ist am kritischsten &#8212; sie blockiert dein Team. Starte einen 25-min Pomodoro jetzt, keine Ablenkungen.</div></div>
-              <div class="chat-row"><div class="cav" style="background:var(--c5);color:var(--t3)" id="chat_you2">Du</div><div class="cbub user" id="chat_q2">Und wenn ich keine Energie hab?</div></div>
-              <div class="chat-row"><div class="cav" style="background:rgba(0,212,255,.15);color:var(--ice)">KI</div><div class="cbub ai" id="chat_a2">Dann starte mit Emails (10 min) als Warm-up. Das gibt dir +10 XP und Schwung f&#252;r die wichtige Arbeit danach.</div></div>
+              <div class="chat-row"><div class="cav" style="background:rgba(0,212,255,.15);color:var(--ice)">AI</div><div class="cbub ai" id="chat_a1">Pr&#228;sentation Q4 ist am kritischsten &#8212; sie blockiert dein Team. Starte einen 25-min Pomodoro jetzt, keine distractions.</div></div>
+              <div class="chat-row"><div class="cav" style="background:var(--c5);color:var(--t3)" id="chat_you2">Du</div><div class="cbub user" id="chat_q2">Und wenn ich keine Energy hab?</div></div>
+              <div class="chat-row"><div class="cav" style="background:rgba(0,212,255,.15);color:var(--ice)">AI</div><div class="cbub ai" id="chat_a2">Dann starte mit Emails (10 min) als warm-up. Das gibt dir +10 XP und momentum f&#252;r die wichtige Arbeit danach.</div></div>
             </div>
           </div>
           <div class="panel" id="panel-timer">
             <div class="timer-wrap">
-              <div class="timer-modes"><div class="tmode on">Pomodoro</div><div class="tmode">Deep Work</div><div class="tmode" id="timer_pause_lbl">Pause</div></div>
+              <div class="timer-modes"><div class="tmode on">Pomodoro</div><div class="tmode">Deep Work</div><div class="tmode" id="timer_pause_lbl">Break</div></div>
               <div class="timer-ring-wrap">
                 <svg style="position:absolute;top:0;left:0;transform:rotate(-90deg)" width="150" height="150" viewBox="0 0 150 150"><circle cx="75" cy="75" r="62" fill="none" stroke="#1e2338" stroke-width="6"/><circle id="demoTimerRing" cx="75" cy="75" r="62" fill="none" stroke="#00d4ff" stroke-width="6" stroke-linecap="round" stroke-dasharray="389.6" stroke-dashoffset="0" style="filter:drop-shadow(0 0 8px rgba(0,212,255,.5));transition:stroke-dashoffset .5s"/></svg>
                 <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px"><div class="timer-num" id="demoTimerDisp">24:59</div><div class="timer-sub">POMODORO</div></div>
               </div>
-              <div style="font-size:10px;color:var(--t3);letter-spacing:.5px" id="demoSessions">Sessions: 0 &#183; Fokus: 0 min</div>
+              <div style="font-size:10px;color:var(--t3);letter-spacing:.5px" id="demoSessions">Sessions: 0 &#183; Focus: 0 min</div>
             </div>
           </div>
           <div class="panel" id="panel-level">
             <div class="xp-big">
-              <div class="xp-lvl">5</div><div class="xp-title" id="xp_level_lbl">Level 5 &#8212; Profi</div>
+              <div class="xp-lvl">5</div><div class="xp-title" id="xp_level_lbl">Level 5 &#8212; Pro</div>
               <div class="xp-bar"><div class="xp-fill" id="xpFill" style="width:75%"></div></div>
               <div class="xp-nums"><span id="xpCur">750</span><span>1000 XP</span></div>
               <div class="ach-row">
-                <div class="ach pop" id="ach0">&#127919; Erste Task</div><div class="ach pop" id="ach1">&#128293; 5 erledigt</div>
-                <div class="ach pop" id="ach2">&#9203; Timer-Profi</div><div class="ach pop" id="ach3">&#128170; 25 Tasks</div>
-                <div class="ach" id="newAch">&#127775; Streak-K&#246;nig</div>
+                <div class="ach pop" id="ach0">&#127919; First Task</div><div class="ach pop" id="ach1">&#128293; 5 done</div>
+                <div class="ach pop" id="ach2">&#9203; Timer-Pro</div><div class="ach pop" id="ach3">&#128170; 25 Tasks</div>
+                <div class="ach" id="newAch">&#127775; Streak King</div>
               </div>
             </div>
           </div>
@@ -354,14 +354,14 @@ footer{padding:56px 0 28px;border-top:1px solid var(--c5)}
         <div>
           <div class="sd-title" id="sdTitle">Dashboard &#8212; Dein &#220;berblick</div>
           <div class="sd-text" id="sdText">DeadlineOS zeigt sofort alle Tasks mit Priorit&#228;t, Stress-Level und XP. Alles auf einen Blick.</div>
-          <div class="sd-badge" id="sdBadge" style="background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);color:var(--ice)">&#128309; Schritt 1 von 8</div>
+          <div class="sd-badge" id="sdBadge" style="background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.2);color:var(--ice)">&#128309; Step 1 von 8</div>
         </div>
       </div>
     </div>
     <div class="controls">
       <button class="ctrl-btn" onclick="prevStep()" id="ctrl_prev">&#8592; Zur&#252;ck</button>
       <button class="ctrl-btn ctrl-play" id="playBtn" onclick="togglePlay()">&#9654; AUTO-PLAY</button>
-      <button class="ctrl-btn" onclick="nextStep()" id="ctrl_next">Weiter &#8594;</button>
+      <button class="ctrl-btn" onclick="nextStep()" id="ctrl_next">Next &#8594;</button>
       <span class="ctrl-timer-lbl" id="ctrlTimer"></span>
       <button class="ctrl-btn" onclick="resetDemo()" id="ctrl_reset">&#8635; Reset</button>
     </div>
@@ -370,23 +370,23 @@ footer{padding:56px 0 28px;border-top:1px solid var(--c5)}
 <section id="interactive">
   <div class="w">
     <div class="int-header" data-r="up">
-      <div class="int-overline" data-i18n="interactive_title">Selbst ausprobieren</div>
-      <div class="int-title" id="int_heading">Kein Account.<br><span style="color:var(--amber)">Einfach tippen.</span></div>
+      <div class="int-overline" data-i18n="interactive_title">Try it yourself</div>
+      <div class="int-title" id="int_heading">No account.<br><span style="color:var(--amber)">Just type.</span></div>
       <p class="int-sub" data-i18n="interactive_sub">Tasks hinzuf&#252;gen, erledigen, Timer starten &#8212; alles live hier.</p>
     </div>
     <div class="int-grid">
       <div class="int-info" data-r="up">
-        <h3 id="whathappens_title">Was passiert:</h3>
+        <h3 id="whathappens_title">What happens:</h3>
         <ul class="int-points">
           <li><span class="arrow">&#8594;</span><span id="int_p1">Task hinzuf&#252;gen: +10/15/25 XP je nach Priorit&#228;t</span></li>
-          <li><span class="arrow">&#8594;</span><span id="int_p2">Task anklicken = erledigt + Bonus-XP</span></li>
-          <li><span class="arrow">&#8594;</span><span id="int_p3">Achievements nach 1, 3 und 5 Tasks</span></li>
+          <li><span class="arrow">&#8594;</span><span id="int_p2">Click a task = done + bonus XP</span></li>
+          <li><span class="arrow">&#8594;</span><span id="int_p3">Achievements after 1, 3 and 5 tasks</span></li>
           <li><span class="arrow">&#8594;</span><span id="int_p4">Timer abschlie&#223;en: +20 XP pro Session</span></li>
-          <li><span class="arrow">&#8594;</span><span id="int_p5">Daten bleiben lokal &#8212; kein Account n&#246;tig</span></li>
+          <li><span class="arrow">&#8594;</span><span id="int_p5">Daten bleiben lokal &#8212; no account n&#246;tig</span></li>
         </ul>
         <div class="int-actions">
-          <a href="deadlineos-v3.html" target="_blank" class="btn-r" style="font-size:12px;padding:9px 18px" data-i18n="cta_app">Vollst&#228;ndige App &#8594;</a>
-          <a href="dos-features.html" class="btn-g" style="font-size:12px;padding:9px 15px" data-i18n="cta_features">Alle Features</a>
+          <a href="deadlineos-v3.html" target="_blank" class="btn-r" style="font-size:12px;padding:9px 18px" data-i18n="cta_app">Full App →</a>
+          <a href="dos-features.html" class="btn-g" style="font-size:12px;padding:9px 15px" data-i18n="cta_features">All Features</a>
         </div>
       </div>
       <div data-r="up" style="transition-delay:.12s">
@@ -400,27 +400,27 @@ footer{padding:56px 0 28px;border-top:1px solid var(--c5)}
           <div class="ma-body">
             <div class="mini-panel on" id="mp0">
               <div class="task-input-row">
-                <input class="task-inp" id="taskInp" placeholder="Task eingeben..." onkeydown="if(event.key==='Enter')miniAdd()">
+                <input class="task-inp" id="tasAInp" placeholder="Enter task..." onkeydown="if(event.key==='Enter')miniAdd()">
                 <button class="add-btn" onclick="miniAdd()" id="mini_add_btn">+ ADD</button>
               </div>
               <div class="psel">
                 <div class="ps p1 on" onclick="miniP(1,this)" id="prio_low">Low</div>
-                <div class="ps p2" onclick="miniP(2,this)" id="prio_mid">Mittel</div>
-                <div class="ps p3" onclick="miniP(3,this)" id="prio_hi">Kritisch</div>
+                <div class="ps p2" onclick="miniP(2,this)" id="prio_mid">Medium</div>
+                <div class="ps p3" onclick="miniP(3,this)" id="prio_hi">Critical</div>
               </div>
-              <div class="mini-task-list" id="miniTaskList"><div style="text-align:center;padding:16px 0;font-size:10px;color:var(--t3)" id="mini_empty_lbl">F&#252;ge deine erste Task hinzu &#8593;</div></div>
+              <div class="mini-task-list" id="miniTaskList"><div style="text-align:center;padding:16px 0;font-size:10px;color:var(--t3)" id="mini_empty_lbl">F&#252;ge deine first task hinzu &#8593;</div></div>
             </div>
             <div class="mini-panel" id="mp1">
               <div class="mini-xp">
                 <div class="mini-lvl" id="miniLvl">1</div><div class="mini-lvllbl" id="miniLvlName">Level 1 &#8212; Rookie</div>
                 <div class="mini-xpbar"><div class="mini-xpfill" id="miniXpFill" style="width:0%"></div></div>
                 <div class="mini-xpnums"><span id="miniXpCur">0</span><span id="miniXpMax">100 XP</span></div>
-                <div class="mini-achs"><div class="mach" id="ma0">&#127919; Erste Task</div><div class="mach" id="ma1">&#128293; 3 erledigt</div><div class="mach" id="ma2">&#9203; Timer-Profi</div><div class="mach" id="ma3">&#128170; 5 Tasks</div></div>
+                <div class="mini-achs"><div class="mach" id="ma0">&#127919; First Task</div><div class="mach" id="ma1">&#128293; 3 done</div><div class="mach" id="ma2">&#9203; Timer-Pro</div><div class="mach" id="ma3">&#128170; 5 Tasks</div></div>
               </div>
             </div>
             <div class="mini-panel" id="mp2">
               <div class="mini-timer-wrap">
-                <div class="mini-modes"><div class="mmode on" onclick="miniMode(0,this,25)">Pomodoro</div><div class="mmode" onclick="miniMode(1,this,50)">Deep Work</div><div class="mmode" onclick="miniMode(2,this,5)" id="mini_pause_lbl">Pause</div></div>
+                <div class="mini-modes"><div class="mmode on" onclick="miniMode(0,this,25)">Pomodoro</div><div class="mmode" onclick="miniMode(1,this,50)">Deep Work</div><div class="mmode" onclick="miniMode(2,this,5)" id="mini_pause_lbl">Break</div></div>
                 <div class="mini-ring-wrap">
                   <svg style="position:absolute;top:0;left:0;transform:rotate(-90deg)" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="42" fill="none" stroke="#1e2338" stroke-width="5"/><circle id="miniRing" cx="50" cy="50" r="42" fill="none" stroke="#00d4ff" stroke-width="5" stroke-linecap="round" stroke-dasharray="263.9" stroke-dashoffset="0" style="filter:drop-shadow(0 0 5px rgba(0,212,255,.4));transition:stroke-dashoffset .5s"/></svg>
                   <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px"><div class="mini-timer-num" id="miniTimerDisp">25:00</div><div class="mini-timer-sub" id="miniTimerSub">POMODORO</div></div>
@@ -429,7 +429,7 @@ footer{padding:56px 0 28px;border-top:1px solid var(--c5)}
                   <button class="ctrl-btn" style="font-size:10px;padding:5px 14px" onclick="miniTimerToggle()" id="miniStartBtn">&#9654; START</button>
                   <button class="ctrl-btn" style="font-size:10px;padding:5px 10px" onclick="miniTimerReset()">&#8635;</button>
                 </div>
-                <div class="mini-sess" id="miniSessions">Sessions: 0 &#183; Fokus: 0 min</div>
+                <div class="mini-sess" id="miniSessions">Sessions: 0 &#183; Focus: 0 min</div>
               </div>
             </div>
           </div>
@@ -441,12 +441,12 @@ footer{padding:56px 0 28px;border-top:1px solid var(--c5)}
 <footer>
   <div class="w">
     <div class="fg">
-      <div class="f-brand"><div class="f-logo">Deadline<em>OS</em></div><p data-i18n="footer_tagline">Das erste Browser-OS f&#252;r Krisenmanagement. KI-gesteuert. Echtzeit. Unaufhaltsam.</p><p style="margin-top:8px;font-family:var(--fl);font-style:italic;font-size:11px;color:var(--t3)" data-i18n="footer_quote">"Jede App zeigt dir Tasks. DeadlineOS entscheidet mit dir."</p></div>
-      <div class="f-col"><h4 data-i18n="footer_col1" data-i18n="footer_col1">Produkt</h4><a href="dos-features.html" data-i18n="nav_features" data-i18n="nav_features">Features</a><a href="dos-demo.html" data-i18n="nav_demo" data-i18n="nav_demo">Demo</a><a href="dos-pricing.html" data-i18n="nav_pricing" data-i18n="nav_pricing" data-i18n="nav_pricing">Preise</a><a href="dos-roadmap.html" data-i18n="nav_roadmap" data-i18n="nav_roadmap">Roadmap</a></div>
-      <div class="f-col"><h4 data-i18n="footer_col2" data-i18n="footer_col2">Info</h4><a href="dos-compare.html" data-i18n="nav_compare" data-i18n="nav_compare" data-i18n="nav_compare">Vergleich</a><a href="privacy.html" data-i18n="footer_privacy" data-i18n="footer_privacy">Datenschutz</a></div>
-      <div class="f-col"><h4 data-i18n="footer_col3" data-i18n="footer_col3">Kontakt</h4><a href="mailto:hallo@deadlineos.app">hallo@deadlineos.app</a><a href="https://x.com/Mighel88" target="_blank" rel="noopener">&#119987; Twitter</a><a href="https://github.com/Mighel881" target="_blank" rel="noopener">&#9095; GitHub</a><a href="https://discord.com/users/338736053743517696" target="_blank" rel="noopener">&#9672; Discord</a></div>
+      <div class="f-brand"><div class="f-logo">Deadline<em>OS</em></div><p data-i18n="footer_tagline">Das erste Browser-OS f&#252;r Crisis management. AI-powered. Real-time. Unaufhaltsam.</p><p style="margin-top:8px;font-family:var(--fl);font-style:italic;font-size:11px;color:var(--t3)" data-i18n="footer_quote">"Every app shows you tasks. DeadlineOS decides with you."</p></div>
+      <div class="f-col"><h4 data-i18n="footer_col1" data-i18n="footer_col1">Product</h4><a href="dos-features.html" data-i18n="nav_features" data-i18n="nav_features">Features</a><a href="dos-demo.html" data-i18n="nav_demo" data-i18n="nav_demo">Demo</a><a href="dos-pricing.html" data-i18n="nav_pricing" data-i18n="nav_pricing" data-i18n="nav_pricing">Pricing</a><a href="dos-roadmap.html" data-i18n="nav_roadmap" data-i18n="nav_roadmap">Roadmap</a></div>
+      <div class="f-col"><h4 data-i18n="footer_col2" data-i18n="footer_col2">Info</h4><a href="dos-compare.html" data-i18n="nav_compare" data-i18n="nav_compare" data-i18n="nav_compare">Compare</a><a href="privacy.html" data-i18n="footer_privacy" data-i18n="footer_privacy">Privacy</a></div>
+      <div class="f-col"><h4 data-i18n="footer_col3" data-i18n="footer_col3">Contact</h4><a href="mailto:hallo@deadlineos.app">hallo@deadlineos.app</a><a href="https://x.com/Mighel88" target="_blank" rel="noopener">&#119987; Twitter</a><a href="https://github.com/Mighel881" target="_blank" rel="noopener">&#9095; GitHub</a><a href="https://discord.com/users/338736053743517696" target="_blank" rel="noopener">&#9672; Discord</a></div>
     </div>
-    <div class="f-btm"><p class="f-copy" data-i18n="footer_copy">&#169; 2026 Mighel Wagner &#183; DeadlineOS &#183; Alle Rechte vorbehalten</p><div class="f-socs"><a class="fsoc" href="https://x.com/Mighel88" target="_blank">&#119987;</a><a class="fsoc" href="https://github.com/Mighel881" target="_blank">&#9095;</a><a class="fsoc" href="https://discord.com/users/338736053743517696" target="_blank">&#9672;</a></div></div>
+    <div class="f-btm"><p class="f-copy" data-i18n="footer_copy">&#169; 2026 Mighel Wagner &#183; DeadlineOS &#183; All rights reserved</p><div class="f-socs"><a class="fsoc" href="https://x.com/Mighel88" target="_blank">&#119987;</a><a class="fsoc" href="https://github.com/Mighel881" target="_blank">&#9095;</a><a class="fsoc" href="https://discord.com/users/338736053743517696" target="_blank">&#9672;</a></div></div>
     <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid var(--c5);opacity:.55">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 34" width="20" height="14"><path d="M4 5 L18 17 L4 29" fill="none" stroke="#2c3a4a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 5 L36 17" fill="none" stroke="#2c3a4a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 17 L22 29" fill="none" stroke="#3ec96a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span style="font-size:9px;color:#2c3a4a;letter-spacing:1px" data-i18n="footer_hackathon">Hackathon Edition &#183; made with &#9829; for TestSprite Hackathon</span>
@@ -469,45 +469,45 @@ if(!_lang){_lang='en';_DB.set('dos3-lang',_lang);}
 
 const _T={
 de:{
-  page_badge:'Live Demo',page_sub:'Automatischer Walkthrough — kein Account, kein Setup.',
-  btn_play:'► AUTO-PLAY',btn_pause:'⏸ PAUSE',btn_prev:'← Zurück',btn_next:'Weiter →',btn_reset:'↺ Reset',btn_try:'Selbst tippen ↓',
-  nav_home:'Home',nav_app:'App öffnen →',nav_features:'Features',nav_pricing:'Preise',nav_roadmap:'Roadmap',nav_compare:'Vergleich',nav_demo:'Demo',
-  player_sub:'Klick auf einen Schritt — oder drück Play',
-  interactive_title:'Selbst ausprobieren',interactive_sub:'Tasks hinzufügen, erledigen, Timer starten — alles live hier.',
-  whathappens:'Was passiert:',int_p1:'Task hinzufügen: +10/15/25 XP je nach Priorität',int_p2:'Task anklicken = erledigt + Bonus-XP',int_p3:'Achievements nach 1, 3 und 5 Tasks',int_p4:'Timer abschließen: +20 XP pro Session',int_p5:'Daten bleiben lokal — kein Account nötig',
-  cta_app:'Vollständige App →',cta_features:'Alle Features',
-  footer_tagline:'Das erste Browser-OS für Krisenmanagement. KI-gesteuert. Echtzeit. Unaufhaltsam.',
-  footer_quote:'"Jede App zeigt dir Tasks. DeadlineOS entscheidet mit dir."',
-  footer_col1:'Produkt',footer_col2:'Info',footer_col3:'Kontakt',footer_privacy:'Datenschutz',
-  footer_copy:'© 2026 Mighel Wagner · DeadlineOS · Alle Rechte vorbehalten',
+  page_badge:'Live Demo',page_sub:'Automatischer Walkthrough — no account, no setup.',
+  btn_play:'► AUTO-PLAY',btn_pause:'⏸ PAUSE',btn_prev:'← Back',btn_next:'Next →',btn_reset:'↺ Reset',btn_try:'Try it yourself ↓',
+  nav_home:'Home',nav_app:'Open App →',nav_features:'Features',nav_pricing:'Pricing',nav_roadmap:'Roadmap',nav_compare:'Compare',nav_demo:'Demo',
+  player_sub:'Click a step — or press Play for the automatic walkthrough',
+  interactive_title:'Try it yourself',interactive_sub:'Add tasks, complete them, start the timer — all live right here.',
+  whathappens:'What happens:',int_p1:'Add a task: +10/15/25 XP by priority',int_p2:'Click a task = done + bonus XP',int_p3:'Achievements after 1, 3 and 5 tasks',int_p4:'Complete a timer: +20 XP per session',int_p5:'Data stays local — no account needed',
+  cta_app:'Full App →',cta_features:'All Features',
+  footer_tagline:'The first browser OS for crisis management. AI-powered. Real-time. Unstoppable.',
+  footer_quote:'"Every app shows you tasks. DeadlineOS decides with you."',
+  footer_col1:'Product',footer_col2:'Info',footer_col3:'Contact',footer_privacy:'Privacy',
+  footer_copy:'© 2026 Mighel Wagner · DeadlineOS · All rights reserved',
   footer_hackathon:'Hackathon Edition · made with ♥ for TestSprite Hackathon',
-  pill0:'1. Dashboard',pill1:'2. Task hinzufügen',pill2:'3. KI analysiert',pill3:'4. KI-Chat',pill4:'5. Task erledigt',pill5:'6. XP steigt',pill6:'7. Fokus-Timer',pill7:'8. Achievement!',
-  step0_title:'Dashboard — Dein Überblick',step0_text:'DeadlineOS zeigt sofort alle Tasks mit Priorität, Stress-Level und XP-Status. Alles auf einen Blick — keine Einrichtung.',step0_badge:'🔵 Schritt 1 von 8',
-  step1_title:'Task hinzufügen — schnell',step1_text:'Task eintippen, Priorität wählen (Low/Mittel/Kritisch) — fertig. Die KI berechnet sofort einen Prioritäts-Score von 1–10.',step1_badge:'⚡ Enter oder Klick',
-  step2_title:'KI analysiert deine Lage',step2_text:'Ein Klick — Claude liest alle Tasks, Deadlines und Stimmung und gibt einen präzisen Aktionsplan. Keine generischen Tipps.',step2_badge:'⚡ Analyse in unter 3 Sekunden',
-  step3_title:'KI-Chat — Gesprächsgedächtnis',step3_text:'Multi-Turn Chat mit vollem Kontext. Die KI kennt alle Tasks, Deadlines und Stimmung — spezifische, keine generischen Antworten.',step3_badge:'💬 Powered by Claude Sonnet',
-  step4_title:'Task erledigt — sofort Belohnung',step4_text:'Task anklicken = erledigt. Kritische Tasks geben 25 XP, mittlere 15, Low 10. Toast-Animation zeigt den Bonus sofort.',step4_badge:'🏆 +25 XP für kritische Tasks',
-  step5_title:'XP & Level — Gamification',step5_text:'10 Level von Rookie bis Legende. Jede Aktion gibt XP. 12 freischaltbare Achievements machen Produktivität zum Spiel.',step5_badge:'⭐ 12 Achievements freischaltbar',
-  step6_title:'Fokus-Timer — 3 Modi',step6_text:'Pomodoro (25 min), Deep Work (50 min) oder Pause (5 min). SVG-Ring, XP-Belohnung nach Abschluss.',step6_badge:'⏱ +20 XP pro Pomodoro',
-  step7_title:'Achievement freigeschaltet!',step7_text:'Achievements bei Meilensteinen — Erste Task, 5 erledigt, Timer-Profi. Jedes Achievement gibt XP und zeigt deinen Fortschritt.',step7_badge:'🏆 12 Achievements insgesamt',
-  greeting:'Guten Morgen, Alex 👋',date_str:'Dienstag, 10. März 2026 · Level 5',stress_lbl:'Stress',
-  task_crit:'Kritisch',task_mid:'Mittel',task_low:'Low',
-  task0:'Präsentation Q4 vorbereiten',task1:'Backend Deploy vorbereiten',task2:'Emails beantworten',
-  new_task_typed:'Code Review vorbereiten',
-  ki_title:'🤖 KI-KRISENANALYSE',ki_text:'Priorität klar: Präsentation Q4 sofort starten — blockiert das Team. Code Review danach (30 min). Deploy 16 Uhr. Du schaffst das.',
-  chat_context:'KI-CHAT · Kontext: 3 Tasks · Stress 78%',chat_you:'Du',
-  chat_q1:'Was soll ich jetzt als erstes machen?',chat_a1:'Präsentation Q4 ist am kritischsten — sie blockiert dein Team. Starte einen 25-min Pomodoro jetzt, keine Ablenkungen.',
-  chat_q2:'Und wenn ich keine Energie hab?',chat_a2:'Dann starte mit Emails (10 min) als Warm-up. Das gibt dir +10 XP und Schwung für die wichtige Arbeit danach.',
-  tab_dash:'Dashboard',tab_chat:'KI-Chat',
-  toast_xp:'+25 XP ⭐ Kritische Task erledigt!',toast_ach:'🏆 Achievement: Streak-König! +50 XP',
-  xp_level:'Level 5 — Profi',ach0:'🎯 Erste Task',ach1:'🔥 5 erledigt',ach2:'⏱ Timer-Profi',ach3:'💪 25 Tasks',ach_new:'🌟 Streak-König',
-  mini_empty:'Füge deine erste Task hinzu ↑',mini_tab_tasks:'⚡ Tasks',mini_tab_level:'🏆 Level',mini_tab_timer:'⏱ Timer',
-  mini_pause:'Pause',mini_start:'► START',mini_pause_btn:'⏸ PAUSE',
-  sessions_lbl:'Sessions',focus_lbl:'Fokus',
-  lvl_names:['Rookie','Lehrling','Fortgeschrittener','Profi','Experte','Meister','Elite','Veteran','Champion','Legende'],
-  player_title:'10-Sekunden <span style="color:var(--red)">Walkthrough</span>',
-  hero_title:'10 SEKUNDEN.<br><em>ALLES KLAR.</em>',
-  int_heading:'Kein Account.<br><span style="color:var(--amber)">Einfach tippen.</span>',
+  pill0:'1. Dashboard',pill1:'2. Add Task',pill2:'3. AI analyzes',pill3:'4. AI Chat',pill4:'5. Task done',pill5:'6. XP rises',pill6:'7. Focus Timer',pill7:'8. Achievement!',
+  step0_title:'Dashboard — Your Overview',step0_text:'DeadlineOS zeigt sofort alle Tasks mit Priority, Stress-Level und XP-Status. Alles auf einen Blick — keine setup.',step0_badge:'🔵 Step 1 von 8',
+  step1_title:'Add Task — Fast',step1_text:'Type a task, choose priority (Low/Medium/Critical) — done. AI instantly calculates a priority score from 1–10.',step1_badge:'⚡ Enter or Click',
+  step2_title:'AI analyzes your situation',step2_text:'One click — Claude reads all tasks, deadlines and mood and gives a precise action plan. No generic tips.',step2_badge:'⚡ Analysis in under 3 seconds',
+  step3_title:'AI Chat — Conversation Memory',step3_text:'Multi-Turn Chat mit vollem context. Die AI knows all tasks, Deadlines und Mood — spezifische, keine generischen Antworten.',step3_badge:'💬 Powered by Claude Sonnet',
+  step4_title:'Task Done — Instant Reward',step4_text:'Click a task = done. Critical tasks give 25 XP, medium 15, Low 10. Toast animation shows the bonus immediately.',step4_badge:'🏆 +25 XP for critical tasks',
+  step5_title:'XP & Level — Gamification',step5_text:'10 levels from Rookie to Legend. Every action gives XP. 12 unlockable achievements make productivity a game.',step5_badge:'⭐ 12 achievements unlockable',
+  step6_title:'Focus Timer — 3 Modi',step6_text:'Pomodoro (25 min), Deep Work (50 min) or Break (5 min). SVG ring, XP reward after completion.',step6_badge:'⏱ +20 XP pro Pomodoro',
+  step7_title:'Achievement Unlocked!',step7_text:'Achievements bei milestoneen — First Task, 5 done, Timer-Pro. Jedes Achievement gibt XP und zeigt deinen progress.',step7_badge:'🏆 12 Achievements insgesamt',
+  greeting:'Good morning, Alex 👋',date_str:'Tuesday, March 10, 2026 · Level 5',stress_lbl:'Stress',
+  task_crit:'Critical',task_mid:'Medium',task_low:'Low',
+  task0:'Prepare Q4 presentation',task1:'Prepare backend deploy',task2:'Answer emails',
+  new_task_typed:'Prepare code review',
+  ki_title:'🤖 AI CRISIS ANALYSIS',ki_text:'Priority klar: Q4 Presentation sofort starten — blockiert das Team. Code Review danach (30 min). Deploy 16 Uhr. Du schaffst das.',
+  chat_context:'AI CHAT · Context: 3 Tasks · Stress 78%',chat_you:'You',
+  chat_q1:'What should I do first right now?',chat_a1:'Q4 Presentation ist am kritischsten — sie blockiert dein Team. Starte einen 25-min Pomodoro jetzt, keine distractions.',
+  chat_q2:'Und wenn ich keine Energy hab?',chat_a2:'Then start with emails (10 min) as a warm-up. That gives you +10 XP and momentum for the important work after.',
+  tab_dash:'Dashboard',tab_chat:'AI Chat',
+  toast_xp:'+25 XP ⭐ Criticale Task done!',toast_ach:'🏆 Achievement: Streak King! +50 XP',
+  xp_level:'Level 5 — Pro',ach0:'🎯 First Task',ach1:'🔥 5 done',ach2:'⏱ Timer-Pro',ach3:'💪 25 Tasks',ach_new:'🌟 Streak King',
+  mini_empty:'Add your first task ↑',mini_tab_tasks:'⚡ Tasks',mini_tab_level:'🏆 Level',mini_tab_timer:'⏱ Timer',
+  mini_pause:'Break',mini_start:'► START',mini_pause_btn:'⏸ PAUSE',
+  sessions_lbl:'Sessions',focus_lbl:'Focus',
+  lvl_names:['Rookie','Apprentice','Advanced','Pro','Expert','Master','Elite','Veteran','Champion','Legend'],
+  player_title:'10-Second <span style="color:var(--red)">Walkthrough</span>',
+  hero_title:'10 SECONDS.<br><em>ALL CLEAR.</em>',
+  int_heading:'No account.<br><span style="color:var(--amber)">Just type.</span>',
 },
 en:{
   page_badge:'Live Demo',page_sub:'Automatic walkthrough of all 8 features — no account, no setup.',
@@ -552,13 +552,13 @@ en:{
 }};
 function _t(k){return(_T[_lang]||_T.de)[k]||k;}
 
-function subToggleLang(){_lang=_lang==='de'?'en':'de';_DB.set('dos3-lang',_lang);_applySubLang();}
+function subToggleLang(){_lang=_lang==='xx'?'en':'de';_DB.set('dos3-lang',_lang);_applySubLang();}
 
 function _applySubLang(){
   const L=_T[_lang]||_T.de;
   document.documentElement.lang=_lang;
-  document.querySelectorAll('.sub-lang-flag').forEach(el=>el.textContent=_lang==='de'?'🇩🇪':'🇬🇧');
-  document.querySelectorAll('.sub-lang-lbl').forEach(el=>el.textContent=_lang==='de'?'DE':'EN');
+  document.querySelectorAll('.sub-lang-flag').forEach(el=>el.textContent=_lang==='xx'?'🇬🇧':'🇩🇪');
+  document.querySelectorAll('.sub-lang-lbl').forEach(el=>el.textContent=_lang==='xx'?'EN':'DE');
   document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(L[k]!==undefined)el.textContent=L[k];});
   document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.getAttribute('data-i18n-html');if(L[k]!==undefined)el.innerHTML=L[k];});
   // Dynamic elements
@@ -591,7 +591,7 @@ function _applySubLang(){
   setT('mini_pause_lbl',L.mini_pause);
   setT('whathappens_title',L.whathappens);
   for(let i=1;i<=5;i++){setT('int_p'+i,L['int_p'+i]);}
-  const inp=document.getElementById('taskInp');if(inp)inp.placeholder=_lang==='de'?'Task eingeben...':'Enter task...';
+  const inp=document.getElementById('tasAInp');if(inp)inp.placeholder=_lang==='xx'?'Enter task...':'Enter task...';
   setT('prio_low',L.task_low);setT('prio_mid',L.task_mid);setT('prio_hi',L.task_crit);
   // Mini achievements
   setT('ma0',L.ach0);setT('ma1',L.ach1);setT('ma2',L.ach2);setT('ma3',L.ach3);
@@ -731,7 +731,7 @@ const MLVL_MAXS=[100,250,500,1000,2000,4000,7000,11000,16000,99999];
 function miniTab(idx,el){document.querySelectorAll('.mat').forEach(t=>t.classList.remove('on'));el.classList.add('on');document.querySelectorAll('.mini-panel').forEach(p=>p.classList.remove('on'));document.getElementById('mp'+idx).classList.add('on');}
 function miniP(p,el){mPrio=p;document.querySelectorAll('.ps').forEach(x=>x.classList.remove('on'));el.classList.add('on');}
 function miniAdd(){
-  const inp=document.getElementById('taskInp'),txt=inp.value.trim();if(!txt)return;
+  const inp=document.getElementById('tasAInp'),txt=inp.value.trim();if(!txt)return;
   const xpMap={1:10,2:15,3:25};
   mTasks.push({txt,prio:mPrio,done:false});
   mXP+=xpMap[mPrio];inp.value='';

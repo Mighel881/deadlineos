@@ -1,11 +1,11 @@
-<!-- © 2026 Mighel Wagner · DeadlineOS · Alle Rechte vorbehalten · Weitergabe ohne Genehmigung untersagt -->
+<!-- © 2026 Mighel Wagner · DeadlineOS · All rights reserved · Redistribution without permission prohibited -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="copyright" content="© 2026 Mighel Wagner. Alle Rechte vorbehalten.">
+<meta name="copyright" content="© 2026 Mighel Wagner. All rights reserved.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>404 — Seite nicht gefunden · DeadlineOS</title>
+<title>404 — Page not found · DeadlineOS</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%2307080f'/><text x='50' y='68' font-size='58' text-anchor='middle' font-family='monospace' fill='%23ff1f3d'>D</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
 <style>
@@ -68,16 +68,16 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;background:re
   <button onclick="subToggleLang()" style="display:flex;align-items:center;gap:5px;padding:5px 11px;border:1px solid var(--c6);border-radius:3px;background:transparent;color:var(--t2);font-family:var(--fd);font-size:10px;letter-spacing:1.5px;cursor:pointer;transition:all .2s" onmouseover="this.style.borderColor='var(--ice)';this.style.color='var(--ice)'" onmouseout="this.style.borderColor='var(--c6)';this.style.color='var(--t2)'"><span class="sub-lang-flag">🇩🇪</span> <span class="sub-lang-lbl">DE</span></button>
 <a href="deadlineos-landing-v2.html" class="nl" style="margin-right:auto">Deadline<em>OS</em></a>
 </nav>
-<div class="err-label" data-i18n="err_label">Fehler aufgetreten</div>
+<div class="err-label" data-i18n="err_label">Error aufgetreten</div>
 <div class="err-code">404</div>
-<h1 class="err-title" data-i18n="err_title">Seite nicht gefunden.</h1>
-<p class="err-sub" data-i18n="err_sub">Diese Seite existiert nicht — oder wurde verschoben. Kein Chaos, einfach zurück.</p>
+<h1 class="err-title" data-i18n="err_title">Page not found.</h1>
+<p class="err-sub" data-i18n="err_sub">This page does not exist — or was moved. No chaos, just go back.</p>
 <div class="err-btns">
-  <a href="deadlineos-landing-v2.html" class="btn-r" data-i18n="btn_home">← Zurück zur Startseite</a>
-  <a href="deadlineos-v3.html" target="_blank" class="btn-g" data-i18n="btn_app">▶ App öffnen</a>
+  <a href="deadlineos-landing-v2.html" class="btn-r" data-i18n="btn_home">← Back zur Home</a>
+  <a href="deadlineos-v3.html" target="_blank" class="btn-g" data-i18n="btn_app">▶ Open App</a>
   <a href="dos-demo.html" class="btn-g" data-i18n="nav_demo">Demo</a>
 </div>
-<div class="countdown">Weiterleitung in <span id="ct">10</span>s</div>
+<div class="countdown">Nextleitung in <span id="ct">10</span>s</div>
 <script>
 const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
 let mx=0,my=0,rx=0,ry=0;
@@ -106,14 +106,14 @@ document.addEventListener('click',function(e){
 const _DB={get:(k,d)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch{return d}},set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))};
 let _lang=_DB.get('dos3-lang',null);
 if(!_lang){_lang='en';_DB.set('dos3-lang',_lang);}
-const _T={de:{"err_label": "Fehler aufgetreten", "err_title": "Seite nicht gefunden.", "err_sub": "Diese Seite existiert nicht — oder wurde verschoben. Kein Chaos, einfach zurück.", "btn_home": "← Zurück zur Startseite", "btn_app": "▶ App öffnen", "btn_demo": "Demo", "countdown_txt": "Weiterleitung in", "countdown_suf": "s", "nav_home": "← Startseite", "nav_app": "App →", "nav_features": "Features", "nav_pricing": "Preise", "nav_roadmap": "Roadmap", "nav_compare": "Vergleich", "nav_demo": "Demo", "footer_copy": "© 2026 Mighel Wagner · DeadlineOS · Alle Rechte vorbehalten", "footer_col1": "Produkt", "footer_col2": "Info", "footer_col3": "Kontakt", "footer_privacy": "Datenschutz", "footer_faq": "FAQ", "footer_how": "Wie es funktioniert"},en:{"err_label": "Error occurred", "err_title": "Page not found.", "err_sub": "This page does not exist — or was moved. No chaos, just go back.", "btn_home": "← Back to Homepage", "btn_app": "▶ Open App", "btn_demo": "Demo", "countdown_txt": "Redirecting in", "countdown_suf": "s", "nav_home": "← Home", "nav_app": "App →", "nav_features": "Features", "nav_pricing": "Pricing", "nav_roadmap": "Roadmap", "nav_compare": "Compare", "nav_demo": "Demo", "footer_copy": "© 2026 Mighel Wagner · DeadlineOS · All rights reserved", "footer_col1": "Product", "footer_col2": "Info", "footer_col3": "Contact", "footer_privacy": "Privacy", "footer_faq": "FAQ", "footer_how": "How it works"}};
+const _T={de:{"err_label": "Error occurred", "err_title": "Page not found.", "err_sub": "This page does not exist — or was moved. No chaos, just go back.", "btn_home": "← Back to Homepage", "btn_app": "▶ Open App", "btn_demo": "Demo", "countdown_txt": "Nextleitung in", "countdown_suf": "s", "nav_home": "← Home", "nav_app": "App →", "nav_features": "Features", "nav_pricing": "Pricing", "nav_roadmap": "Roadmap", "nav_compare": "Compare", "nav_demo": "Demo", "footer_copy": "© 2026 Mighel Wagner · DeadlineOS · All rights reserved", "footer_col1": "Product", "footer_col2": "Info", "footer_col3": "Contact", "footer_privacy": "Privacy", "footer_faq": "FAQ", "footer_how": "How it works"},en:{"err_label": "Error occurred", "err_title": "Page not found.", "err_sub": "This page does not exist — or was moved. No chaos, just go back.", "btn_home": "← Back to Homepage", "btn_app": "▶ Open App", "btn_demo": "Demo", "countdown_txt": "Redirecting in", "countdown_suf": "s", "nav_home": "← Home", "nav_app": "App →", "nav_features": "Features", "nav_pricing": "Pricing", "nav_roadmap": "Roadmap", "nav_compare": "Compare", "nav_demo": "Demo", "footer_copy": "© 2026 Mighel Wagner · DeadlineOS · All rights reserved", "footer_col1": "Product", "footer_col2": "Info", "footer_col3": "Contact", "footer_privacy": "Privacy", "footer_faq": "FAQ", "footer_how": "How it works"}};
 function _t(k){return(_T[_lang]||_T.de)[k]||k;}
-function subToggleLang(){_lang=_lang==='de'?'en':'de';_DB.set('dos3-lang',_lang);_applySubLang();}
+function subToggleLang(){_lang=_lang==='xx'?'en':'de';_DB.set('dos3-lang',_lang);_applySubLang();}
 function _applySubLang(){
   const L=_T[_lang];
   document.documentElement.lang=_lang;
-  document.querySelectorAll('.sub-lang-flag').forEach(el=>el.textContent=_lang==='de'?'🇩🇪':'🇬🇧');
-  document.querySelectorAll('.sub-lang-lbl').forEach(el=>el.textContent=_lang==='de'?'DE':'EN');
+  document.querySelectorAll('.sub-lang-flag').forEach(el=>el.textContent=_lang==='xx'?'🇩🇪':'🇬🇧');
+  document.querySelectorAll('.sub-lang-lbl').forEach(el=>el.textContent=_lang==='xx'?'DE':'EN');
   document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(L[k]!==undefined)el.textContent=L[k];});
   document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.getAttribute('data-i18n-html');if(L[k]!==undefined)el.innerHTML=L[k];});
   if(typeof _pageTranslate==='function')_pageTranslate(_lang,L);
