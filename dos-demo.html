@@ -241,12 +241,12 @@ footer{padding:56px 0 28px;border-top:1px solid var(--c5)}
     <li><a href="dos-demo.html" class="on" data-i18n="nav_demo" data-i18n="nav_demo">Demo</a></li>
   </ul>
   <div class="nr">
-    <button class="lang-toggle" onclick="subToggleLang()"><span class="sub-lang-flag">&#127465;&#127466;</span> <span class="sub-lang-lbl">DE</span></button>
+    <span style="font-size:10px;opacity:0.5;letter-spacing:1px;text-transform:uppercase;">🌍 More languages coming soon</span>
     <a href="index.html" class="nbg" data-i18n="nav_home">Home</a>
     <a href="deadlineos-v3.html" target="_blank" class="nbr" data-i18n="nav_app">App &#246;ffnen &#8594;</a>
   </div>
-<div class="nav-r"><button class="lang-btn" onclick="subToggleLang()" title="Toggle language"><span class="sub-lang-flag">🇬🇧</span><span class="sub-lang-lbl">EN</span></button><div class="ham" id="ham-btn" onclick="_hamToggle()"><span></span><span></span><span></span></div></div></nav>
-<nav class="mob-menu" id="mob-menu"><a href="dos-features.html" data-i18n="nav_features">Features</a><a href="dos-pricing.html" data-i18n="nav_pricing" data-i18n="nav_pricing">Pricing</a><a href="dos-roadmap.html" data-i18n="nav_roadmap">Roadmap</a><a href="dos-compare.html" data-i18n="nav_compare" data-i18n="nav_compare">Compare</a><a href="dos-demo.html" data-i18n="nav_demo">Demo</a><button class="mob-lang" onclick="subToggleLang()"><span class="sub-lang-flag">🇬🇧</span> <span class="sub-lang-lbl">EN</span></button></nav>
+<div class="nav-r"><div class="ham" id="ham-btn" onclick="_hamToggle()"><span></span><span></span><span></span></div></div></nav>
+<nav class="mob-menu" id="mob-menu"><a href="dos-features.html" data-i18n="nav_features">Features</a><a href="dos-pricing.html" data-i18n="nav_pricing" data-i18n="nav_pricing">Pricing</a><a href="dos-roadmap.html" data-i18n="nav_roadmap">Roadmap</a><a href="dos-compare.html" data-i18n="nav_compare" data-i18n="nav_compare">Compare</a><a href="dos-demo.html" data-i18n="nav_demo">Demo</a></nav>
 <section id="hero">
   <div class="hgrid"></div><div class="blob b1"></div><div class="blob b2"></div>
   <div class="w">
@@ -446,7 +446,8 @@ footer{padding:56px 0 28px;border-top:1px solid var(--c5)}
       <div class="f-col"><h4 data-i18n="footer_col2" data-i18n="footer_col2">Info</h4><a href="dos-compare.html" data-i18n="nav_compare" data-i18n="nav_compare" data-i18n="nav_compare">Compare</a><a href="privacy.html" data-i18n="footer_privacy" data-i18n="footer_privacy">Privacy</a></div>
       <div class="f-col"><h4 data-i18n="footer_col3" data-i18n="footer_col3">Contact</h4><a href="mailto:hallo@deadlineos.app">hallo@deadlineos.app</a><a href="https://x.com/Mighel88" target="_blank" rel="noopener">&#119987; Twitter</a><a href="https://github.com/Mighel881" target="_blank" rel="noopener">&#9095; GitHub</a><a href="https://discord.com/users/338736053743517696" target="_blank" rel="noopener">&#9672; Discord</a></div>
     </div>
-    <div class="f-btm"><p class="f-copy" data-i18n="footer_copy">&#169; 2026 Mighel Wagner &#183; DeadlineOS &#183; All rights reserved</p><div class="f-socs"><a class="fsoc" href="https://x.com/Mighel88" target="_blank">&#119987;</a><a class="fsoc" href="https://github.com/Mighel881" target="_blank">&#9095;</a><a class="fsoc" href="https://discord.com/users/338736053743517696" target="_blank">&#9672;</a></div></div>
+    <div class="f-btm"><p class="f-copy" data-i18n="footer_copy">&#169; 2026 Mighel Wagner &#183; DeadlineOS &#183; All rights reserved</p>
+      <p style="font-size:11px;opacity:0.4;margin-top:8px;letter-spacing:1px;">🌍 More languages coming soon — Spanish, French, German &amp; more</p><div class="f-socs"><a class="fsoc" href="https://x.com/Mighel88" target="_blank">&#119987;</a><a class="fsoc" href="https://github.com/Mighel881" target="_blank">&#9095;</a><a class="fsoc" href="https://discord.com/users/338736053743517696" target="_blank">&#9672;</a></div></div>
     <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid var(--c5);opacity:.55">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 34" width="20" height="14"><path d="M4 5 L18 17 L4 29" fill="none" stroke="#2c3a4a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 5 L36 17" fill="none" stroke="#2c3a4a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 17 L22 29" fill="none" stroke="#3ec96a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span style="font-size:9px;color:#2c3a4a;letter-spacing:1px" data-i18n="footer_hackathon">Hackathon Edition &#183; made with &#9829; for TestSprite Hackathon</span>
@@ -464,51 +465,9 @@ document.querySelectorAll('[data-r]').forEach(el=>ro.observe(el));
 
 /* I18N */
 const _DB={get:(k,d)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch{return d}},set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))};
-let _lang=_DB.get('dos3-lang',null);
-if(!_lang){_lang='en';_DB.set('dos3-lang',_lang);}
+const _lang='en';
 
 const _T={
-de:{
-  page_badge:'Live Demo',page_sub:'Automatischer Walkthrough — no account, no setup.',
-  btn_play:'► AUTO-PLAY',btn_pause:'⏸ PAUSE',btn_prev:'← Back',btn_next:'Next →',btn_reset:'↺ Reset',btn_try:'Try it yourself ↓',
-  nav_home:'Home',nav_app:'Open App →',nav_features:'Features',nav_pricing:'Pricing',nav_roadmap:'Roadmap',nav_compare:'Compare',nav_demo:'Demo',
-  player_sub:'Click a step — or press Play for the automatic walkthrough',
-  interactive_title:'Try it yourself',interactive_sub:'Add tasks, complete them, start the timer — all live right here.',
-  whathappens:'What happens:',int_p1:'Add a task: +10/15/25 XP by priority',int_p2:'Click a task = done + bonus XP',int_p3:'Achievements after 1, 3 and 5 tasks',int_p4:'Complete a timer: +20 XP per session',int_p5:'Data stays local — no account needed',
-  cta_app:'Full App →',cta_features:'All Features',
-  footer_tagline:'The first browser OS for crisis management. AI-powered. Real-time. Unstoppable.',
-  footer_quote:'"Every app shows you tasks. DeadlineOS decides with you."',
-  footer_col1:'Product',footer_col2:'Info',footer_col3:'Contact',footer_privacy:'Privacy',
-  footer_copy:'© 2026 Mighel Wagner · DeadlineOS · All rights reserved',
-  footer_hackathon:'Hackathon Edition · made with ♥ for TestSprite Hackathon',
-  pill0:'1. Dashboard',pill1:'2. Add Task',pill2:'3. AI analyzes',pill3:'4. AI Chat',pill4:'5. Task done',pill5:'6. XP rises',pill6:'7. Focus Timer',pill7:'8. Achievement!',
-  step0_title:'Dashboard — Your Overview',step0_text:'DeadlineOS zeigt sofort alle Tasks mit Priority, Stress-Level und XP-Status. Alles auf einen Blick — keine setup.',step0_badge:'🔵 Step 1 von 8',
-  step1_title:'Add Task — Fast',step1_text:'Type a task, choose priority (Low/Medium/Critical) — done. AI instantly calculates a priority score from 1–10.',step1_badge:'⚡ Enter or Click',
-  step2_title:'AI analyzes your situation',step2_text:'One click — Claude reads all tasks, deadlines and mood and gives a precise action plan. No generic tips.',step2_badge:'⚡ Analysis in under 3 seconds',
-  step3_title:'AI Chat — Conversation Memory',step3_text:'Multi-Turn Chat mit vollem context. Die AI knows all tasks, Deadlines und Mood — spezifische, keine generischen Antworten.',step3_badge:'💬 Powered by Claude Sonnet',
-  step4_title:'Task Done — Instant Reward',step4_text:'Click a task = done. Critical tasks give 25 XP, medium 15, Low 10. Toast animation shows the bonus immediately.',step4_badge:'🏆 +25 XP for critical tasks',
-  step5_title:'XP & Level — Gamification',step5_text:'10 levels from Rookie to Legend. Every action gives XP. 12 unlockable achievements make productivity a game.',step5_badge:'⭐ 12 achievements unlockable',
-  step6_title:'Focus Timer — 3 Modi',step6_text:'Pomodoro (25 min), Deep Work (50 min) or Break (5 min). SVG ring, XP reward after completion.',step6_badge:'⏱ +20 XP pro Pomodoro',
-  step7_title:'Achievement Unlocked!',step7_text:'Achievements bei milestoneen — First Task, 5 done, Timer-Pro. Jedes Achievement gibt XP und zeigt deinen progress.',step7_badge:'🏆 12 Achievements insgesamt',
-  greeting:'Good morning, Alex 👋',date_str:'Tuesday, March 10, 2026 · Level 5',stress_lbl:'Stress',
-  task_crit:'Critical',task_mid:'Medium',task_low:'Low',
-  task0:'Prepare Q4 presentation',task1:'Prepare backend deploy',task2:'Answer emails',
-  new_task_typed:'Prepare code review',
-  ki_title:'🤖 AI CRISIS ANALYSIS',ki_text:'Priority klar: Q4 Presentation sofort starten — blockiert das Team. Code Review danach (30 min). Deploy 16 Uhr. Du schaffst das.',
-  chat_context:'AI CHAT · Context: 3 Tasks · Stress 78%',chat_you:'You',
-  chat_q1:'What should I do first right now?',chat_a1:'Q4 Presentation ist am kritischsten — sie blockiert dein Team. Starte einen 25-min Pomodoro jetzt, keine distractions.',
-  chat_q2:'Und wenn ich keine Energy hab?',chat_a2:'Then start with emails (10 min) as a warm-up. That gives you +10 XP and momentum for the important work after.',
-  tab_dash:'Dashboard',tab_chat:'AI Chat',
-  toast_xp:'+25 XP ⭐ Criticale Task done!',toast_ach:'🏆 Achievement: Streak King! +50 XP',
-  xp_level:'Level 5 — Pro',ach0:'🎯 First Task',ach1:'🔥 5 done',ach2:'⏱ Timer-Pro',ach3:'💪 25 Tasks',ach_new:'🌟 Streak King',
-  mini_empty:'Add your first task ↑',mini_tab_tasks:'⚡ Tasks',mini_tab_level:'🏆 Level',mini_tab_timer:'⏱ Timer',
-  mini_pause:'Break',mini_start:'► START',mini_pause_btn:'⏸ PAUSE',
-  sessions_lbl:'Sessions',focus_lbl:'Focus',
-  lvl_names:['Rookie','Apprentice','Advanced','Pro','Expert','Master','Elite','Veteran','Champion','Legend'],
-  player_title:'10-Second <span style="color:var(--red)">Walkthrough</span>',
-  hero_title:'10 SECONDS.<br><em>ALL CLEAR.</em>',
-  int_heading:'No account.<br><span style="color:var(--amber)">Just type.</span>',
-},
 en:{
   page_badge:'Live Demo',page_sub:'Automatic walkthrough of all 8 features — no account, no setup.',
   btn_play:'► AUTO-PLAY',btn_pause:'⏸ PAUSE',btn_prev:'← Back',btn_next:'Next →',btn_reset:'↺ Reset',btn_try:'Try it yourself ↓',
@@ -550,13 +509,12 @@ en:{
   hero_title:'10 SECONDS.<br><em>ALL CLEAR.</em>',
   int_heading:'No account.<br><span style="color:var(--amber)">Just type.</span>',
 }};
-function _t(k){return(_T[_lang]||_T.de)[k]||k;}
+function _t(k){return _T.en[k]||k;}
 
-function subToggleLang(){_lang=_lang==='xx'?'en':'de';_DB.set('dos3-lang',_lang);_applySubLang();}
 
 function _applySubLang(){
-  const L=_T[_lang]||_T.de;
-  document.documentElement.lang=_lang;
+  const L=_T.en;
+  document.documentElement.lang='en';
   document.querySelectorAll('.sub-lang-flag').forEach(el=>el.textContent=_lang==='xx'?'🇬🇧':'🇩🇪');
   document.querySelectorAll('.sub-lang-lbl').forEach(el=>el.textContent=_lang==='xx'?'EN':'DE');
   document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(L[k]!==undefined)el.textContent=L[k];});
@@ -619,7 +577,7 @@ const STEP_BSTYLES=[
 const STEP_ICONS=['📊','➕','🤖','💬','✅','🏆','⏱','🌟'];
 
 function runAction(n){
-  const L=_T[_lang]||_T.de;
+  const L=_T.en;
   if(n===0){animStress(0,78);}
   else if(n===1){
     const row=document.getElementById('newTaskRow'),txt=document.getElementById('newTaskText'),sc=document.getElementById('newTaskScore');
@@ -644,7 +602,7 @@ function runAction(n){
 
 function goStep(n){
   n=Math.max(0,Math.min(7,n));curStep=n;
-  const L=_T[_lang]||_T.de;
+  const L=_T.en;
   document.querySelectorAll('.sp').forEach((p,i)=>p.classList.toggle('on',i===n));
   document.querySelectorAll('.tl-step-lbl').forEach((l,i)=>l.classList.toggle('on',i===n));
   const pct=n/7*100;
@@ -721,7 +679,7 @@ function startDemoTimer(){
     const d=document.getElementById('demoTimerDisp');if(d)d.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
     const r=document.getElementById('demoTimerRing');if(r)r.style.strokeDashoffset=String(CIRC*(1-demoTSec/TOTAL));
   },1000);
-  const L=_T[_lang]||_T.de;
+  const L=_T.en;
   const ds=document.getElementById('demoSessions');if(ds)ds.textContent=L.sessions_lbl+': 1 · '+L.focus_lbl+': 0 min';
 }
 
@@ -747,7 +705,7 @@ function mToggle(i){
   mRender();mUpdateXP();
 }
 function mRender(){
-  const L=_T[_lang]||_T.de;
+  const L=_T.en;
   const list=document.getElementById('miniTaskList');
   if(!mTasks.length){list.innerHTML='<div style="text-align:center;padding:16px 0;font-size:10px;color:var(--t3)">'+L.mini_empty+'</div>';return;}
   const cols={1:'var(--lime)',2:'var(--amber)',3:'var(--red)'};
@@ -756,7 +714,7 @@ function mRender(){
   list.innerHTML=mTasks.map((t,i)=>`<div class="mt${t.done?' done':''}" onclick="mToggle(${i})"><div class="mtdot" style="background:${cols[t.prio]}"></div><div class="mttxt">${t.txt}</div><span style="font-size:8px;color:${pColors[t.prio]};flex-shrink:0">${pLabels[t.prio]}</span></div>`).join('');
 }
 function mUpdateXP(){
-  const L=_T[_lang]||_T.de;
+  const L=_T.en;
   const names=L.lvl_names||['Rookie','Apprentice','Advanced','Pro','Expert','Master','Elite','Veteran','Champion','Legend'];
   let lvl=0;for(let i=0;i<MLVL_MAXS.length;i++){if(mXP<MLVL_MAXS[i]){lvl=i+1;break;}if(i===MLVL_MAXS.length-1)lvl=MLVL_MAXS.length;}
   const prev=lvl>1?MLVL_MAXS[lvl-2]:0;
@@ -774,7 +732,7 @@ function mAch(i){const el=document.getElementById('ma'+i);if(el&&!el.classList.c
 function miniMode(idx,el,mins){
   document.querySelectorAll('.mmode').forEach(m=>m.classList.remove('on'));el.classList.add('on');
   miniTimerReset();mTimerDur=mins*60;mTimerSec=mTimerDur;
-  const L=_T[_lang]||_T.de;
+  const L=_T.en;
   const names={25:'POMODORO',50:'DEEP WORK',5:(L.mini_pause||'Break').toUpperCase()};
   const sub=document.getElementById('miniTimerSub');if(sub)sub.textContent=names[mins]||'TIMER';
   const m=Math.floor(mTimerSec/60),s=mTimerSec%60;
@@ -782,7 +740,7 @@ function miniMode(idx,el,mins){
   const r=document.getElementById('miniRing');if(r)r.style.strokeDashoffset='0';
 }
 function miniTimerToggle(){
-  const L=_T[_lang]||_T.de;
+  const L=_T.en;
   const sb=document.getElementById('miniStartBtn');
   if(mTimerOn){mTimerOn=false;if(sb)sb.textContent=L.mini_start;clearInterval(mTimerIv);}
   else{
@@ -803,7 +761,7 @@ function miniTimerToggle(){
   }
 }
 function miniTimerReset(){
-  const L=_T[_lang]||_T.de;
+  const L=_T.en;
   mTimerOn=false;clearInterval(mTimerIv);
   const sb=document.getElementById('miniStartBtn');if(sb)sb.textContent=L.mini_start;
   mTimerSec=mTimerDur;

@@ -87,8 +87,8 @@ footer{padding:36px 0 28px;border-top:1px solid var(--c5);margin-top:0}
     <a href="deadlineos-landing-v2.html" class="nbg">← Home</a>
     <a href="deadlineos-v3.html" target="_blank" class="nbr">App →</a>
   </div>
-<div class="nav-r"><button class="lang-btn" onclick="subToggleLang()" title="Toggle language"><span class="sub-lang-flag">🇬🇧</span><span class="sub-lang-lbl">EN</span></button><div class="ham" id="ham-btn" onclick="_hamToggle()"><span></span><span></span><span></span></div></div></nav>
-<nav class="mob-menu" id="mob-menu"><a href="dos-features.html" data-i18n="nav_features">Features</a><a href="dos-pricing.html" data-i18n="nav_pricing">Pricing</a><a href="dos-roadmap.html" data-i18n="nav_roadmap">Roadmap</a><a href="dos-compare.html" data-i18n="nav_compare">Compare</a><a href="dos-demo.html" data-i18n="nav_demo">Demo</a><button class="mob-lang" onclick="subToggleLang()"><span class="sub-lang-flag">🇬🇧</span> <span class="sub-lang-lbl">EN</span></button></nav>
+<div class="nav-r"><div class="ham" id="ham-btn" onclick="_hamToggle()"><span></span><span></span><span></span></div></div></nav>
+<nav class="mob-menu" id="mob-menu"><a href="dos-features.html" data-i18n="nav_features">Features</a><a href="dos-pricing.html" data-i18n="nav_pricing">Pricing</a><a href="dos-roadmap.html" data-i18n="nav_roadmap">Roadmap</a><a href="dos-compare.html" data-i18n="nav_compare">Compare</a><a href="dos-demo.html" data-i18n="nav_demo">Demo</a></nav>
 
 <div class="w">
   <div class="page-badge" data-i18n="page_badge">🔒 Privacy</div>
@@ -186,6 +186,7 @@ footer{padding:36px 0 28px;border-top:1px solid var(--c5);margin-top:0}
     </div>
     <div class="f-btm">
       <p class="f-copy">© 2026 Mighel Wagner · DeadlineOS · All rights reserved</p>
+      <p style="font-size:11px;opacity:0.4;margin-top:8px;letter-spacing:1px;">🌍 More languages coming soon — Spanish, French, German &amp; more</p>
       <div class="f-socs">
         <a class="fsoc" href="https://x.com/Mighel88" target="_blank" rel="noopener">𝕏</a>
         <a class="fsoc" href="https://github.com/Mighel881" target="_blank" rel="noopener">⌥</a>
@@ -197,31 +198,8 @@ footer{padding:36px 0 28px;border-top:1px solid var(--c5);margin-top:0}
 <script>
 /* DeadlineOS i18n © 2026 Mighel Wagner */
 const _DB={get:(k,d)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch{return d}},set:(k,v)=>localStorage.setItem(k,JSON.stringify(v))};
-let _lang=_DB.get('dos3-lang','en');
+const _lang='en';
 const _T={
-de:{
-  page_badge:'🔒 Privacy',page_title:'YOUR DATA.<br>YOUR CONTROL.',page_sub:'DeadlineOS is built so that your data never touches our servers.',
-  hb_title:'⚡ The Short Version',hb_text:'All data (tasks, notes, settings, chat history) is stored exclusively in your browser — via <code>localStorage</code>. We have no server that knows your data.',
-  h_what:'What We Store',p_what:'DeadlineOS stores the following data <strong>exclusively locally in your browser</strong> (localStorage):',
-  li1:'Tasks, priorities, completion status',li2:'Notes and daily plan entries',li3:'Mood, Energy, mood-tracking data',li4:'XP, level, achievement status',
-  li5:'AI chat history (letzte 8 Nachrichten)',li6:'Prole names and PINs (hashed in browser)',li7:'Timer-Sessions und Focus statistics',li8:'Farbtheme und UI-Settings',
-  p_what2:'This data does not leave your browser. It is not transmitted to us, not analyzed, not sold.',
-  h_ai:'AI features und Anthropic API',p_ai1:'Wenn du AI features nutzt, wird eine Anfrage direkt von deinem Browser an die <a href="https://anthropic.com" target="_blank">Anthropic API</a> gesendet.',
-  ai_li1:'Your task list (text, priorities)',ai_li2:'Dein aktuelles Stress-Level und Energy level',ai_li3:'Deine Mood (als generische Bezeichnung wie "gut" oder "gestresst")',ai_li4:'The chat history of the current session',
-  p_ai2:'This data is subject to the <a href="https://anthropic.com/privacy" target="_blank">Anthropic Privacy Policy</a>.',p_ai3:'Your API key is only used in your browser.',
-  h_cookies:'Cookies',p_cookies:'DeadlineOS does not use cookies. There are no tracking pixels, no analytics scripts, no advertising.',
-  h_third:'Third parties',th_li1:'<strong>Google Fonts CDN</strong> — Loads fonts. Google may see the browser's IP address.',th_li2:'<strong>Anthropic API</strong> — Nur wenn AI features aktiv genutzt werden.',
-  p_third:'Keine weiteren Third parties. Kein Facebook, kein Google Analytics.',
-  h_del:'Data deletion',p_del:'Since all data is stored locally, you can delete it yourself at any time:',
-  del_li1:'Browser → Settings → Delete website data → <code>deadlineos.app</code>',del_li2:'Oder in der App: Profile → Settings → Delete all data',
-  p_del2:'There is no data on our servers that would need to be deleted.',
-  h_kids:'Children',p_kids:'DeadlineOS is intended for users aged 16 and over.',
-  h_changes:'Changes',p_changes:'If this Privacy Policy changes, we will update the date below.',
-  h_contact:'Contact',p_contact:'For questions: <a href="mailto:hallo@deadlineos.app">hallo@deadlineos.app</a>',
-  last_updated:'Last updated: March 2026 · DeadlineOS Hackathon Edition',
-  nav_features:'Features',nav_pricing:'Pricing',nav_roadmap:'Roadmap',nav_compare:'Compare',nav_demo:'Demo',nav_app_start:'Launch App',nav_privacy:'Privacy',
-  footer_col1:'Product',footer_col2:'Info',footer_col3:'Contact',footer_copy_end:'All rights reserved'
-},
 en:{
   page_badge:'🔒 Privacy Policy',page_title:'YOUR DATA.<br>YOUR CONTROL.',page_sub:'DeadlineOS is built so that your data never touches our servers.',
   hb_title:'⚡ The Short Version',hb_text:'All data (tasks, notes, settings, chat history) is stored exclusively in your browser — via <code>localStorage</code>. We have no server that knows your data.',
@@ -245,10 +223,9 @@ en:{
   nav_features:'Features',nav_pricing:'Pricing',nav_roadmap:'Roadmap',nav_compare:'Compare',nav_demo:'Demo',nav_app_start:'Launch App',nav_privacy:'Privacy',
   footer_col1:'Product',footer_col2:'Info',footer_col3:'Contact',footer_copy_end:'All rights reserved'
 }};
-function subToggleLang(){_lang=_lang==='xx'?'en':'de';_DB.set('dos3-lang',_lang);_applySubLang();}
 function _applySubLang(){
-  const L=_T[_lang];
-  document.documentElement.lang=_lang;
+  const L=_T.en;
+  document.documentElement.lang='en';
   document.querySelectorAll('.sub-lang-flag').forEach(el=>el.textContent=_lang==='xx'?'🇩🇪':'🇬🇧');
   document.querySelectorAll('.sub-lang-lbl').forEach(el=>el.textContent=_lang==='xx'?'DE':'EN');
   document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(L[k]!==undefined)el.textContent=L[k];});

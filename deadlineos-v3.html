@@ -1,6 +1,6 @@
 <!-- © 2026 Mighel Wagner · DeadlineOS · All rights reserved · Redistribution without permission prohibited -->
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="copyright" content="© 2026 Mighel Wagner. All rights reserved.">
@@ -609,7 +609,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
 <div id="login-overlay">
   <div class="login-box">
     <div class="login-logo">Deadline<em>OS</em></div>
-    <button id="login-lang-btn" onclick="toggleLang()" title="Switch Language" style="position:absolute;top:18px;right:18px;display:flex;align-items:center;gap:5px;padding:5px 11px;border:1px solid var(--border2);border-radius:3px;background:transparent;color:var(--text2);font-family:var(--mono);font-size:10px;letter-spacing:1.5px;cursor:pointer;transition:all .2s"><span id="login-lang-flag">🇩🇪</span><span id="login-lang-lbl">DE</span></button>
+    <span style="font-size:10px;opacity:0.5;letter-spacing:1px;text-transform:uppercase;">🌍 More languages coming soon</span>
     <div class="login-sub" id="login-sub-lbl">Choose your profile or create a new one.<br><span id="login-data-lbl">Your data stays stored locally.</span></div>
     <div class="login-profiles" id="login-profiles"><!-- rendered by JS --></div>
     <div id="pin-section" style="display:none">
@@ -658,7 +658,7 @@ body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradi
     <div class="tab"        data-t="integrations"onclick="go('integrations')"><div class="tab-dot"></div><span class="tab-lbl">Tools</span></div>
   </div>
   <div class="tb-right">
-    <button id="lang-btn" onclick="toggleLang()" title="Switch Language / Sprache wechseln"><span class="flag" id="lang-flag">🇩🇪</span><span id="lang-lbl">DE</span></button>
+    <span style="font-size:10px;opacity:0.5;letter-spacing:1px;text-transform:uppercase;">🌍 More languages coming soon</span>
     <div id="clock">--:--:--</div>
     <div class="theme-dots">
       <div class="tdot on" data-t="default"      onclick="setTheme('default')"></div>
@@ -1241,194 +1241,6 @@ async function _aiCall(payload){
 
 /* i18n block — must be before STATE vars that use lang */
 const I18N = {
-  de: {
-    /* Nav tabs */
-    tab_dash:      'Dashboard',
-    tab_chat:      'AI Chat',
-    tab_plan:      'Daily plan',
-    tab_notes:     'Notes',
-    tab_team:      'Team',
-    tab_analytics: 'Analytics',
-    tab_tools:     'Tools',
-    /* Mobile nav */
-    mnav_dash:     'Dashboard',
-    mnav_chat:     'Chat',
-    mnav_plan:     'Plan',
-    mnav_stats:    'Stats',
-    /* Login */
-    login_sub:     'Choose your profile or create a new one.',
-    login_local:   'Your data stays stored locally.',
-    login_new:     '+ Neues Profile erstellen',
-    login_pin_pre: 'PIN for',
-    login_pin_suf: 'eingeben:',
-    login_btn:     '→ Login',
-    /* KPI bar */
-    kpi_stress:    'Stress',
-    kpi_ai:        'AI Aktiv',
-    /* Dashboard */
-    dash_tasks_h:  '⚡ Taskn',
-    prio_low:      '🟢 Low',
-    prio_mid:      '🟠 Medium',
-    prio_crit:     '🔴 Critical',
-    task_empty:    'Still empty.',
-    task_empty2:   'Add a task!',
-    task_ph:       'Neue Task... (Strg+Enter)',
-    task_overdue:  '⚠ OVERDUE',
-    /* AI section */
-    ai_title:      'AI-Kommandant',
-    ai_sub:        'Real-time-Analysis & Coaching',
-    ai_ready:      'Ready. Analyzing your situation for optimal recommendations.',
-    ai_analyze:    '⚡ Analysieren',
-    ai_chat:       '💬 Open Chat',
-    ai_prio:       '🎯 Auto-Priorisieren',
-    /* Timer */
-    timer_title:   '⏱ Focus Timer',
-    timer_pomo:    'POMODORO',
-    timer_start:   '▶ Start',
-    timer_reset:   '↺ Reset',
-    timer_matrix:  '📊 Activity Matrix',
-    timer_stats:   '📈 Stats',
-    timer_tasks:   'Taskn',
-    timer_focus:   'Fokus heute',
-    timer_sess:    'Sessions:',
-    timer_next:    'Next Deadline',
-    timer_none:    'None',
-    /* Mood */
-    mood_title:    '🌙 Mood & Energy',
-    mood_q:        'How are you feeling right now?',
-    mood_energy:   '⚡ Energy',
-    /* Habits */
-    hab_title:     '✅ Habits',
-    /* Crisis */
-    crisis_mode:   '⚠ Crisis Mode',
-    /* Chat */
-    chat_ph:       'Frag den AI-Kommandanten...',
-    chat_send:     'Senden ▶',
-    chat_sugg1:    'Was soll ich jetzt tun?',
-    chat_sugg2:    'Analysiere meinen Stress',
-    chat_sugg3:    'Erstelle mir einen Daily plan',
-    chat_sugg4:    'Motiviere mich!',
-    chat_sugg5:    'Which task has the highest priority?',
-    chat_welcome:  '👋 Hello! I am your AI commander. I know your tasks, mood and stats. How can I help you?',
-    chat_sys:      'You are the AI commander of DeadlineOS. Respond helpfully, directly, in English. Max 3 sentences per response.',
-    chat_err:      '⚠️ Verbindungsfehler. Bitte erneut versuchen.',
-    chat_unreach:  '⚠️ AI nicht erreichbar.',
-    /* Plan */
-    plan_gen:      '🧠 Plan generieren',
-    plan_loading:  '⏳ Generiere...',
-    plan_empty:    'Noch kein Plan',
-    plan_ai_tips:  '🤖 AI Tips',
-    plan_click:    'Klicke "Plan generieren"',
-    plan_days:     ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
-    plan_months:   ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
-    /* Notes */
-    notes_title:   '📝 Notes',
-    notes_ph_t:    'Titel der Note...',
-    notes_ph_c:    'Schreibe hier... AI kann zusammenfassen, verbessern oder Taskn extrahieren.',
-    notes_empty:   'Noch keine Notes',
-    notes_untitled:'Ohne Titel',
-    notes_sum:     '🤖 Zusammenfassen',
-    notes_tasks:   '⚡ Tasks extrahieren',
-    notes_imp:     '✨ Verbessern',
-    notes_save:    '💾 Save',
-    notes_saved:   '💾 Gespeichert',
-    /* Analytics */
-    ana_rate:      'completionrate',
-    ana_week:      'Diese Woche',
-    ana_focus:     'Fokus-Zeit',
-    ana_today:     'Heute',
-    ana_overdue:   'Overdue',
-    ana_act:       'Sofort handeln',
-    ana_lvl:       'Level / XP',
-    ana_tasks_w:   'Taskn diese Woche',
-    ana_prio:      'Prioritysverteilung',
-    ana_report:    '🤖 AI-Bericht',
-    ana_rep_btn:   'Bericht generieren',
-    ana_rep_empty: 'Klicke um AI-Bericht zu laden.',
-    /* Achievements */
-    ach_title:     '🏆 Achievements',
-    ach_unlock:    'Achievement freigeschaltet!',
-    ach_xp:        'XP gesamt',
-    /* Level names */
-    levels:        ['Beginner','Taskmaster','Focus Pro','Efficiency Ace','Deadline Crusher','Flow Master','Crisis Solver','Time God','Productivity Legend','DeadlineOS Master'],
-    /* Achievement names & descs */
-    ach_data: [
-      {name:'First Task',  desc:'First Task erstellt'},
-      {name:'Fokus-Starter',  desc:'Erste Session'},
-      {name:'5 done',     desc:'5 Tasks done'},
-      {name:'3-Tage Streak',  desc:'3 Tage aktiv'},
-      {name:'10h Fokus',      desc:'10h total'},
-      {name:'Level 5',        desc:'Level 5 erreicht'},
-      {name:'20 done',    desc:'20 Tasks done'},
-      {name:'Kein Stress',    desc:'0 kritische Tasks'},
-      {name:'Chat-Pro',     desc:'10 Chat-Nachrichten'},
-      {name:'Note-Master',  desc:'5 Notes erstellt'},
-      {name:'Planner',         desc:'3 daily plans generated'},
-      {name:'Habit-Held',     desc:'Alle Habits heute'},
-    ],
-    /* Toasts / dynamic */
-    toast_done:    (n)=>`🎉 "${n}" done!`,
-    toast_del:     'Task deleted',
-    toast_err_inp: 'Bitte Task eingeben',
-    toast_prio:    '🎯 AI priorisiert Taskn...',
-    toast_prio_ok: '✅ Auto-Priorisierung abgeschlossen!',
-    toast_prio_err:'Priorisierung fehlgeschlagen',
-    toast_plan_ok: '✅ Daily plan generiert!',
-    toast_plan_err:'Error — bitte erneut versuchen',
-    toast_save:    '💾 Gespeichert',
-    toast_write:   'Bitte zuerst etwas schreiben',
-    toast_team_inv:'Team-Einladung coming soon 🚀',
-    toast_ai_busy: '🤖 AI fasst zusammen',
-    toast_ai_tasks:'🤖 AI extrahiert Tasks',
-    toast_ai_imp:  '🤖 AI verbessert',
-    /* AI notes prompts */
-    note_prompt_sum: (c)=>`Fasse folgenden Text in 3 Stichpunkten zusammen (Deutsch): "${c}"`,
-    note_prompt_tasks:(c)=>`Extrahiere alle impliziten Taskn aus folgendem Text als Liste mit - (Deutsch): "${c}"`,
-    note_prompt_imp: (c)=>`Verbessere folgenden Text sprachlich und strukturell, behalte den Inhalt (Deutsch): "${c}"`,
-    /* AI prompts */
-    ai_prompt_analyze: 'Analyze my situation in 4 sentences. Tell me directly what I should do NOW. English, precise, motivating.',
-    ai_prompt_plan: 'Create a daily plan. Reply ONLY as JSON without Markdown:\n{"slots":[{"time":"09:00","type":"focus","icon":"💡","name":"Task Name","duration":"25min"}],"suggestions":[{"text":"Tip"}]}\nTypes: focus, break, meeting, admin. Plan 8-18h. Consider Energy',
-    /* Team */
-    team_title:    '👥 Team-Management',
-    team_invite:   'coming soon 🚀',
-    /* misc */
-    xp_for:        (n)=>`${n} XP for Level`,
-    overdue_msg:   (n)=>`${n} Task(n) overdue! Sofortiger Handlungsbedarf.`,
-    crit_msg:      (n)=>`${n} kritische Task(n) erfordern deine Aufmerksamkeit.`,
-    xp_reasons: {
-      done:        'Task done',
-      prio:        'Auto-Prioritizer genutzt',
-      focus:       'Fokus-Session',
-      plan:        'Daily plan generiert',
-      note:        'Note erstellt',
-      noteai:      'AI-Notefunktion genutzt',
-      habit:       'Habit abgehakt',
-    },
-    /* Integrations */
-    int_title:     '🔌 Integrationen',
-    crisis_krise:  'KRISE',
-    crisis_crit:   'Critical',
-    crisis_ok:     'OK',
-    status_ai:     'AI Aktiv',
-    status_stress: 'Stress',
-    task_added:    '✓ Task added',
-    task_overdue2: 'OVERDUE',
-    prio_labels:   ['','Low','Medium','Critical'],
-    donut_low:     'Niedrig',
-    donut_mid:     'Medium',
-    donut_hi:      'Critical',
-    plan_sub:      'AI-generierter Zeitplan basierend auf Taskn & Energy',
-    plan_click2:   'Klicke \"Plan generieren\"',
-    plan_empty2:   'Noch kein Plan',
-    notes_new:     '+ Neue Note',
-    pin_protected:   'PIN-protected',
-    pin_free:        'Free Profile',
-    profile_me:      'Ich selbst',
-    pin_hint_title:  'Test-Modus:',
-    pin_hint_text:   'Einfach 4 beliebige Zahlen als PIN eingeben (z.B. 1234)',
-    xp_for2:       (lvl)=>`XP for Level ${lvl}`,
-  },
-
   en: {
     tab_dash:      'Dashboard',
     tab_chat:      'AI Chat',
@@ -1610,27 +1422,14 @@ const I18N = {
   }
 };
 
-/* detect or load language */
-let lang = DB.get('dos3-lang', null);
-if(!lang){
-  const bl = navigator.language || navigator.userLanguage || 'de';
-  lang = bl.toLowerCase().startsWith('de') ? 'de' : 'en';
-  DB.set('dos3-lang', lang);
-}
-function t(key){ return I18N[lang][key] || I18N['de'][key] || key; }
+/* language: English only */
+const lang = 'en';
+function t(key){ return I18N['en'][key] || key; }
 
-function toggleLang(){
-  lang = lang === 'de' ? 'en' : 'de';
-  DB.set('dos3-lang', lang);
-  applyLang();
-  loadIntegrations();
-}
 
 function applyLang(){
-  const L = I18N[lang];
-  document.documentElement.lang = lang;
-  document.getElementById('lang-flag').textContent = lang === 'de' ? '🇩🇪' : '🇬🇧';
-  document.getElementById('lang-lbl').textContent   = lang === 'de' ? 'DE' : 'EN';
+  const L = I18N['en'];
+  document.documentElement.lang = 'en';
 
   /* Tab labels */
   const tabEls = document.querySelectorAll('#tabs .tab');
@@ -2397,7 +2196,7 @@ function toggleHabit(el){
    AI CORE
 ═════════════════════════════════════════ */
 function buildCtx(instr){
-  const list=tasks.slice(0,12).map(t=>`- ${t.name} [${I18N[lang].prio_labels[t.urgency]}]${t.deadline?' DL:'+new Date(t.deadline).toLocaleString(lang==='xx'?'de-DE':'en-US'):''}${t.done?' ✓':''}`).join('\n')||(lang==='xx'?'None Tasks':'No tasks');
+  const list=tasks.slice(0,12).map(t=>`- ${t.name} [${I18N[lang].prio_labels[t.urgency]}]${t.deadline?' DL:'+new Date(t.deadline).toLocaleString('en-US'):''}${t.done?' ✓':''}`).join('\n')||(lang==='xx'?'None Tasks':'No tasks');
   const crit=tasks.filter(t=>!t.done&&t.urgency===3).length;
   const over=tasks.filter(t=>!t.done&&t.deadline&&new Date(t.deadline)<new Date()).length;
   const critLbl=lang==='xx'?'Critical':'Critical';
@@ -2428,7 +2227,7 @@ async function callAI(prompt,outEl,streamTyping=true){
   }catch(e){
     const isNoKey = e.message==='NO_KEY';
     const isDemoEx = e.message==='DEMO_EXHAUSTED';
-    const L = I18N[lang];
+    const L = I18N['en'];
     let msg = L.chat_unreach;
     if(isNoKey) msg = lang==='de' ? '🔑 Kein API Key. Tipe auf "API KEY" unten rechts.' : '🔑 No API Key set. Tap "API KEY" bottom right.';
     if(isDemoEx) msg = lang==='de' ? '⚡ Demo-Limit erreicht. Eigenen API Key eingeben →' : '⚡ Demo limit reached. Enter your own API Key →';
@@ -2543,7 +2342,7 @@ function renderNotesList(){
     <div class="note-item${n.id===curNote?.id?' on':''}" onclick="openNote(${n.id})">
       <div class="note-title">${esc(n.title||I18N[lang].notes_untitled)}</div>
       <div class="note-preview">${esc(n.content.slice(0,60))}</div>
-      <div class="note-meta">${new Date(n.updated).toLocaleDateString(lang==='xx'?'de-DE':'en-US')}</div>
+      <div class="note-meta">${new Date(n.updated).toLocaleDateString('en-US')}</div>
     </div>`).join('');
 }
 
