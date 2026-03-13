@@ -144,7 +144,7 @@ This is just for the Beginning others will coming in the future Updates
 | Version | Status | What |
 |---------|--------|------|
 | **V1** | ✅ March 10, 2026 | Tasks, timer, AI integration, 4 themes |
-| **V2** | ✅ March 10, 2026 | Team mode, analytics, AI daily plan |
+| **V2** | ✅ March 11, 2026 | Team mode, analytics, AI daily plan |
 | **V3** | 🔵 **Live** | AI chat, gamification, mood tracker, PIN profiles, i18n |
 | **V4** | 🟠 Q2 2026 | Cloud sync, PWA, push notifications |
 | **V5** | 🔮 Q3–Q4 2026 | AI agents, enterprise, marketplace |
