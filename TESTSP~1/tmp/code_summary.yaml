@@ -1,0 +1,140 @@
+version: "2"
+type: frontend
+tech_stack:
+  - language: HTML5, CSS3, Vanilla JavaScript (ES6+)
+  - framework: None (zero-dependency static site)
+  - ui_library: Google Fonts (JetBrains Mono, Unbounded)
+  - other: Anthropic Claude API, localStorage, Web APIs, Playwright-compatible data-testid attributes
+routes:
+  - path: /
+    file: src/index.html
+    auth_required: false
+    description: Marketing landing page
+  - path: /deadlineos-v3.html
+    file: src/deadlineos-v3.html
+    auth_required: false
+    description: Main app - requires profile creation OR clicking DEMO button (id=demo-mode-btn) to bypass
+  - path: /dos-demo.html
+    file: src/dos-demo.html
+    auth_required: false
+    description: Demo mode page
+  - path: /dos-features.html
+    file: src/dos-features.html
+    auth_required: false
+    description: Features page
+  - path: /dos-pricing.html
+    file: src/dos-pricing.html
+    auth_required: false
+    description: Pricing page
+  - path: /dos-roadmap.html
+    file: src/dos-roadmap.html
+    auth_required: false
+    description: Roadmap page
+  - path: /dos-compare.html
+    file: src/dos-compare.html
+    auth_required: false
+    description: Comparison page
+  - path: /404.html
+    file: src/404.html
+    auth_required: false
+    description: Custom 404 error page - only accessible by navigating to a nonexistent URL
+features:
+  - name: Demo Mode Entry
+    description: Click DEMO button to bypass profile selection and load pre-filled tasks
+    files:
+      - src/deadlineos-v3.html
+    entry_route: /deadlineos-v3.html
+    user_interactions:
+      - Click button with id=demo-mode-btn to enter demo mode
+      - App loads 6 pre-filled tasks and sets XP/focus stats
+    api_calls: []
+    auth_required: false
+  - name: Task Management
+    description: Create, edit, complete, delete and prioritize tasks. Key element IDs - task input id=task-input, add button id=add-btn, checkbox data-testid=task-check-{id}, delete button data-testid=task-delete-{id}, priority select id=prio-sel-{id} data-testid=task-prio-{id}
+    files:
+      - src/deadlineos-v3.html
+    entry_route: /deadlineos-v3.html
+    user_interactions:
+      - Enter text in textarea with id=task-input
+      - Click button with id=add-btn to add task
+      - Click input with data-testid=task-check-{taskId} to toggle completion
+      - Click button with data-testid=task-delete-{taskId} to delete
+      - Change select with id=prio-sel-{taskId} to change priority (High/Medium/Low)
+      - Use window.tasks JS array to find task IDs after creation
+    api_calls: []
+    auth_required: false
+  - name: AI Commander and Analysis
+    description: AI analysis and chat. Analyze button id=analyze_btn writes to div id=ai-out. Open Chat button id=chat_open_btn. In webdriver mode text renders immediately (no streaming delay).
+    files:
+      - src/deadlineos-v3.html
+    entry_route: /deadlineos-v3.html
+    user_interactions:
+      - Click button id=analyze_btn to trigger analysis - output appears in div id=ai-out immediately in test/webdriver mode
+      - Click button id=chat_open_btn or call go('chat') to open chat panel
+      - Type in chat input and click Send
+      - Click button id=autoprio_btn for Auto-Prioritize
+    api_calls:
+      - method: POST
+        endpoint: https://api.anthropic.com/v1/messages
+    auth_required: false
+  - name: API Key Overlay
+    description: Open the API key overlay by clicking button id=apikey-change-btn. The overlay div id=apikey-overlay becomes visible (removes hidden class).
+    files:
+      - src/deadlineos-v3.html
+    entry_route: /deadlineos-v3.html
+    user_interactions:
+      - Call document.getElementById('apikey-change-btn').click() to open overlay
+      - The overlay id=apikey-overlay becomes visible
+      - Switch between Own Key tab and Demo tab
+    api_calls: []
+    auth_required: false
+  - name: Focus Timer
+    description: Timer controls. Start button id=start-btn data-testid=timer-start-btn, Stop button id=stop-btn, Save button id=save-btn (shown after stop), Reset via resetTimer(). In webdriver mode timer runs at reduced speed.
+    files:
+      - src/deadlineos-v3.html
+    entry_route: /deadlineos-v3.html
+    user_interactions:
+      - Click button with id=start-btn or data-testid=timer-start-btn to start
+      - Click button with id=stop-btn to stop (reveals id=save-btn)
+      - Click button with id=save-btn to save session
+      - Click Reset button to reset without saving
+    api_calls: []
+    auth_required: false
+  - name: Notes
+    description: Notes management. Open via go('notes') JS call or Notes tab. New note via newNote() JS call or button id=notes-new-btn. Title input id=note-title-in, content textarea id=note-content-in. Save via saveNote() - validates non-empty content.
+    files:
+      - src/deadlineos-v3.html
+    entry_route: /deadlineos-v3.html
+    user_interactions:
+      - Call go('notes') to switch to Notes tab
+      - Click button id=notes-new-btn or call newNote()
+      - Fill input id=note-title-in and textarea id=note-content-in
+      - Call saveNote() or click Save button
+      - Empty note is rejected with toast notification
+    api_calls:
+      - method: POST
+        endpoint: https://api.anthropic.com/v1/messages
+    auth_required: false
+  - name: 404 Error Page
+    description: Custom 404 page is served when navigating to a nonexistent URL. NOT triggered by clicking valid navigation links.
+    files:
+      - src/404.html
+    entry_route: /nonexistent-page.html
+    user_interactions:
+      - Navigate directly to a URL that does not exist (e.g. /nonexistent-xyz.html)
+      - The server returns 404 status and content
+    api_calls: []
+    auth_required: false
+known_limitations:
+  - issue: Profile selection screen appears on first load - bypass with demo-mode-btn or inject profile via localStorage
+    location: src/deadlineos-v3.html
+    impact: All in-app tests must first enter demo mode or create profile
+  - issue: Task list re-renders entirely on each change - use data-testid or window.tasks to find element IDs
+    location: src/deadlineos-v3.html
+    impact: XPath-based element indices become stale after task operations
+  - issue: AI streaming is disabled in webdriver/test mode (navigator.webdriver=true) - output is immediate
+    location: src/deadlineos-v3.html
+    impact: No timing issues for AI output in tests
+  - issue: Timer runs at reduced speed (max 10s) in webdriver mode
+    location: src/deadlineos-v3.html
+    impact: Timer completes quickly in tests

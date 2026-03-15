@@ -1,0 +1,2756 @@
+[
+  {
+    "id": "TC001",
+    "title": "Launch App CTA navigates from landing page to main app",
+    "description": "Verifies the primary \"Launch App\" call-to-action on the landing page opens the main DeadlineOS app page.",
+    "category": "Landing Page Navigation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"DeadlineOS\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Launch App\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Launch App\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/deadlineos-v3.html\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Tasks\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "Try Demo flow loads demo page and starts demo UI with sample data",
+    "description": "Verifies the \"Try Demo\" CTA opens the demo page and \"Start Demo\" reveals the demo interface.",
+    "category": "Landing Page Navigation",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Try Demo\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Try Demo\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dos-demo.html\""
+      },
+      {
+        "type": "action",
+        "description": "Click \"Start Demo\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Tasks\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Demo\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Top navigation: Features link opens features overview page",
+    "description": "Verifies the \"Features\" navigation item opens the Features page and displays feature cards/sections.",
+    "category": "Landing Page Navigation",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Features\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dos-features.html\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Features\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"feature cards\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Top navigation: Pricing link opens pricing plans and FAQ",
+    "description": "Verifies the \"Pricing\" navigation item opens the Pricing page and pricing/FAQ content is visible.",
+    "category": "Landing Page Navigation",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Pricing\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dos-pricing.html\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Pricing\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"FAQ\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Top navigation: Roadmap link opens product roadmap page",
+    "description": "Verifies the \"Roadmap\" navigation item opens the Roadmap page and timeline content is visible.",
+    "category": "Landing Page Navigation",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Roadmap\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dos-roadmap.html\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Roadmap\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"V\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Top navigation: Compare link opens competitor comparison page",
+    "description": "Verifies the \"Compare\" navigation item opens the comparison page and competitor comparison content is visible.",
+    "category": "Landing Page Navigation",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Compare\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/dos-compare.html\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Compare\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Notion\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Footer navigation: Privacy link opens privacy policy page",
+    "description": "Verifies the \"Privacy\" link opens the privacy policy page and policy content is visible.",
+    "category": "Landing Page Navigation",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to \"Privacy\" link"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Privacy\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/privacy.html\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Privacy\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"policy\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Landing page FAQ accordion expands and shows answer text",
+    "description": "Verifies that clicking an FAQ item expands it to reveal answer content on the landing page.",
+    "category": "Landing Page Navigation",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Scroll to \"FAQ\" section"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"FAQ\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click the first FAQ question"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"FAQ answer\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Create a new task with title, future deadline, and priority",
+    "description": "Verifies a user can create a task and see it appear in the task list with the chosen details.",
+    "category": "Task Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Tasks tab to open task panel"
+      },
+      {
+        "type": "action",
+        "description": "Click Add Task button"
+      },
+      {
+        "type": "action",
+        "description": "Type \"E2E Create Task\" into the task title field"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"2099-12-31\" into the deadline field"
+      },
+      {
+        "type": "action",
+        "description": "Select \"High\" from the priority dropdown"
+      },
+      {
+        "type": "action",
+        "description": "Click Save to create task"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"E2E Create Task\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Edit an existing task title and deadline",
+    "description": "Verifies a user can edit a task and the updated details are shown in the list.",
+    "category": "Task Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Tasks tab to open task panel"
+      },
+      {
+        "type": "action",
+        "description": "Click Add Task button"
+      },
+      {
+        "type": "action",
+        "description": "Type \"E2E Task To Edit\" into the task title field"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"2099-01-01\" into the deadline field"
+      },
+      {
+        "type": "action",
+        "description": "Click Save to create task"
+      },
+      {
+        "type": "action",
+        "description": "Click edit icon on the task \"E2E Task To Edit\""
+      },
+      {
+        "type": "action",
+        "description": "Type \"E2E Task Edited\" into the task title field"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"2099-02-02\" into the deadline field"
+      },
+      {
+        "type": "action",
+        "description": "Click Save"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"E2E Task Edited\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "Complete a task and observe completion state and XP feedback",
+    "description": "Verifies a user can mark a task complete and sees a visible completion indicator and XP-awarded feedback.",
+    "category": "Task Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Tasks tab to open task panel"
+      },
+      {
+        "type": "action",
+        "description": "Click Add Task button"
+      },
+      {
+        "type": "action",
+        "description": "Type \"E2E Complete Me\" into the task title field"
+      },
+      {
+        "type": "action",
+        "description": "Click Save to create task"
+      },
+      {
+        "type": "action",
+        "description": "Click task checkbox for \"E2E Complete Me\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Completed\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Delete an uncompleted task and confirm it is removed",
+    "description": "Verifies a user can delete a task via confirmation and it disappears from the list.",
+    "category": "Task Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Tasks tab to open task panel"
+      },
+      {
+        "type": "action",
+        "description": "Click Add Task button"
+      },
+      {
+        "type": "action",
+        "description": "Type \"E2E Delete Me\" into the task title field"
+      },
+      {
+        "type": "action",
+        "description": "Click Save to create task"
+      },
+      {
+        "type": "action",
+        "description": "Click delete icon for \"E2E Delete Me\""
+      },
+      {
+        "type": "action",
+        "description": "Click Confirm delete"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"E2E Delete Me\" is not visible"
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "Validate required title when saving a new task",
+    "description": "Verifies saving a task without a title shows a visible validation error and does not create the task.",
+    "category": "Task Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Tasks tab to open task panel"
+      },
+      {
+        "type": "action",
+        "description": "Click Add Task button"
+      },
+      {
+        "type": "action",
+        "description": "Click Save to create task"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"title\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Create a task with a past deadline and see overdue warning/flag",
+    "description": "Verifies entering a past deadline results in a visible overdue warning or overdue status indicator on the task.",
+    "category": "Task Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Tasks tab to open task panel"
+      },
+      {
+        "type": "action",
+        "description": "Click Add Task button"
+      },
+      {
+        "type": "action",
+        "description": "Type \"E2E Past Deadline\" into the task title field"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"2000-01-01\" into the deadline field"
+      },
+      {
+        "type": "action",
+        "description": "Click Save to create task"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Overdue\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Filter tasks by Today and verify only today tasks are shown",
+    "description": "Verifies the Today filter shows tasks due today and hides tasks with future deadlines.",
+    "category": "Task Management",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Tasks tab to open task panel"
+      },
+      {
+        "type": "action",
+        "description": "Click Add Task button"
+      },
+      {
+        "type": "action",
+        "description": "Type \"E2E Due Today\" into the task title field"
+      },
+      {
+        "type": "action",
+        "description": "Fill today's date into the deadline field"
+      },
+      {
+        "type": "action",
+        "description": "Click Save to create task"
+      },
+      {
+        "type": "action",
+        "description": "Click Add Task button"
+      },
+      {
+        "type": "action",
+        "description": "Type \"E2E Future Task\" into the task title field"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"2099-12-31\" into the deadline field"
+      },
+      {
+        "type": "action",
+        "description": "Click Save to create task"
+      },
+      {
+        "type": "action",
+        "description": "Click filter \"Today\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"E2E Due Today\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"E2E Future Task\" is not visible"
+      }
+    ]
+  },
+  {
+    "id": "TC016",
+    "title": "Send a chat message with API key and receive an AI response",
+    "description": "Verifies that a user can open AI Commander, enter an API key, send a message, and see an AI response displayed in the chat window.",
+    "category": "AI Commander Chat",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click AI Commander tab"
+      },
+      {
+        "type": "action",
+        "description": "Enter API key in settings"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Help me prioritize my top 3 tasks today\" in chat input field"
+      },
+      {
+        "type": "action",
+        "description": "Click Send"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an assistant/AI response message is visible in the chat window"
+      }
+    ]
+  },
+  {
+    "id": "TC017",
+    "title": "Use Enter key to send a message",
+    "description": "Verifies that pressing Enter submits the chat message and a response appears.",
+    "category": "AI Commander Chat",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click AI Commander tab"
+      },
+      {
+        "type": "action",
+        "description": "Enter API key in settings"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Give me a quick plan for the next 30 minutes\" in chat input field"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an assistant/AI response message is visible in the chat window"
+      }
+    ]
+  },
+  {
+    "id": "TC018",
+    "title": "Analyze tasks via chat then generate AI Analysis action plan",
+    "description": "Verifies the multi-step workflow of asking for task analysis, then using the AI Analysis button to produce a prioritized plan.",
+    "category": "AI Commander Chat",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click AI Commander tab"
+      },
+      {
+        "type": "action",
+        "description": "Type \"analyze my tasks\" in chat input field"
+      },
+      {
+        "type": "action",
+        "description": "Click Send"
+      },
+      {
+        "type": "action",
+        "description": "Click AI Analysis button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Action Plan\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC019",
+    "title": "Missing API key shows warning and returns mock response",
+    "description": "Verifies that when no API key is entered, the UI warns the user and still displays a mock AI response.",
+    "category": "AI Commander Chat",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click AI Commander tab"
+      },
+      {
+        "type": "action",
+        "description": "Type \"What should I work on next?\" in chat input field"
+      },
+      {
+        "type": "action",
+        "description": "Click Send"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"API key\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a response message is visible in the chat window"
+      }
+    ]
+  },
+  {
+    "id": "TC020",
+    "title": "Chat preserves multi-turn conversation context in the UI",
+    "description": "Verifies that multiple user messages and multiple AI responses appear in sequence as a continuing conversation.",
+    "category": "AI Commander Chat",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click AI Commander tab"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Summarize my priorities\" in chat input field"
+      },
+      {
+        "type": "action",
+        "description": "Click Send"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Now turn that into 3 bullet points\" in chat input field"
+      },
+      {
+        "type": "action",
+        "description": "Click Send"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Now turn that into 3 bullet points\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC021",
+    "title": "Empty message is not sent (input validation)",
+    "description": "Verifies the chat prevents sending an empty message and does not add a blank user message to the conversation.",
+    "category": "AI Commander Chat",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click AI Commander tab"
+      },
+      {
+        "type": "action",
+        "description": "Click Send"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Type\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"chat window\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC022",
+    "title": "Very long message still sends and shows in chat history",
+    "description": "Verifies the chat can accept and display a long user prompt without breaking the conversation UI.",
+    "category": "AI Commander Chat",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click AI Commander tab"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Here are my tasks: task A with many details, task B with many details, task C with many details. Please create a detailed schedule with time blocks and contingency steps.\" in chat input field"
+      },
+      {
+        "type": "action",
+        "description": "Click Send"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Here are my tasks:\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC023",
+    "title": "Pomodoro mode: start timer and verify countdown begins",
+    "description": "Verifies that selecting Pomodoro mode and starting the timer begins a visible countdown in the Timer tab.",
+    "category": "Focus Timer",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Timer tab"
+      },
+      {
+        "type": "action",
+        "description": "Select Pomodoro mode"
+      },
+      {
+        "type": "action",
+        "description": "Click Start button to begin timer countdown"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Pomodoro\" is visible in the Timer area"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"timer countdown\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Pause\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Reset\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC024",
+    "title": "Deep Work mode: start, pause, then reset to initial value",
+    "description": "Verifies Deep Work timer can be started, paused, and reset back to its initial value.",
+    "category": "Focus Timer",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Timer tab"
+      },
+      {
+        "type": "action",
+        "description": "Select Deep Work mode"
+      },
+      {
+        "type": "action",
+        "description": "Click Start button to begin timer countdown"
+      },
+      {
+        "type": "action",
+        "description": "Click Pause to pause timer"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Start\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click Reset to reset timer"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"timer countdown\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC025",
+    "title": "Validation: clicking Start without selecting a mode shows prompt",
+    "description": "Verifies the app prevents starting the timer until Pomodoro or Deep Work mode is selected.",
+    "category": "Focus Timer",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Timer tab"
+      },
+      {
+        "type": "action",
+        "description": "Click Start button to begin timer countdown"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"choose\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Pomodoro\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Deep Work\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC026",
+    "title": "Switch modes after selecting one (pre-start) updates the mode shown",
+    "description": "Verifies the user can change between Pomodoro and Deep Work before starting, and the selected mode is reflected on-screen.",
+    "category": "Focus Timer",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Timer tab"
+      },
+      {
+        "type": "action",
+        "description": "Select Pomodoro mode"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Pomodoro\" is visible in the Timer area"
+      },
+      {
+        "type": "action",
+        "description": "Select Deep Work mode"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Deep Work\" is visible in the Timer area"
+      }
+    ]
+  },
+  {
+    "id": "TC027",
+    "title": "Pause state: pausing keeps the timer on the same time value",
+    "description": "Verifies that after pausing, the visible countdown does not continue to change while paused.",
+    "category": "Focus Timer",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Timer tab"
+      },
+      {
+        "type": "action",
+        "description": "Select Pomodoro mode"
+      },
+      {
+        "type": "action",
+        "description": "Click Start button to begin timer countdown"
+      },
+      {
+        "type": "action",
+        "description": "Click Pause to pause timer"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Start\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"timer countdown\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC028",
+    "title": "Reset while running returns to initial value and shows Start available",
+    "description": "Verifies that resetting during an active session stops the run and returns the timer to its initial state.",
+    "category": "Focus Timer",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Timer tab"
+      },
+      {
+        "type": "action",
+        "description": "Select Pomodoro mode"
+      },
+      {
+        "type": "action",
+        "description": "Click Start button to begin timer countdown"
+      },
+      {
+        "type": "action",
+        "description": "Click Reset to reset timer"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Start\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"timer countdown\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC029",
+    "title": "Session tracking UI is present in Timer tab",
+    "description": "Verifies that the Timer tab displays a visible session count or completed sessions area for tracking progress.",
+    "category": "Focus Timer",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Timer tab"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"session count\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"completed sessions\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC030",
+    "title": "View Analytics overview (XP, level, achievements, streak)",
+    "description": "Verifies the Analytics tab renders the core gamification widgets: XP bar, current level, achievements, and streak counter.",
+    "category": "Analytics and XP System",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Analytics tab"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Analytics\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"XP\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Level\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Streak\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Achievements\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC031",
+    "title": "14-day activity sparkline is visible on Analytics tab",
+    "description": "Verifies the 14-day activity sparkline section is present and visible to the user.",
+    "category": "Analytics and XP System",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Analytics tab"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"14\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"day\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"activity\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"activity sparkline\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC032",
+    "title": "Earn XP by completing a task and see Analytics reflect progress",
+    "description": "Verifies completing a task increases visible XP/level progress when returning to Analytics.",
+    "category": "Analytics and XP System",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Analytics tab"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"XP bar\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click Tasks tab"
+      },
+      {
+        "type": "action",
+        "description": "Type \"E2E XP Task\" into the task input field"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "action",
+        "description": "Click the complete checkbox for \"E2E XP Task\""
+      },
+      {
+        "type": "action",
+        "description": "Click Analytics tab"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"XP bar\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC033",
+    "title": "Create and save a new note from the Notes tab",
+    "description": "Verifies a user can create a note with title and content and see it appear in the notes list.",
+    "category": "Notes",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Notes tab"
+      },
+      {
+        "type": "action",
+        "description": "Click New Note button"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Sprint Retro\" into the note title field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Discuss wins, blockers, and next actions for the week.\" into the note content field"
+      },
+      {
+        "type": "action",
+        "description": "Click Save Note"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Sprint Retro\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC034",
+    "title": "Edit an existing saved note and verify updates persist in the note view",
+    "description": "Verifies a user can open an existing note, update its content, save, and see the updated content displayed.",
+    "category": "Notes",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Notes tab"
+      },
+      {
+        "type": "action",
+        "description": "Click New Note button"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Daily Log\" into the note title field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Initial entry.\" into the note content field"
+      },
+      {
+        "type": "action",
+        "description": "Click Save Note"
+      },
+      {
+        "type": "action",
+        "description": "Click on the note titled \"Daily Log\" in the notes list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Initial entry.\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC035",
+    "title": "Delete a note and confirm it no longer appears in the notes list",
+    "description": "Verifies a user can delete a saved note and the note is removed from the visible list.",
+    "category": "Notes",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Notes tab"
+      },
+      {
+        "type": "action",
+        "description": "Click New Note button"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Temporary Note\" into the note title field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"This note will be deleted.\" into the note content field"
+      },
+      {
+        "type": "action",
+        "description": "Click Save Note"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Temporary Note\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click delete on the note titled \"Temporary Note\""
+      }
+    ]
+  },
+  {
+    "id": "TC036",
+    "title": "AI Summarize without API key returns mock/demo summary content",
+    "description": "Verifies AI summarization works in mock mode when no API key is provided and shows a visible summary output.",
+    "category": "Notes",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Notes tab"
+      },
+      {
+        "type": "action",
+        "description": "Click New Note button"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Meeting Notes\" into the note title field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"We discussed Q2 goals and risks. Next steps: draft plan and assign owners.\" into the note content field"
+      },
+      {
+        "type": "action",
+        "description": "Click Save Note"
+      },
+      {
+        "type": "action",
+        "description": "Click on the note titled \"Meeting Notes\" in the notes list"
+      },
+      {
+        "type": "action",
+        "description": "Click AI Summarize to get AI-generated summary"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Summary\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC037",
+    "title": "AI Summarize with an API key field present allows sending and displays a summary section",
+    "description": "Verifies the summarization flow supports entering an API key (when prompted) and shows a generated summary area after sending.",
+    "category": "Notes",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Notes tab"
+      },
+      {
+        "type": "action",
+        "description": "Click New Note button"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Long Note\" into the note title field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"This is a longer note intended for summarization. It contains multiple sentences to condense.\" into the note content field"
+      },
+      {
+        "type": "action",
+        "description": "Click Save Note"
+      },
+      {
+        "type": "action",
+        "description": "Click on the note titled \"Long Note\" in the notes list"
+      },
+      {
+        "type": "action",
+        "description": "Click AI Summarize to get AI-generated summary"
+      },
+      {
+        "type": "action",
+        "description": "Type \"invalid-api-key-for-ui-test\" into the API key field (if it is shown)"
+      },
+      {
+        "type": "action",
+        "description": "Click Send"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Summary\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC038",
+    "title": "Extract Tasks creates task items visible in the Tasks tab",
+    "description": "Verifies extracting tasks from a note creates visible tasks in the Tasks area.",
+    "category": "Notes",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Notes tab"
+      },
+      {
+        "type": "action",
+        "description": "Click New Note button"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Action Items\" into the note title field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Tasks: 1) Email Alice about timeline. 2) Create draft spec. 3) Schedule review meeting.\" into the note content field"
+      },
+      {
+        "type": "action",
+        "description": "Click Save Note"
+      },
+      {
+        "type": "action",
+        "description": "Click on the note titled \"Action Items\" in the notes list"
+      },
+      {
+        "type": "action",
+        "description": "Click Extract Tasks to create tasks from note content"
+      },
+      {
+        "type": "action",
+        "description": "Click Tasks tab"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Email Alice\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC039",
+    "title": "Attempt to save a note with an empty title shows visible validation or prevents creation",
+    "description": "Verifies the UI blocks creating a note without a title or provides visible feedback.",
+    "category": "Notes",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Notes tab"
+      },
+      {
+        "type": "action",
+        "description": "Click New Note button"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Body without title\" into the note content field"
+      },
+      {
+        "type": "action",
+        "description": "Click Save Note"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Body without title\" is not visible"
+      }
+    ]
+  },
+  {
+    "id": "TC040",
+    "title": "Open a saved note from the notes list displays its content",
+    "description": "Verifies selecting a note loads the correct title/content into the note view.",
+    "category": "Notes",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Notes tab"
+      },
+      {
+        "type": "action",
+        "description": "Click New Note button"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Reference\" into the note title field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Keep this as a reference note.\" into the note content field"
+      },
+      {
+        "type": "action",
+        "description": "Click Save Note"
+      },
+      {
+        "type": "action",
+        "description": "Click on the note titled \"Reference\" in the notes list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Keep this as a reference note.\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC041",
+    "title": "Create a new team profile without a PIN",
+    "description": "Verifies a user can create a team profile (name + avatar) and see it in the profile list.",
+    "category": "Team Profiles",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Team tab"
+      },
+      {
+        "type": "action",
+        "description": "Click Create Profile"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Alex QA\" into the name field"
+      },
+      {
+        "type": "action",
+        "description": "Select an avatar option"
+      },
+      {
+        "type": "action",
+        "description": "Click Save"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Alex QA\" is visible in the profile list"
+      }
+    ]
+  },
+  {
+    "id": "TC042",
+    "title": "Create a new team profile with a PIN (PIN-protected profile appears)",
+    "description": "Verifies a user can create a PIN-protected profile and it appears in the profile list.",
+    "category": "Team Profiles",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Team tab"
+      },
+      {
+        "type": "action",
+        "description": "Click Create Profile"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Priya\" into the name field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"1234\" into the PIN field"
+      },
+      {
+        "type": "action",
+        "description": "Click Save"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Priya\" is visible in the profile list"
+      }
+    ]
+  },
+  {
+    "id": "TC043",
+    "title": "Create profile validation: attempt to save with empty name",
+    "description": "Verifies the UI prevents creating a profile without a name and shows a visible validation message or remains on the form.",
+    "category": "Team Profiles",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Team tab"
+      },
+      {
+        "type": "action",
+        "description": "Click Create Profile"
+      },
+      {
+        "type": "action",
+        "description": "Click Save"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Name\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"required\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC044",
+    "title": "Generate a daily plan from tasks (Plan tab) and view the hourly schedule",
+    "description": "Verifies that a user can generate a plan and see an 8am–6pm schedule with tasks mapped into time slots.",
+    "category": "Daily Plan",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Plan tab"
+      },
+      {
+        "type": "action",
+        "description": "Click Generate Plan button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Daily Plan\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"8am\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"6pm\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"AI-generated hourly schedule\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"tasks mapped to time slots\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC045",
+    "title": "Prompt for API key when generating a plan (if required)",
+    "description": "Verifies that the app asks for an API key (when needed) and that the user can proceed to a generated plan view.",
+    "category": "Daily Plan",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Plan tab"
+      },
+      {
+        "type": "action",
+        "description": "Click Generate Plan button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"API key\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"invalid_key_for_test\" into the API key field"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Daily Plan\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"8am\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC046",
+    "title": "Generate plan using demo mode data (demo workflow from the demo page)",
+    "description": "Verifies that demo mode produces a mock daily plan based on pre-populated demo tasks.",
+    "category": "Daily Plan",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dos-demo.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Plan tab"
+      },
+      {
+        "type": "action",
+        "description": "Click Generate Plan button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Daily Plan\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"8am\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"6pm\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"AI-generated hourly schedule\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC047",
+    "title": "Generate plan with no tasks and no API key shows task validation message",
+    "description": "Verifies that attempting to generate a plan without any tasks shows a validation message requesting at least one task.",
+    "category": "Daily Plan",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Plan tab"
+      },
+      {
+        "type": "action",
+        "description": "Click Generate Plan button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"at least one task\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"add a task\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Generate Plan\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC048",
+    "title": "Regenerate plan updates the visible schedule content",
+    "description": "Verifies that clicking Generate Plan again refreshes the schedule output (new or updated plan content is shown).",
+    "category": "Daily Plan",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dos-demo.html"
+      },
+      {
+        "type": "action",
+        "description": "Click Plan tab"
+      },
+      {
+        "type": "action",
+        "description": "Click Generate Plan button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"AI-generated hourly schedule\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click Generate Plan button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"AI-generated hourly schedule\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"8am\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC049",
+    "title": "Apply Forest theme and see immediate visual update",
+    "description": "Verifies that selecting the Forest theme updates the UI colors immediately.",
+    "category": "Theme Switching",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"theme switcher button\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"theme switcher button\" in the topbar"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Forest\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Forest\" theme option"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"theme switcher button\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"selected theme indicator shows Forest\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC050",
+    "title": "Switch from Forest to Default theme in the same session",
+    "description": "Verifies that theme can be changed multiple times and Default can be re-applied without issues.",
+    "category": "Theme Switching",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"theme switcher button\" in the topbar"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Forest\" theme option"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"selected theme indicator shows Forest\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"theme switcher button\" in the topbar"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Default\" theme option"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"selected theme indicator shows Default\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC051",
+    "title": "Apply Ice theme and see immediate visual update",
+    "description": "Verifies that selecting the Ice theme updates the UI and the selected option is reflected in the UI.",
+    "category": "Theme Switching",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"theme switcher button\" in the topbar"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Ice\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Ice\" theme option"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"selected theme indicator shows Ice\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"topbar reflects Ice theme styling\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC052",
+    "title": "Theme switcher menu opens and shows all four theme options",
+    "description": "Verifies that the theme switcher exposes the complete set of available themes (Default, Forest, Ember, Ice).",
+    "category": "Theme Switching",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"theme switcher button\" in the topbar"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Default\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Forest\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Ember\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Ice\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC053",
+    "title": "Theme switcher can be dismissed without changing theme",
+    "description": "Verifies that closing the theme switcher (without selecting a theme) leaves the current theme unchanged.",
+    "category": "Theme Switching",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"theme switcher button\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"theme switcher button\" in the topbar"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Default\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Press \"Escape\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"theme options menu\" is not visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"selected theme indicator shows Default\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC054",
+    "title": "Unsupported CSS variables fallback shows default theme and an informational message",
+    "description": "Verifies the user-facing fallback behavior when CSS variables are not supported (default theme + visible message).",
+    "category": "Theme Switching",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"theme switcher button\" in the topbar"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Ice\" theme option"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"not supported\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Default theme\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"selected theme indicator shows Default\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC055",
+    "title": "Start Demo loads main app with pre-populated demo content",
+    "description": "Verifies that starting demo from the demo page takes the user to the main app and shows pre-filled tasks/notes/profiles.",
+    "category": "Demo Mode",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dos-demo.html"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Start Demo\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Start Demo\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/deadlineos-v3.html\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Tasks\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify at least one task item is visible in the Tasks area"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Notes\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify at least one note item is visible in the Notes area"
+      }
+    ]
+  },
+  {
+    "id": "TC056",
+    "title": "Start Demo shows pre-filled team/profiles content",
+    "description": "Verifies that demo mode includes pre-populated team or profile information in the main app.",
+    "category": "Demo Mode",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dos-demo.html"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Start Demo\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/deadlineos-v3.html\""
+      },
+      {
+        "type": "action",
+        "description": "Click \"Team\" tab"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Team\" section is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify at least one profile or team member card/row is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Analytics\" tab"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Analytics\" section is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC057",
+    "title": "Auto-Demo Start plays a brief walkthrough and updates demo tasks",
+    "description": "Verifies that the auto-demo walkthrough begins and results in visible changes consistent with an automated demo sequence.",
+    "category": "Demo Mode",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dos-demo.html"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Auto-Demo Start\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Auto-Demo Start\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Walkthrough\" or \"Demo\" animation area is visible"
+      },
+      {
+        "type": "action",
+        "description": "Wait for 12 seconds"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/deadlineos-v3.html\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify at least one task item is visible in the Tasks area"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify that a task list change is visible (for example, a new task appears or a task status changes)"
+      }
+    ]
+  },
+  {
+    "id": "TC058",
+    "title": "Demo AI Commander provides mock responses without an API key",
+    "description": "Verifies that in demo mode, the AI Commander can be used without entering an API key and returns a visible mock response.",
+    "category": "Demo Mode",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dos-demo.html"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Start Demo\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/deadlineos-v3.html\""
+      },
+      {
+        "type": "action",
+        "description": "Click \"AI Commander\" tab"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"AI Commander\" panel is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Summarize my tasks\" into the AI prompt input"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a new AI response message is visible in the conversation area"
+      }
+    ]
+  },
+  {
+    "id": "TC059",
+    "title": "Demo AI analysis uses mock output when no API key is provided",
+    "description": "Verifies that demo mode surfaces AI-driven analysis content using built-in mock responses without requiring an API key.",
+    "category": "Demo Mode",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dos-demo.html"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Start Demo\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/deadlineos-v3.html\""
+      },
+      {
+        "type": "action",
+        "description": "Click \"Analytics\" tab"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Analytics\" section is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text indicating an AI insight/analysis area is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify at least one AI insight/analysis item is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC060",
+    "title": "Entering an invalid API key in demo session shows an API key error banner and falls back to mock responses",
+    "description": "Verifies that providing an invalid API key triggers a visible error and the app continues to operate using mock AI responses.",
+    "category": "Demo Mode",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dos-demo.html"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Start Demo\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/deadlineos-v3.html\""
+      },
+      {
+        "type": "action",
+        "description": "Click \"Integrations\" tab"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"API Key\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"not-a-real-key\" into the API key field"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Save\" or \"Apply\" for the API key"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an error banner or error text about the API key is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC061",
+    "title": "After invalid API key, AI Commander still returns a response (mock fallback)",
+    "description": "Verifies that after an invalid API key is entered, AI interactions still produce a visible response via mock fallback.",
+    "category": "Demo Mode",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dos-demo.html"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Start Demo\""
+      },
+      {
+        "type": "action",
+        "description": "Click \"Integrations\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Type \"not-a-real-key\" into the API key field"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Save\" or \"Apply\" for the API key"
+      },
+      {
+        "type": "action",
+        "description": "Click \"AI Commander\" tab"
+      },
+      {
+        "type": "action",
+        "description": "Type \"Create a plan for finishing my top 3 tasks\" into the AI prompt input"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a new AI response message is visible in the conversation area"
+      }
+    ]
+  },
+  {
+    "id": "TC062",
+    "title": "Demo mode supports basic interaction with pre-populated tasks",
+    "description": "Verifies that demo tasks are not just visible but interactable within the main app (basic task action results in visible change).",
+    "category": "Demo Mode",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dos-demo.html"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Start Demo\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/deadlineos-v3.html\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify at least one task item is visible in the Tasks area"
+      },
+      {
+        "type": "action",
+        "description": "Click on the first visible task item"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an expanded task detail view or task edit panel becomes visible"
+      },
+      {
+        "type": "action",
+        "description": "Click the task \"Complete\" checkbox or \"Mark done\" control"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a visible indication of completion appears for that task (for example, \"Done\" label or checked state shown)"
+      }
+    ]
+  },
+  {
+    "id": "TC063",
+    "title": "Manual switch to English updates UI immediately",
+    "description": "Verifies the language toggle can switch the UI to English without a page reload and that key labels update immediately.",
+    "category": "Language Switching",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Topbar language toggle\" is visible."
+      },
+      {
+        "type": "action",
+        "description": "Click language toggle in topbar (EN/DE)."
+      },
+      {
+        "type": "action",
+        "description": "Click on \"EN\" option in the language menu."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Tasks\" is visible."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Notes\" is visible."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Team\" is visible."
+      }
+    ]
+  },
+  {
+    "id": "TC064",
+    "title": "Manual switch to German updates UI immediately",
+    "description": "Verifies the language toggle can switch the UI to German and that key labels update immediately.",
+    "category": "Language Switching",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Topbar language toggle\" is visible."
+      },
+      {
+        "type": "action",
+        "description": "Click language toggle in topbar (EN/DE)."
+      },
+      {
+        "type": "action",
+        "description": "Click on \"DE\" option in the language menu."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Aufgaben\" is visible."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Notizen\" is visible."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Team\" is visible."
+      }
+    ]
+  },
+  {
+    "id": "TC065",
+    "title": "Switching languages twice returns UI labels correctly (DE -> EN)",
+    "description": "Verifies repeated toggling is stable and UI labels correctly return to English after switching from German.",
+    "category": "Language Switching",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html."
+      },
+      {
+        "type": "action",
+        "description": "Click language toggle in topbar (EN/DE)."
+      },
+      {
+        "type": "action",
+        "description": "Click on \"DE\" option in the language menu."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Aufgaben\" is visible."
+      },
+      {
+        "type": "action",
+        "description": "Click language toggle in topbar (EN/DE)."
+      },
+      {
+        "type": "action",
+        "description": "Click on \"EN\" option in the language menu."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Tasks\" is visible."
+      }
+    ]
+  },
+  {
+    "id": "TC066",
+    "title": "DE selection shows fallback-to-English for untranslated legacy strings and displays a notice",
+    "description": "Verifies that when German is selected, any untranslated legacy strings fall back to English and a notice to report missing translations is visible.",
+    "category": "Language Switching",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html."
+      },
+      {
+        "type": "action",
+        "description": "Click language toggle in topbar (EN/DE)."
+      },
+      {
+        "type": "action",
+        "description": "Click on \"DE\" option in the language menu."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Aufgaben\" is visible."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Report missing translations\" is visible."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"(fallback)\" is visible."
+      }
+    ]
+  },
+  {
+    "id": "TC067",
+    "title": "Language menu opens and closes without changing language when dismissed",
+    "description": "Verifies the language menu can be opened and dismissed without applying a different language selection.",
+    "category": "Language Switching",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Topbar language toggle\" is visible."
+      },
+      {
+        "type": "action",
+        "description": "Click language toggle in topbar (EN/DE)."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Language menu\" is visible."
+      },
+      {
+        "type": "action",
+        "description": "Press Escape key."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Language menu\" is not visible."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Topbar language toggle\" is visible."
+      }
+    ]
+  },
+  {
+    "id": "TC068",
+    "title": "Language setting persists within the session when navigating between tabs",
+    "description": "Verifies that after switching languages, navigating within the app tabs keeps the chosen language visible on tab labels.",
+    "category": "Language Switching",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html."
+      },
+      {
+        "type": "action",
+        "description": "Click language toggle in topbar (EN/DE)."
+      },
+      {
+        "type": "action",
+        "description": "Click on \"EN\" option in the language menu."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Tasks\" is visible."
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Notes\" tab."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Notes\" is visible."
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Tasks\" tab."
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Tasks\" is visible."
+      }
+    ]
+  },
+  {
+    "id": "TC069",
+    "title": "Update mood to Neutral from the status bar",
+    "description": "Verifies selecting the 'Neutral' mood updates the visible mood indicator in the status bar.",
+    "category": "Mood and Energy Tracker",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"status bar\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on the mood emoji button in the status bar"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Neutral\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Neutral\" mood option"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"mood indicator\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Neutral\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC070",
+    "title": "Change energy level to 6/8 from the status bar",
+    "description": "Verifies selecting energy level 6/8 updates the visible energy value in the status bar.",
+    "category": "Mood and Energy Tracker",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"status bar\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on the energy level selector in the status bar"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"6/8\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on energy level \"6/8\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"energy indicator\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"6/8\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC071",
+    "title": "Mood selection persists after a page reload",
+    "description": "Verifies the chosen mood remains visible after reloading the app (localStorage persistence).",
+    "category": "Mood and Energy Tracker",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click on the mood emoji button in the status bar"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Neutral\" mood option"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Neutral\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"mood indicator\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Neutral\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC072",
+    "title": "Energy selection persists after a page reload",
+    "description": "Verifies the chosen energy level remains visible after reloading the app (localStorage persistence).",
+    "category": "Mood and Energy Tracker",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click on the energy level selector in the status bar"
+      },
+      {
+        "type": "action",
+        "description": "Click on energy level \"6/8\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"6/8\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"energy indicator\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"6/8\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC073",
+    "title": "Rapidly change mood multiple times and confirm the final selection is shown",
+    "description": "Verifies the mood control remains responsive during rapid changes and the final mood selection is reflected in the indicator.",
+    "category": "Mood and Energy Tracker",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"status bar\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on the mood emoji button in the status bar"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Neutral\" mood option"
+      },
+      {
+        "type": "action",
+        "description": "Click on the mood emoji button in the status bar"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Neutral\" mood option"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Neutral\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC074",
+    "title": "Set low mood and low energy and trigger AI Analysis (demo/mock response)",
+    "description": "Verifies the user can set mood and energy, then run AI Analysis and see an analysis response area appear (without requiring a real API key).",
+    "category": "Mood and Energy Tracker",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /deadlineos-v3.html"
+      },
+      {
+        "type": "action",
+        "description": "Click on the mood emoji button in the status bar"
+      },
+      {
+        "type": "action",
+        "description": "Click on a low/negative mood option (for example, \"Sad\" or \"Stressed\")"
+      },
+      {
+        "type": "action",
+        "description": "Click on the energy level selector in the status bar"
+      },
+      {
+        "type": "action",
+        "description": "Click on a low energy level option (for example, \"1/8\" or \"2/8\")"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"AI Analysis\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"AI analysis response\" is visible"
+      }
+    ]
+  }
+]

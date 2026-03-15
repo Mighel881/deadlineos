@@ -1,0 +1,16 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:5173/C:\\Users\\Mighel\\Desktop\\KI STuff\\Test before sucess\\deadlineos-final_TeamSprite_ (final final abgabe)\\deadlineos-final abgabe bereit nach test\\agent\\home\\deadlineos",
+  "executionArgs": {
+    "projectName": "deadlineos",
+    "projectPath": "c/Users/Mighel/Desktop/KI STuff/Test before sucess/deadlineos-final_TeamSprite_ (final final abgabe)/deadlineos-final abgabe bereit nach test/agent/home/deadlineos",
+    "testIds": [],
+    "additionalInstruction": "IMPORTANT SETUP: All tests for /deadlineos-v3.html must first click the DEMO button (id=demo-mode-btn) via JS: await page.evaluate(\"document.getElementById('demo-mode-btn').click()\") before interacting with any app features. For tasks: use id=task-input (textarea), id=add-btn (button). Find task IDs via window.tasks array, then use data-testid=task-check-{id} for checkbox and data-testid=task-delete-{id} for delete. For priority: use id=prio-sel-{id}. For timer: id=start-btn, id=stop-btn, id=save-btn. For notes: call go('notes'), newNote(), saveNote() via JS. For AI analyze: click id=analyze_btn and read div id=ai-out. For API key overlay: click id=apikey-change-btn. For 404 test: navigate to /nonexistent-xyz.html directly. AI output renders immediately in test mode (no streaming delay).",
+    "serverMode": "production",
+    "envs": {
+      "API_KEY": "sk-user-uCXqYikLawq5-A4AK_ieaBrBA3Dt56VRpwGI6bOt_vVhAV596im4XrIzrmetOmXhfsBm92UFtLd6wsbu3fdQvB-mT2DlUhwcLYXW3z4Xhcpv950bmyjDO8peRenjnZNxzn0"
+    }
+  }
+}
